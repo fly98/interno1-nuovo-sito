@@ -72,8 +72,30 @@
     position:absolute;
     inset:0;
     z-index:-2;
+    overflow:hidden;
+  }
+  .hero-bg video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    transform:translate(-50%,-50%) scale(1.02);
+    object-fit:cover;
+    object-position:center 68%;
+  }
+  .hero-bg-fallback{
+    position:absolute;
+    inset:0;
     background:url('assets/hero-terrazza.jpg') center 68%/cover;
-    animation:kenburns 26s ease-in-out infinite alternate;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg video{ display:none; }
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .hero-bg-fallback{ display:none; }
   }
   .hero-overlay{
     position:absolute;
@@ -416,7 +438,12 @@
 </header>
 
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline>
+      <source src="assets/hero-tenda.mp4" type="video/mp4">
+    </video>
+    <div class="hero-bg-fallback"></div>
+  </div>
   <div class="hero-overlay"></div>
   <div class="eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
