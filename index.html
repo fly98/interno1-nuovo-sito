@@ -494,6 +494,79 @@
     .perche-grid{ grid-template-columns:1fr 1fr; }
     .camere-grid{ grid-template-columns:1fr 1fr; }
     .contatti{ grid-template-columns:1fr; }
+  }  /* --- modal prenotazione --- */
+  .booking-modal{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:1.2rem;
+  }
+  .booking-modal.open{ display:flex; }
+  .booking-modal .backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(15,12,6,0.72);
+    backdrop-filter:blur(2px);
+  }
+  .booking-modal .modal-box{
+    position:relative;
+    background:#fff;
+    width:100%;
+    max-width:480px;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+    z-index:1;
+  }
+  .booking-modal .modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.3rem 1.5rem;
+    border-bottom:1px solid rgba(0,0,0,0.08);
+  }
+  .booking-modal .modal-head h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.15rem;
+    color:var(--testo-scuro);
+  }
+  .booking-modal .modal-close{
+    background:none;
+    border:none;
+    font-size:1.4rem;
+    line-height:1;
+    cursor:pointer;
+    color:#8a7f68;
+    padding:0.2rem 0.4rem;
+  }
+  .booking-modal .modal-body{
+    padding:1.6rem 1.5rem 2rem;
+    text-align:center;
+  }
+  .booking-modal .modal-body p{
+    font-size:0.92rem;
+    color:#4a453a;
+    line-height:1.55;
+    margin-bottom:1.5rem;
+  }
+  .booking-modal .modal-cta{
+    display:inline-block;
+    background:#FF6628;
+    color:#fff;
+    font-weight:500;
+    font-size:0.95rem;
+    padding:0.95rem 2.2rem;
+    border-radius:6px;
+    text-decoration:none;
+  }
+  .booking-modal .modal-note{
+    margin-top:1.1rem;
+    font-size:0.76rem;
+    color:#9a8f7c;
   }
 </style>
 </head>
@@ -523,7 +596,7 @@
   <div class="eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
   <p>Due indirizzi, ognuno a un passo da una fermata della metro B, dove la porta si chiude e la città resta fuori.</p>
-  <a class="cta" href="#">Prenota il tuo soggiorno</a>
+  <a class="cta" href="#" id="btnPrenota">Prenota il tuo soggiorno</a>
 </section>
 
 <section class="soglia">
@@ -626,6 +699,21 @@
 
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
 
+<div class="booking-modal" id="bookingModal">
+  <div class="backdrop" id="bookingBackdrop"></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Prenota il tuo soggiorno</h3>
+      <button class="modal-close" id="bookingClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Stai per essere reindirizzato al motore di prenotazione sicuro InternoUno, per verificare disponibilità e tariffe in tempo reale.</p>
+      <a class="modal-cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Vai alla prenotazione</a>
+      <div class="modal-note">Si aprirà in una nuova scheda</div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Rotazione con dissolvenza + zoom, riutilizzata per foto e frasi
   function startRotation(selector, intervalMs){
@@ -708,6 +796,31 @@
   document.querySelectorAll('.reveal').forEach(function(el){
     observer.observe(el);
   });
+  // Modal di prenotazione
+  (function(){
+    var modal = document.getElementById('bookingModal');
+    var openBtn = document.getElementById('btnPrenota');
+    var closeBtn = document.getElementById('bookingClose');
+    var backdrop = document.getElementById('bookingBackdrop');
+    if (!modal || !openBtn) return;
+
+    function openModal(e){
+      e.preventDefault();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeModal();
+    });
+  })();
 </script>
 
 </body>
