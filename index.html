@@ -57,9 +57,7 @@
 
   /* --- hero: notte urbana --- */
   .hero{
-    background:
-      linear-gradient(180deg, rgba(20,23,28,0.55) 0%, rgba(20,23,28,0.88) 78%, var(--crema) 100%),
-      url('https://res.cloudinary.com/amenitiz/image/upload/w_1600,q_auto/v1687879786/qjhlkcpknyditapbzkcp.jpg') center/cover;
+    position:relative;
     margin-top:-4.6rem;
     padding-top:8rem;
     padding-bottom:6rem;
@@ -67,6 +65,28 @@
     padding-right:5vw;
     color:var(--testo-chiaro);
     text-align:center;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:url('assets/hero-terrazza.jpg') center 32%/cover;
+    animation:kenburns 26s ease-in-out infinite alternate;
+  }
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(180deg, rgba(20,23,28,0.5) 0%, rgba(20,23,28,0.82) 78%, var(--crema) 100%);
+  }
+  @keyframes kenburns{
+    0%   { transform:scale(1) translate(0,0); }
+    100% { transform:scale(1.12) translate(-1%, -1%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg{ animation:none; }
   }
   .hero .eyebrow{
     font-size:0.75rem;
@@ -396,6 +416,8 @@
 </header>
 
 <section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
   <p>Due indirizzi, ognuno a un passo da una fermata della metro B, dove la porta si chiude e la città resta fuori.</p>
