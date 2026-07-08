@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InternoUno — Direzione "Soglia"</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --notte:#14171C;
@@ -32,10 +32,26 @@
     color:var(--testo-chiaro);
   }
   header .logo{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-size:1.2rem;
-    letter-spacing:0.01em;
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  header .logo svg{
+    width:30px;
+    height:30px;
+    flex-shrink:0;
+  }
+  header .logo .wordmark{
+    font-family:'Poppins', sans-serif;
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-size:1.25rem;
+    color:var(--testo-chiaro);
+  }
+  header .logo .wordmark .accent{
+    font-weight:700;
+    color:var(--legno);
   }
   header nav{ display:flex; gap:1.8rem; font-size:0.82rem; }
   header nav a{ color:var(--testo-chiaro); text-decoration:none; opacity:0.85; }
@@ -315,11 +331,18 @@
 <body>
 
 <header>
-  <div class="logo">InternoUno</div>
+  <div class="logo">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 34V16a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v6" stroke="#C97B4A" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M8 30h32v4a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-4Z" stroke="#C97B4A" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M17 24h14a3 3 0 0 1 3 3v3H14v-3a3 3 0 0 1 3-3Z" stroke="#C97B4A" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M40 34V20a2 2 0 0 0-2-2 2 2 0 0 0-2 2" stroke="#C97B4A" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
+  </div>
   <nav>
     <a href="#">Alloggi</a>
     <a href="#">Quartiere</a>
-    <a href="#">Roma con noi</a>
     <a href="#">Contatti</a>
   </nav>
 </header>
@@ -382,25 +405,6 @@
         <h3>Camera con cucina</h3>
         <p>Angolo cottura attrezzato, ideale per soggiorni più lunghi.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="roma-noi">
-  <div class="roma-noi-inner">
-    <div>
-      <span class="eyebrow">Roma con noi</span>
-      <h2>Sei tour audio-guidati,<br>pensati per i nostri ospiti</h2>
-      <p>Ghetto e Testaccio, Trastevere nascosta, Roma esoterica — percorsi a piedi con audioguida nel telefono, gratuiti per chi soggiorna da noi.</p>
-      <a class="cta-outline" href="#">Scopri i percorsi</a>
-    </div>
-    <div class="tour-list">
-      <div class="tour-item"><span>Ghetto & Testaccio</span><span>1h 30</span></div>
-      <div class="tour-item"><span>Trastevere Nascosta</span><span>1h 15</span></div>
-      <div class="tour-item"><span>San Pietro e Borgo Pio</span><span>1h 45</span></div>
-      <div class="tour-item"><span>Roma Esoterica</span><span>2h</span></div>
-      <div class="tour-item"><span>Roma in un Giorno</span><span>3h</span></div>
-      <div class="tour-item"><span>Musei Vaticani</span><span>indoor</span></div>
     </div>
   </div>
 </section>
