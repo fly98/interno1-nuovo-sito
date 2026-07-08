@@ -308,7 +308,6 @@
   <span>2 camere separate</span>
   <span>18 m²</span>
   <span>1 letto doppio + 1 divano letto</span>
-  <span>Vista città</span>
 </div>
 
 <main>
@@ -399,6 +398,21 @@
       if (e.key === 'ArrowRight') show(idx + 1);
       if (e.key === 'ArrowLeft') show(idx - 1);
     });
+
+    // Swipe con il dito per passare da una foto all'altra
+    var touchStartX = 0;
+    var touchEndX = 0;
+    lightbox.addEventListener('touchstart', function(e){
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', function(e){
+      touchEndX = e.changedTouches[0].screenX;
+      var delta = touchEndX - touchStartX;
+      if (Math.abs(delta) > 40){
+        if (delta < 0) show(idx + 1); // swipe verso sinistra -> foto successiva
+        else show(idx - 1);           // swipe verso destra -> foto precedente
+      }
+    }, { passive: true });
   })();
 
   (function(){
