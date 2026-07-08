@@ -52,7 +52,7 @@
     font-size:1.05rem;
     color:#fff;
   }
-  header .logo .wordmark .accent{ color:#FF6628; }
+  header .logo .wordmark .accent{ color:#fff; }
   header nav{ display:flex; gap:1.8rem; }
   header nav a{
     color:var(--testo-chiaro);
@@ -66,7 +66,7 @@
   header nav a.on{ opacity:1; color:#FF6628; }
 
   .page-hero{
-    background:var(--notte-2);
+    background:var(--notte);
     color:var(--testo-chiaro);
     text-align:center;
     padding:3.5rem 5vw 3rem;
@@ -225,7 +225,7 @@
 <section class="page-hero">
   <div class="eyebrow">Via Campaldino 6 · Via Lorenzo il Magnifico 158</div>
   <h1>Le nostre camere</h1>
-  <p>Sei camere in due indirizzi, ognuna pensata per essere una pausa dal ritmo della città.</p>
+  <p>Sei tipologie di camera in due indirizzi, ciascuna con caratteristiche e servizi diversi per adattarsi a ogni esigenza.</p>
 </section>
 
 <main>
@@ -338,6 +338,27 @@
 </main>
 
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
+
+<script>
+  // I video animati a volte vengono messi in pausa dal sistema (risparmio energetico) — li si fa ripartire automaticamente
+  (function(){
+    var videos = document.querySelectorAll('video');
+    if (!videos.length) return;
+    function tryPlay(v){
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+    videos.forEach(function(v){
+      v.addEventListener('pause', function(){ if (!document.hidden) tryPlay(v); });
+    });
+    document.addEventListener('visibilitychange', function(){
+      if (!document.hidden) videos.forEach(tryPlay);
+    });
+    setInterval(function(){
+      if (!document.hidden) videos.forEach(function(v){ if (v.paused) tryPlay(v); });
+    }, 4000);
+  })();
+</script>
 
 </body>
 </html>
