@@ -596,7 +596,7 @@
   <div class="eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
   <p>Due indirizzi, ognuno a un passo da una fermata della metro B, dove la porta si chiude e la città resta fuori.</p>
-  <a class="cta" href="#" id="btnPrenota">Prenota il tuo soggiorno</a>
+  <a class="cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Prenota il tuo soggiorno</a>
 </section>
 
 <section class="soglia">
@@ -699,21 +699,6 @@
 
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
 
-<div class="booking-modal" id="bookingModal">
-  <div class="backdrop" id="bookingBackdrop"></div>
-  <div class="modal-box">
-    <div class="modal-head">
-      <h3>Prenota il tuo soggiorno</h3>
-      <button class="modal-close" id="bookingClose" aria-label="Chiudi">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p>Il sito Amenitiz non consente l'apertura integrata da qui — clicca sotto per essere reindirizzato al motore di prenotazione sicuro InternoUno.</p>
-      <a class="modal-cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Vai alla prenotazione</a>
-      <div class="modal-note">Si aprirà in una nuova scheda</div>
-    </div>
-  </div>
-</div>
-
 <script>
   // Rotazione con dissolvenza + zoom, riutilizzata per foto e frasi
   function startRotation(selector, intervalMs){
@@ -796,31 +781,6 @@
   document.querySelectorAll('.reveal').forEach(function(el){
     observer.observe(el);
   });
-  // Modal di prenotazione
-  (function(){
-    var modal = document.getElementById('bookingModal');
-    var openBtn = document.getElementById('btnPrenota');
-    var closeBtn = document.getElementById('bookingClose');
-    var backdrop = document.getElementById('bookingBackdrop');
-    if (!modal || !openBtn) return;
-
-    function openModal(e){
-      e.preventDefault();
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') closeModal();
-    });
-  })();
   // Il video hero a volte viene messo in pausa dal sistema (risparmio energetico) — lo si fa ripartire automaticamente
   (function(){
     var v = document.getElementById('heroVideo');
