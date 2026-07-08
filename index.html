@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InternoUno — Direzione "Soglia"</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --notte:#14171C;
+    --notte-2:#1D2128;
+    --crema:#EFE7D6;
+    --legno:#B08355;
+    --testo-chiaro:#EDEAE2;
+    --testo-scuro:#26221B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--crema);
+    color:var(--testo-scuro);
+  }
+
+  header{
+    position:relative;
+    z-index:5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.4rem 5vw;
+    color:var(--testo-chiaro);
+  }
+  header .logo{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    letter-spacing:0.01em;
+  }
+  header nav{ display:flex; gap:1.8rem; font-size:0.82rem; }
+  header nav a{ color:var(--testo-chiaro); text-decoration:none; opacity:0.85; }
+
+  /* --- hero: notte urbana --- */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(20,23,28,0.55) 0%, rgba(20,23,28,0.88) 78%, var(--crema) 100%),
+      url('https://res.cloudinary.com/amenitiz/image/upload/w_1600,q_auto/v1687879786/qjhlkcpknyditapbzkcp.jpg') center/cover;
+    margin-top:-4.6rem;
+    padding-top:8rem;
+    padding-bottom:6rem;
+    padding-left:5vw;
+    padding-right:5vw;
+    color:var(--testo-chiaro);
+    text-align:center;
+  }
+  .hero .eyebrow{
+    font-size:0.75rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:1rem;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(2.6rem, 6.5vw, 4.4rem);
+    line-height:1.03;
+    max-width:780px;
+    margin:0 auto 1.3rem;
+  }
+  .hero h1 em{ font-style:italic; font-weight:400; color:var(--legno); }
+  .hero p{
+    max-width:480px;
+    margin:0 auto 2.2rem;
+    opacity:0.85;
+    font-size:1.02rem;
+  }
+  .cta{
+    display:inline-block;
+    background:var(--legno);
+    color:var(--notte);
+    font-weight:500;
+    font-size:0.92rem;
+    padding:0.95rem 2.3rem;
+    border-radius:2px;
+    text-decoration:none;
+  }
+
+  /* --- soglia: frame motif transitioning to warm interior --- */
+  .soglia{
+    padding:4rem 5vw 5rem;
+  }
+  .soglia-frame{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--testo-scuro);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .soglia-frame img{
+    width:100%;
+    height:100%;
+    min-height:340px;
+    object-fit:cover;
+    display:block;
+  }
+  .soglia-text{
+    padding:2.8rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:var(--crema);
+  }
+  .soglia-text .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#8a7f68;
+    margin-bottom:0.7rem;
+  }
+  .soglia-text h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.7rem;
+    margin-bottom:0.9rem;
+  }
+  .soglia-text p{ font-size:0.95rem; line-height:1.6; color:#4a453a; }
+
+  /* --- two addresses --- */
+  .indirizzi{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    max-width:1000px;
+    margin:3.5rem auto 0;
+  }
+  .indirizzo{
+    padding:1.8rem;
+    border-left:2px solid var(--legno);
+  }
+  .indirizzo .eyebrow{
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#8a7f68;
+  }
+  .indirizzo h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.25rem;
+    margin:0.4rem 0 0.5rem;
+  }
+  .indirizzo p{ font-size:0.9rem; color:#4a453a; }
+
+  /* --- le strutture: camere grid --- */
+  .strutture{
+    padding:1rem 5vw 5rem;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .strutture .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#8a7f68;
+    text-align:center;
+    margin-bottom:0.6rem;
+  }
+  .strutture h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:2rem;
+    text-align:center;
+    margin-bottom:2.6rem;
+  }
+  .camere-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.4rem;
+  }
+  .camera-card{
+    border-radius:4px;
+    overflow:hidden;
+    background:#fff;
+    border:1px solid rgba(0,0,0,0.08);
+  }
+  .camera-card img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+  }
+  .camera-card .info{ padding:1.1rem 1.2rem 1.4rem; }
+  .camera-card .info .tag{
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--legno);
+    font-weight:500;
+  }
+  .camera-card .info h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.1rem;
+    margin:0.4rem 0 0.35rem;
+  }
+  .camera-card .info p{ font-size:0.85rem; color:#4a453a; }
+
+  /* --- roma con noi --- */
+  .roma-noi{
+    background:var(--notte-2);
+    color:var(--testo-chiaro);
+    padding:4.5rem 5vw;
+  }
+  .roma-noi-inner{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+  }
+  .roma-noi .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--legno);
+    margin-bottom:0.8rem;
+  }
+  .roma-noi h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.9rem;
+    margin-bottom:1rem;
+    line-height:1.15;
+  }
+  .roma-noi p{ font-size:0.95rem; opacity:0.85; line-height:1.6; margin-bottom:1.4rem; }
+  .roma-noi .cta-outline{
+    display:inline-block;
+    border:1px solid var(--legno);
+    color:var(--testo-chiaro);
+    text-decoration:none;
+    font-size:0.85rem;
+    padding:0.8rem 1.8rem;
+    border-radius:2px;
+  }
+  .tour-list{
+    display:flex;
+    flex-direction:column;
+    gap:0.7rem;
+  }
+  .tour-list .tour-item{
+    display:flex;
+    justify-content:space-between;
+    padding:0.7rem 0;
+    border-bottom:1px solid rgba(237,234,226,0.15);
+    font-size:0.9rem;
+  }
+  .tour-list .tour-item span:last-child{ opacity:0.6; font-size:0.8rem; }
+
+  /* --- contatti --- */
+  .contatti{
+    padding:4.5rem 5vw;
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+  }
+  .contatti .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#8a7f68;
+    margin-bottom:0.7rem;
+  }
+  .contatti h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.7rem;
+    margin-bottom:1rem;
+  }
+  .contatti p{ font-size:0.92rem; color:#4a453a; line-height:1.7; }
+  .contatti a{ color:var(--testo-scuro); }
+  .social-row{
+    display:flex;
+    gap:1rem;
+    margin-top:1.2rem;
+    font-size:0.85rem;
+  }
+
+  footer{
+    background:var(--notte);
+    color:var(--testo-chiaro);
+    text-align:center;
+    padding:2rem;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    opacity:0.8;
+  }
+
+  @media (max-width: 640px){
+    .soglia-frame{ grid-template-columns:1fr; }
+    .indirizzi{ grid-template-columns:1fr; }
+    .camere-grid{ grid-template-columns:1fr 1fr; }
+    .roma-noi-inner{ grid-template-columns:1fr; }
+    .contatti{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">InternoUno</div>
+  <nav>
+    <a href="#">Alloggi</a>
+    <a href="#">Quartiere</a>
+    <a href="#">Roma con noi</a>
+    <a href="#">Contatti</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Piazza Bologna, Roma — dal 2007</div>
+  <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
+  <p>Due indirizzi tra Piazza Bologna e Stazione Tiburtina, dove la porta si chiude e la città resta fuori.</p>
+  <a class="cta" href="#">Prenota il tuo soggiorno</a>
+</section>
+
+<section class="soglia">
+  <div class="soglia-frame">
+    <img src="https://res.cloudinary.com/amenitiz/image/upload/w_900,q_auto/v1774367471/luirepyn5sizll2kh2v3.jpg" alt="Camera InternoUno">
+    <div class="soglia-text">
+      <span class="eyebrow">La soglia</span>
+      <h2>Un attimo, e sei altrove</h2>
+      <p>Legno chiaro, luce morbida, silenzio. Le camere InternoUno sono pensate come una pausa dal ritmo della città — angolo cottura, smart TV con Netflix, tutto quello che serve per sentirsi a casa.</p>
+    </div>
+  </div>
+
+  <div class="indirizzi">
+    <div class="indirizzo">
+      <span class="eyebrow">Struttura 1</span>
+      <h3>Via Campaldino 6</h3>
+      <p>InternoUno — camere indipendenti con angolo cottura, a due passi da Piazza Bologna e Stazione Tiburtina.</p>
+    </div>
+    <div class="indirizzo">
+      <span class="eyebrow">Struttura 2</span>
+      <h3>Via Lorenzo il Magnifico 158</h3>
+      <p>InternoUno Deluxe — idromassaggio e terrazza in alcune camere.</p>
+    </div>
+  </div>
+</section>
+
+<section class="strutture">
+  <span class="eyebrow">Le camere</span>
+  <h2>Ogni camera, un piccolo interno</h2>
+  <div class="camere-grid">
+    <div class="camera-card">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687879786/qjhlkcpknyditapbzkcp.jpg" alt="Camera con terrazza">
+      <div class="info">
+        <span class="tag">Via Lorenzo il Magnifico</span>
+        <h3>Camera con terrazza</h3>
+        <p>Doppia con terrazzo privato affacciato sul cortile interno.</p>
+      </div>
+    </div>
+    <div class="camera-card">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687888207/rru6koforh5s9u6luidq.jpg" alt="Camera classica">
+      <div class="info">
+        <span class="tag">Via Lorenzo il Magnifico</span>
+        <h3>Camera Deluxe</h3>
+        <p>Tessuti caldi, testiera imbottita, angolo scrittoio.</p>
+      </div>
+    </div>
+    <div class="camera-card">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1774367471/luirepyn5sizll2kh2v3.jpg" alt="Camera con angolo cottura">
+      <div class="info">
+        <span class="tag">Via Campaldino</span>
+        <h3>Camera con cucina</h3>
+        <p>Angolo cottura attrezzato, ideale per soggiorni più lunghi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roma-noi">
+  <div class="roma-noi-inner">
+    <div>
+      <span class="eyebrow">Roma con noi</span>
+      <h2>Sei tour audio-guidati,<br>pensati per i nostri ospiti</h2>
+      <p>Ghetto e Testaccio, Trastevere nascosta, Roma esoterica — percorsi a piedi con audioguida nel telefono, gratuiti per chi soggiorna da noi.</p>
+      <a class="cta-outline" href="#">Scopri i percorsi</a>
+    </div>
+    <div class="tour-list">
+      <div class="tour-item"><span>Ghetto & Testaccio</span><span>1h 30</span></div>
+      <div class="tour-item"><span>Trastevere Nascosta</span><span>1h 15</span></div>
+      <div class="tour-item"><span>San Pietro e Borgo Pio</span><span>1h 45</span></div>
+      <div class="tour-item"><span>Roma Esoterica</span><span>2h</span></div>
+      <div class="tour-item"><span>Roma in un Giorno</span><span>3h</span></div>
+      <div class="tour-item"><span>Musei Vaticani</span><span>indoor</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contatti">
+  <div>
+    <span class="eyebrow">Dove siamo</span>
+    <h2>Piazza Bologna, Roma</h2>
+    <p>
+      Via Campaldino 6<br>
+      Via Lorenzo il Magnifico 158<br>
+      00162 Roma
+    </p>
+  </div>
+  <div>
+    <span class="eyebrow">Contatti</span>
+    <h2>Scrivici</h2>
+    <p>
+      <a href="mailto:info@interno1.it">info@interno1.it</a><br>
+      WhatsApp: risposta rapida, sempre
+    </p>
+    <div class="social-row">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+  </div>
+</section>
+
+<footer>InternoUno B&amp;B — Piazza Bologna, Roma dal 2007</footer>
+
+</body>
+</html>
