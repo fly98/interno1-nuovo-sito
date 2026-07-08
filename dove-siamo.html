@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dove siamo — InternoUno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=Michroma&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --notte:#14171C;
+    --notte-2:#1D2128;
+    --crema:#EFE7D6;
+    --legno:#B08355;
+    --testo-chiaro:#EDEAE2;
+    --testo-scuro:#26221B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--crema);
+    color:var(--testo-scuro);
+  }
+
+  header{
+    background:var(--notte);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 5vw;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  header .logo{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  header .logo img{
+    width:36px;
+    height:27px;
+    object-fit:contain;
+    display:block;
+  }
+  header .logo .wordmark{
+    font-family:'Michroma', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-size:1.05rem;
+    color:#fff;
+  }
+  header .logo .wordmark .accent{ color:#FF6628; }
+  header nav{ display:flex; gap:1.8rem; }
+  header nav a{
+    color:var(--testo-chiaro);
+    text-decoration:none;
+    opacity:0.85;
+    font-family:'Michroma', sans-serif;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    width:32px;
+    height:24px;
+    position:relative;
+    cursor:pointer;
+    padding:0;
+    z-index:20;
+  }
+  .menu-toggle span{
+    position:absolute;
+    left:0;
+    right:0;
+    height:2px;
+    background:#fff;
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .menu-toggle span:nth-child(1){ top:2px; }
+  .menu-toggle span:nth-child(2){ top:11px; }
+  .menu-toggle span:nth-child(3){ top:20px; }
+  .menu-toggle.open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2){ opacity:0; }
+  .menu-toggle.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+
+  @media (max-width: 720px){
+    .menu-toggle{ display:block; }
+    header nav{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      position:fixed;
+      top:0; right:0;
+      width:min(78vw, 300px);
+      height:100vh;
+      background:var(--notte);
+      padding:5.5rem 2rem 2rem;
+      transform:translateX(100%);
+      transition:transform .3s ease;
+      z-index:15;
+    }
+    header nav.open{ transform:translateX(0); }
+    header nav a{
+      font-size:0.82rem;
+      padding:0.9rem 0;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      opacity:1;
+    }
+    .nav-backdrop{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.5);
+      z-index:1;
+    }
+    .nav-backdrop.open{ display:block; }
+  }
+  header nav a.on{ opacity:1; color:#FF6628; }
+
+  .page-hero{
+    background:var(--notte);
+    color:var(--testo-chiaro);
+    text-align:center;
+    padding:3.5rem 5vw 3rem;
+  }
+  .page-hero .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    opacity:0.7;
+    margin-bottom:0.8rem;
+  }
+  .page-hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(2rem, 5vw, 2.8rem);
+  }
+  .page-hero p{
+    max-width:520px;
+    margin:0.9rem auto 0;
+    opacity:0.82;
+    font-size:0.98rem;
+  }
+
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:3.5rem 5vw 4rem;
+  }
+
+  .struttura-block{
+    margin-bottom:3.5rem;
+  }
+  .struttura-block .struttura-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.8rem;
+    margin-bottom:1.6rem;
+    border-bottom:1px solid rgba(38,34,27,0.15);
+    padding-bottom:0.9rem;
+  }
+  .struttura-head .eyebrow{
+    font-family:'Michroma', sans-serif;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--legno);
+  }
+  .struttura-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.5rem;
+  }
+  .struttura-head .indirizzo-mini{
+    font-size:0.82rem;
+    color:#6b6357;
+    margin-left:auto;
+  }
+
+  .camere-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.4rem;
+  }
+  .camera-card{
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(30,25,15,0.08);
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .camera-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 26px rgba(30,25,15,0.13);
+  }
+  .camera-card img, .camera-card video{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    display:block;
+  }
+  .camera-card .info{
+    padding:1.2rem 1.3rem 1.5rem;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .camera-card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.08rem;
+    margin-bottom:0.7rem;
+  }
+  .camera-card .servizi{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.4rem;
+    margin-top:auto;
+  }
+  .camera-card .servizi span{
+    font-size:0.7rem;
+    letter-spacing:0.03em;
+    background:var(--crema);
+    color:#4a4033;
+    padding:0.3rem 0.6rem;
+    border-radius:100px;
+  }
+  .camera-card p{
+    font-size:0.87rem;
+    color:#4a453a;
+    line-height:1.55;
+    margin-bottom:0.9rem;
+  }
+
+  footer{
+    background:var(--notte);
+    color:var(--testo-chiaro);
+    text-align:center;
+    padding:2rem;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    opacity:0.8;
+  }
+
+  @media (max-width: 780px){
+    .camere-grid{ grid-template-columns:1fr 1fr; }
+    .struttura-head{ flex-wrap:wrap; }
+    .struttura-head .indirizzo-mini{ margin-left:0; width:100%; }
+  }
+  @media (max-width: 520px){
+    .camere-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+    <img src="assets/logo-icon.png" alt="InternoUno" onerror="this.style.display='none'">
+    <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="camere.html">Camere</a>
+    <a href="dove-siamo.html" class="on">Dove siamo</a>
+    <a href="roma.html">Roma</a>
+    <a href="info.html">Info</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+
+<section class="page-hero">
+  <div class="eyebrow">Via Campaldino 6 · Via Lorenzo il Magnifico 158</div>
+  <h1>Dove siamo</h1>
+  <p>Come raggiungerci, in metro, in auto o a piedi da Termini.</p>
+</section>
+
+<main style="max-width:900px; margin:0 auto; padding:3rem 5vw;">
+  <p style="font-size:0.95rem; color:#6b6357; line-height:1.7;">
+    [BOZZA — in lavorazione] Qui inseriremo una mappa interattiva con entrambi gli indirizzi, le indicazioni per arrivare in metro (fermate Piazza Bologna e Tiburtina), in auto, e a piedi dalle principali stazioni. Contenuto da completare in una prossima sessione.
+  </p>
+</main>
+<footer>InternoUno B&amp;B — Roma dal 2007</footer>
+
+<script>
+  // I video animati a volte vengono messi in pausa dal sistema (risparmio energetico) — li si fa ripartire automaticamente
+  (function(){
+    var videos = document.querySelectorAll('video');
+    if (!videos.length) return;
+    function tryPlay(v){
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+    videos.forEach(function(v){
+      v.addEventListener('pause', function(){ if (!document.hidden) tryPlay(v); });
+    });
+    document.addEventListener('visibilitychange', function(){
+      if (!document.hidden) videos.forEach(tryPlay);
+    });
+    setInterval(function(){
+      if (!document.hidden) videos.forEach(function(v){ if (v.paused) tryPlay(v); });
+    }, 4000);
+  })();
+</script>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuToggle');
+    var nav = document.querySelector('header nav');
+    var backdrop = document.getElementById('navBackdrop');
+    if (!btn || !nav) return;
+    function toggle(){
+      btn.classList.toggle('open');
+      nav.classList.toggle('open');
+      if (backdrop) backdrop.classList.toggle('open');
+    }
+    btn.addEventListener('click', toggle);
+    if (backdrop) backdrop.addEventListener('click', toggle);
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        nav.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+      });
+    });
+  })();
+</script>
+</body>
+</html>
