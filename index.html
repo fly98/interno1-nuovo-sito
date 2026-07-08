@@ -515,21 +515,11 @@
     position:relative;
     background:#fff;
     width:100%;
-    max-width:900px;
-    height:88vh;
-    max-height:900px;
+    max-width:480px;
     border-radius:14px;
     overflow:hidden;
     box-shadow:0 20px 60px rgba(0,0,0,0.35);
     z-index:1;
-    display:flex;
-    flex-direction:column;
-  }
-  .booking-modal .modal-frame{
-    flex:1;
-    border:none;
-    width:100%;
-    height:100%;
   }
   .booking-modal .modal-head{
     display:flex;
@@ -597,7 +587,7 @@
 
 <section class="hero">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline preload="auto" id="heroVideo">
       <source src="assets/hero-tenda-loop.mp4" type="video/mp4">
     </video>
     <div class="hero-bg-fallback"></div>
@@ -716,7 +706,11 @@
       <h3>Prenota il tuo soggiorno</h3>
       <button class="modal-close" id="bookingClose" aria-label="Chiudi">&times;</button>
     </div>
-    <iframe class="modal-frame" id="bookingFrame" src="" loading="lazy" title="Motore di prenotazione InternoUno"></iframe>
+    <div class="modal-body">
+      <p>Il sito Amenitiz non consente l'apertura integrata da qui — clicca sotto per essere reindirizzato al motore di prenotazione sicuro InternoUno.</p>
+      <a class="modal-cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Vai alla prenotazione</a>
+      <div class="modal-note">Si aprirà in una nuova scheda</div>
+    </div>
   </div>
 </div>
 
@@ -810,13 +804,8 @@
     var backdrop = document.getElementById('bookingBackdrop');
     if (!modal || !openBtn) return;
 
-    var frame = document.getElementById('bookingFrame');
-
     function openModal(e){
       e.preventDefault();
-      if (frame && !frame.src){
-        frame.src = 'https://www.interno1.it/it/booking/room';
-      }
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -831,6 +820,25 @@
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape') closeModal();
     });
+  })();
+  // Il video hero a volte viene messo in pausa dal sistema (risparmio energetico) — lo si fa ripartire automaticamente
+  (function(){
+    var v = document.getElementById('heroVideo');
+    if (!v) return;
+    function tryPlay(){
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){ /* riprova al prossimo evento utile */ });
+    }
+    v.addEventListener('pause', function(){
+      if (!document.hidden) tryPlay();
+    });
+    document.addEventListener('visibilitychange', function(){
+      if (!document.hidden) tryPlay();
+    });
+    // ritenta periodicamente, costa pochissimo se il video sta già girando
+    setInterval(function(){
+      if (v.paused && !document.hidden) tryPlay();
+    }, 4000);
   })();
 </script>
 
