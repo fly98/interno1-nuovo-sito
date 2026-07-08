@@ -172,18 +172,20 @@
     opacity:0;
     transform:scale(1);
     transition:opacity 1.4s ease;
-    animation:slideZoom 9s ease-in-out infinite;
   }
   .soglia-slideshow img.active{
     opacity:1;
     z-index:1;
   }
+  .soglia-slideshow img.zoom{
+    animation:slideZoom 5.9s ease-out forwards;
+  }
   @keyframes slideZoom{
     0%   { transform:scale(1); }
-    100% { transform:scale(1.13); }
+    100% { transform:scale(1.1); }
   }
   @media (prefers-reduced-motion: reduce){
-    .soglia-slideshow img{ animation:none; }
+    .soglia-slideshow img.zoom{ animation:none; }
   }
   .soglia-text{
     padding:2.8rem;
@@ -475,7 +477,7 @@
 <section class="soglia">
   <div class="soglia-frame reveal">
     <div class="soglia-slideshow">
-      <img src="assets/slideshow-IMG_6381.jpg" alt="Angolo cottura InternoUno" class="active" style="animation-delay:0s;">
+      <img src="assets/slideshow-IMG_6381.jpg" alt="Angolo cottura InternoUno" style="animation-delay:0s;">
       <img src="assets/slideshow-IMG_1472.jpg" alt="Ingresso InternoUno di notte" style="animation-delay:0s; object-position:center 12%;">
       <img src="assets/slideshow-IMG_6435.jpg" alt="Camera con vista giardino" style="animation-delay:0s;">
       <img src="assets/slideshow-IMG_0038.jpg" alt="Camera con specchio" style="animation-delay:0s;">
@@ -488,7 +490,7 @@
     <div class="soglia-text">
       <span class="eyebrow">Comfort</span>
       <h2>Un attimo, e sei altrove</h2>
-      <p>Legno chiaro, luce morbida, silenzio. Le camere InternoUno sono pensate come una pausa dal ritmo della città — angolo cottura, smart TV con Netflix, self check-in autonomo 24 ore su 24.</p>
+      <p>Legno chiaro, luce morbida, silenzio. Le camere InternoUno sono pensate come una pausa dal ritmo della città — terrazza, angolo cottura, smart TV con Netflix, idromassaggio, aria condizionata, self check-in autonomo 24 ore su 24.</p>
     </div>
   </div>
 
@@ -615,15 +617,37 @@
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
 
 <script>
-  // Slideshow con dissolvenza nella sezione comfort
+  // Slideshow con dissolvenza nella sezione comfort — ordine casuale, zoom sincronizzato
   (function(){
-    var imgs = document.querySelectorAll('.soglia-slideshow img');
+    var container = document.querySelector('.soglia-slideshow');
+    if (!container) return;
+    var imgs = Array.prototype.slice.call(container.querySelectorAll('img'));
     if (!imgs.length) return;
-    var i = 0;
+
+    // Mescola l'ordine di visualizzazione (Fisher-Yates), l'ordine nel DOM non cambia
+    var order = imgs.map(function(_, idx){ return idx; });
+    for (var s = order.length - 1; s > 0; s--){
+      var j = Math.floor(Math.random() * (s + 1));
+      var tmp = order[s]; order[s] = order[j]; order[j] = tmp;
+    }
+
+    function startZoom(img){
+      img.classList.remove('zoom');
+      void img.offsetWidth; // forza il reflow, cosi' l'animazione riparte pulita da scale(1)
+      img.classList.add('zoom');
+    }
+
+    var pos = 0;
+    startZoom(imgs[order[0]]);
+    imgs[order[0]].classList.add('active');
+
     setInterval(function(){
-      imgs[i].classList.remove('active');
-      i = (i + 1) % imgs.length;
-      imgs[i].classList.add('active');
+      var current = imgs[order[pos]];
+      pos = (pos + 1) % order.length;
+      var next = imgs[order[pos]];
+      current.classList.remove('active');
+      next.classList.add('active');
+      startZoom(next);
     }, 4500);
   })();
 
