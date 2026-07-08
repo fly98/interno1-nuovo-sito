@@ -192,31 +192,47 @@
     position:absolute;
     inset:0;
     z-index:2;
-    background:linear-gradient(0deg, rgba(15,12,6,0.86) 0%, rgba(15,12,6,0.45) 42%, rgba(15,12,6,0) 68%);
+    background:rgba(10,8,4,0.34);
   }
   .soglia-text{
     position:absolute;
     z-index:3;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:2.6rem 2.6rem 2.2rem;
-    color:#fff;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem;
   }
-  .soglia-text .eyebrow{
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:#e7cfa4;
-    margin-bottom:0.7rem;
+  .soglia-phrases{
+    position:relative;
+    width:100%;
+    height:2.6em;
   }
-  .soglia-text h2{
+  .phrase{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transform:scale(1);
+    transition:opacity 1.4s ease;
     font-family:'Fraunces', serif;
     font-weight:500;
-    font-size:1.8rem;
-    margin-bottom:0.7rem;
+    font-size:clamp(1.5rem, 4vw, 2.3rem);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#fff;
+    text-shadow:0 2px 18px rgba(0,0,0,0.35);
   }
-  .soglia-text p{ font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,0.88); max-width:520px; }
+  .phrase.active{
+    opacity:1;
+    z-index:1;
+  }
+  .phrase.zoom{
+    animation:slideZoom 5.9s ease-out forwards;
+  }
 
   /* --- two addresses --- */
   .indirizzi{
@@ -514,9 +530,14 @@
     </div>
     <div class="soglia-overlay"></div>
     <div class="soglia-text">
-      <span class="eyebrow">Comfort</span>
-      <h2>Un attimo, e sei altrove</h2>
-      <p>Legno chiaro, luce morbida, silenzio. Le camere InternoUno sono pensate come una pausa dal ritmo della città — terrazza, angolo cottura, smart TV con Netflix, idromassaggio, aria condizionata, self check-in autonomo 24 ore su 24.</p>
+      <div class="soglia-phrases">
+        <span class="phrase">Terrazza</span>
+        <span class="phrase">Angolo cottura</span>
+        <span class="phrase">Idromassaggio</span>
+        <span class="phrase">TV 43" con Netflix</span>
+        <span class="phrase">Aria condizionata</span>
+        <span class="phrase">Self check-in H24</span>
+      </div>
     </div>
   </div>
 
@@ -647,39 +668,41 @@
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
 
 <script>
-  // Slideshow con dissolvenza nella sezione comfort — ordine casuale, zoom sincronizzato
-  (function(){
-    var container = document.querySelector('.soglia-slideshow');
+  // Rotazione con dissolvenza + zoom, riutilizzata per foto e frasi
+  function startRotation(selector, intervalMs){
+    var container = document.querySelector(selector);
     if (!container) return;
-    var imgs = Array.prototype.slice.call(container.querySelectorAll('img'));
-    if (!imgs.length) return;
+    var items = Array.prototype.slice.call(container.children);
+    if (!items.length) return;
 
-    // Mescola l'ordine di visualizzazione (Fisher-Yates), l'ordine nel DOM non cambia
-    var order = imgs.map(function(_, idx){ return idx; });
+    var order = items.map(function(_, idx){ return idx; });
     for (var s = order.length - 1; s > 0; s--){
       var j = Math.floor(Math.random() * (s + 1));
       var tmp = order[s]; order[s] = order[j]; order[j] = tmp;
     }
 
-    function startZoom(img){
-      img.classList.remove('zoom');
-      void img.offsetWidth; // forza il reflow, cosi' l'animazione riparte pulita da scale(1)
-      img.classList.add('zoom');
+    function startZoom(el){
+      el.classList.remove('zoom');
+      void el.offsetWidth; // forza il reflow, cosi' l'animazione riparte pulita da scale(1)
+      el.classList.add('zoom');
     }
 
     var pos = 0;
-    startZoom(imgs[order[0]]);
-    imgs[order[0]].classList.add('active');
+    startZoom(items[order[0]]);
+    items[order[0]].classList.add('active');
 
     setInterval(function(){
-      var current = imgs[order[pos]];
+      var current = items[order[pos]];
       pos = (pos + 1) % order.length;
-      var next = imgs[order[pos]];
+      var next = items[order[pos]];
       current.classList.remove('active');
       next.classList.add('active');
       startZoom(next);
-    }, 4500);
-  })();
+    }, intervalMs);
+  }
+
+  startRotation('.soglia-slideshow', 4500);
+  startRotation('.soglia-phrases', 3200);
 
   // Stagger: assegna un piccolo ritardo crescente agli elementi che condividono lo stesso genitore
   document.querySelectorAll('.perche-grid, .camere-grid').forEach(function(group){
