@@ -606,7 +606,7 @@
   <div class="eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
   <p>Due indirizzi, ognuno a un passo da una fermata della metro B, dove la porta si chiude e la città resta fuori.</p>
-  <a class="cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Prenota il tuo soggiorno</a>
+  <a class="cta" href="#" id="btnPrenota">Prenota il tuo soggiorno</a>
 </section>
 
 <section class="soglia">
@@ -814,7 +814,7 @@
     function openModal(e){
       e.preventDefault();
       if (frame && !frame.src){
-        frame.src = 'https://www.interno1.it/it/booking/room';
+        frame.src = 'https://internouno-booking-proxy.f-castiglioni.workers.dev/';
       }
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
