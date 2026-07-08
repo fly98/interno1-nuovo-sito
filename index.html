@@ -524,19 +524,22 @@
       <img src="assets/slideshow-IMG_0038.jpg" alt="Camera con specchio" style="animation-delay:0s;">
       <img src="assets/slideshow-IMG_9998.jpg" alt="Camera con pianta" style="animation-delay:0s;">
       <img src="assets/slideshow-IMG_0206.jpg" alt="Tavolino in terrazza" style="animation-delay:0s;">
+      <img src="assets/slideshow-IMG_0185.jpg" alt="Vista terrazza dalla camera" style="animation-delay:0s;">
       <img src="assets/slideshow-IMG_0205.jpg" alt="Accoglienza InternoUno" style="animation-delay:0s;">
       <img src="assets/slideshow-IMG_0188.jpg" alt="Bagno con idromassaggio" style="animation-delay:0s;">
-      <img src="assets/slideshow-IMG_0185.jpg" alt="Vista terrazza dalla camera" style="animation-delay:0s;">
     </div>
     <div class="soglia-overlay"></div>
     <div class="soglia-text">
       <div class="soglia-phrases">
-        <span class="phrase">Terrazza</span>
         <span class="phrase">Angolo cottura</span>
-        <span class="phrase">Idromassaggio</span>
-        <span class="phrase">TV 43" con Netflix</span>
-        <span class="phrase">Aria condizionata</span>
         <span class="phrase">Self check-in H24</span>
+        <span class="phrase">TV con Netflix</span>
+        <span class="phrase">Ristrutturate con legno naturale</span>
+        <span class="phrase">Aria condizionata</span>
+        <span class="phrase">Terrazza privata</span>
+        <span class="phrase">Terrazza privata</span>
+        <span class="phrase">Comfort</span>
+        <span class="phrase">Idromassaggio</span>
       </div>
     </div>
   </div>
@@ -701,8 +704,34 @@
     }, intervalMs);
   }
 
-  startRotation('.soglia-slideshow', 4500);
-  startRotation('.soglia-phrases', 3200);
+  // Rotazione sincronizzata: foto e frase corrispondente avanzano insieme, stesso indice, stesso ritmo
+  (function(){
+    var photos = document.querySelectorAll('.soglia-slideshow > *');
+    var phrases = document.querySelectorAll('.soglia-phrases > *');
+    if (!photos.length || !phrases.length) return;
+
+    function startZoom(el){
+      el.classList.remove('zoom');
+      void el.offsetWidth; // forza il reflow, cosi' l'animazione riparte pulita da scale(1)
+      el.classList.add('zoom');
+    }
+
+    var count = Math.min(photos.length, phrases.length);
+    var i = 0;
+    startZoom(photos[0]); photos[0].classList.add('active');
+    startZoom(phrases[0]); phrases[0].classList.add('active');
+
+    setInterval(function(){
+      var prev = i;
+      i = (i + 1) % count;
+      photos[prev].classList.remove('active');
+      phrases[prev].classList.remove('active');
+      photos[i].classList.add('active');
+      phrases[i].classList.add('active');
+      startZoom(photos[i]);
+      startZoom(phrases[i]);
+    }, 4000);
+  })();
 
   // Stagger: assegna un piccolo ritardo crescente agli elementi che condividono lo stesso genitore
   document.querySelectorAll('.perche-grid, .camere-grid').forEach(function(group){
