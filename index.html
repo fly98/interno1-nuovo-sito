@@ -157,12 +157,33 @@
     border-radius:4px;
     overflow:hidden;
   }
-  .soglia-frame img{
+  .soglia-slideshow{
+    position:relative;
+    min-height:340px;
+    overflow:hidden;
+    background:#1a1712;
+  }
+  .soglia-slideshow img{
+    position:absolute;
+    inset:0;
     width:100%;
     height:100%;
-    min-height:340px;
     object-fit:cover;
-    display:block;
+    opacity:0;
+    transform:scale(1);
+    transition:opacity 1.4s ease;
+    animation:slideZoom 9s ease-in-out infinite;
+  }
+  .soglia-slideshow img.active{
+    opacity:1;
+    z-index:1;
+  }
+  @keyframes slideZoom{
+    0%   { transform:scale(1); }
+    100% { transform:scale(1.13); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .soglia-slideshow img{ animation:none; }
   }
   .soglia-text{
     padding:2.8rem;
@@ -453,9 +474,14 @@
 
 <section class="soglia">
   <div class="soglia-frame reveal">
-    <img src="https://res.cloudinary.com/amenitiz/image/upload/w_900,q_auto/v1774367471/luirepyn5sizll2kh2v3.jpg" alt="Camera InternoUno">
+    <div class="soglia-slideshow">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_900,q_auto/v1774367471/luirepyn5sizll2kh2v3.jpg" alt="Camera InternoUno" class="active" style="animation-delay:0s;">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_900,q_auto/v1687879786/qjhlkcpknyditapbzkcp.jpg" alt="Camera con terrazza" style="animation-delay:0s;">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_900,q_auto/v1687888207/rru6koforh5s9u6luidq.jpg" alt="Camera Deluxe" style="animation-delay:0s;">
+      <img src="https://res.cloudinary.com/amenitiz/image/upload/w_900,q_auto/v1687879801/fiagixgshax2972g62ya.jpg" alt="Dettaglio camera" style="animation-delay:0s;">
+    </div>
     <div class="soglia-text">
-      <span class="eyebrow">La soglia</span>
+      <span class="eyebrow">Comfort</span>
       <h2>Un attimo, e sei altrove</h2>
       <p>Legno chiaro, luce morbida, silenzio. Le camere InternoUno sono pensate come una pausa dal ritmo della città — angolo cottura, smart TV con Netflix, self check-in autonomo 24 ore su 24.</p>
     </div>
@@ -584,6 +610,18 @@
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
 
 <script>
+  // Slideshow con dissolvenza nella sezione comfort
+  (function(){
+    var imgs = document.querySelectorAll('.soglia-slideshow img');
+    if (!imgs.length) return;
+    var i = 0;
+    setInterval(function(){
+      imgs[i].classList.remove('active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('active');
+    }, 4500);
+  })();
+
   // Stagger: assegna un piccolo ritardo crescente agli elementi che condividono lo stesso genitore
   document.querySelectorAll('.perche-grid, .camere-grid').forEach(function(group){
     group.querySelectorAll('.reveal').forEach(function(el, i){
