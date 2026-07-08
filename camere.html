@@ -137,6 +137,13 @@
     box-shadow:0 6px 18px rgba(30,25,15,0.08);
     display:flex;
     flex-direction:column;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .camera-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 26px rgba(30,25,15,0.13);
   }
   .camera-card img, .camera-card video{
     width:100%;
@@ -231,7 +238,7 @@
     </div>
     <div class="camere-grid">
 
-      <div class="camera-card">
+      <a class="camera-card" href="camera-gialla.html">
         <video src="assets/camera-gialla.mp4" autoplay muted loop playsinline></video>
         <div class="info">
           <h3>Appartamento Bilocale 4pax</h3>
@@ -243,7 +250,7 @@
             <span>Idromassaggio</span>
           </div>
         </div>
-      </div>
+      </a>
 
       <div class="camera-card">
         <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687879801/fiagixgshax2972g62ya.jpg" alt="Tripla Standard">
