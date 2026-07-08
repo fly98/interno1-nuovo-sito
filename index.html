@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InternoUno — Direzione "Soglia"</title>
+<title>InternoUno — B&amp;B Roma, Piazza Bologna / Tiburtina</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=Michroma&display=swap" rel="stylesheet">
 <style>
@@ -515,11 +515,21 @@
     position:relative;
     background:#fff;
     width:100%;
-    max-width:480px;
+    max-width:900px;
+    height:88vh;
+    max-height:900px;
     border-radius:14px;
     overflow:hidden;
     box-shadow:0 20px 60px rgba(0,0,0,0.35);
     z-index:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .booking-modal .modal-frame{
+    flex:1;
+    border:none;
+    width:100%;
+    height:100%;
   }
   .booking-modal .modal-head{
     display:flex;
@@ -596,7 +606,7 @@
   <div class="eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Fuori è Roma.<br>Dentro è <em>interno</em>uno.</h1>
   <p>Due indirizzi, ognuno a un passo da una fermata della metro B, dove la porta si chiude e la città resta fuori.</p>
-  <a class="cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Prenota il tuo soggiorno</a>
+  <a class="cta" href="#" id="btnPrenota">Prenota il tuo soggiorno</a>
 </section>
 
 <section class="soglia">
@@ -699,6 +709,17 @@
 
 <footer>InternoUno B&amp;B — Roma dal 2007</footer>
 
+<div class="booking-modal" id="bookingModal">
+  <div class="backdrop" id="bookingBackdrop"></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Prenota il tuo soggiorno</h3>
+      <button class="modal-close" id="bookingClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <iframe class="modal-frame" id="bookingFrame" src="" loading="lazy" title="Motore di prenotazione InternoUno"></iframe>
+  </div>
+</div>
+
 <script>
   // Rotazione con dissolvenza + zoom, riutilizzata per foto e frasi
   function startRotation(selector, intervalMs){
@@ -781,6 +802,36 @@
   document.querySelectorAll('.reveal').forEach(function(el){
     observer.observe(el);
   });
+  // Modal di prenotazione con iframe
+  (function(){
+    var modal = document.getElementById('bookingModal');
+    var openBtn = document.getElementById('btnPrenota');
+    var closeBtn = document.getElementById('bookingClose');
+    var backdrop = document.getElementById('bookingBackdrop');
+    var frame = document.getElementById('bookingFrame');
+    if (!modal || !openBtn) return;
+
+    function openModal(e){
+      e.preventDefault();
+      if (frame && !frame.src){
+        frame.src = 'https://www.interno1.it/it/booking/room';
+      }
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeModal();
+    });
+  })();
+
   // Il video hero a volte viene messo in pausa dal sistema (risparmio energetico) — lo si fa ripartire automaticamente
   (function(){
     var v = document.getElementById('heroVideo');
