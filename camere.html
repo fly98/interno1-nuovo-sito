@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camere — InternoUno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=Michroma&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --notte:#14171C;
+    --notte-2:#1D2128;
+    --crema:#EFE7D6;
+    --legno:#B08355;
+    --testo-chiaro:#EDEAE2;
+    --testo-scuro:#26221B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--crema);
+    color:var(--testo-scuro);
+  }
+
+  header{
+    background:var(--notte);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 5vw;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  header .logo{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  header .logo img{
+    width:36px;
+    height:27px;
+    object-fit:contain;
+    display:block;
+  }
+  header .logo .wordmark{
+    font-family:'Michroma', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-size:1.05rem;
+    color:#fff;
+  }
+  header .logo .wordmark .accent{ color:#FF6628; }
+  header nav{ display:flex; gap:1.8rem; }
+  header nav a{
+    color:var(--testo-chiaro);
+    text-decoration:none;
+    opacity:0.85;
+    font-family:'Michroma', sans-serif;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  header nav a.on{ opacity:1; color:#FF6628; }
+
+  .page-hero{
+    background:var(--notte-2);
+    color:var(--testo-chiaro);
+    text-align:center;
+    padding:3.5rem 5vw 3rem;
+  }
+  .page-hero .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    opacity:0.7;
+    margin-bottom:0.8rem;
+  }
+  .page-hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(2rem, 5vw, 2.8rem);
+  }
+  .page-hero p{
+    max-width:520px;
+    margin:0.9rem auto 0;
+    opacity:0.82;
+    font-size:0.98rem;
+  }
+
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:3.5rem 5vw 4rem;
+  }
+
+  .struttura-block{
+    margin-bottom:3.5rem;
+  }
+  .struttura-block .struttura-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.8rem;
+    margin-bottom:1.6rem;
+    border-bottom:1px solid rgba(38,34,27,0.15);
+    padding-bottom:0.9rem;
+  }
+  .struttura-head .eyebrow{
+    font-family:'Michroma', sans-serif;
+    font-size:0.62rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--legno);
+  }
+  .struttura-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.5rem;
+  }
+  .struttura-head .indirizzo-mini{
+    font-size:0.82rem;
+    color:#6b6357;
+    margin-left:auto;
+  }
+
+  .camere-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.4rem;
+  }
+  .camera-card{
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(30,25,15,0.08);
+    display:flex;
+    flex-direction:column;
+  }
+  .camera-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    display:block;
+  }
+  .camera-card .info{
+    padding:1.2rem 1.3rem 1.5rem;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .camera-card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.08rem;
+    margin-bottom:0.7rem;
+  }
+  .camera-card .servizi{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.4rem;
+    margin-top:auto;
+  }
+  .camera-card .servizi span{
+    font-size:0.7rem;
+    letter-spacing:0.03em;
+    background:var(--crema);
+    color:#4a4033;
+    padding:0.3rem 0.6rem;
+    border-radius:100px;
+  }
+  .camera-card p{
+    font-size:0.87rem;
+    color:#4a453a;
+    line-height:1.55;
+    margin-bottom:0.9rem;
+  }
+
+  footer{
+    background:var(--notte);
+    color:var(--testo-chiaro);
+    text-align:center;
+    padding:2rem;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    opacity:0.8;
+  }
+
+  @media (max-width: 780px){
+    .camere-grid{ grid-template-columns:1fr 1fr; }
+    .struttura-head{ flex-wrap:wrap; }
+    .struttura-head .indirizzo-mini{ margin-left:0; width:100%; }
+  }
+  @media (max-width: 520px){
+    .camere-grid{ grid-template-columns:1fr; }
+    header nav{ gap:1rem; }
+    header nav a{ font-size:0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="assets/logo-icon.png" alt="InternoUno" onerror="this.style.display='none'">
+    <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
+  </div>
+  <nav>
+    <a href="camere.html" class="on">Camere</a>
+    <a href="index.html">Alloggi</a>
+    <a href="index.html#quartiere">Quartiere</a>
+    <a href="index.html#contatti">Contatti</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="eyebrow">Via Campaldino 6 · Via Lorenzo il Magnifico 158</div>
+  <h1>Le nostre camere</h1>
+  <p>Sei camere in due indirizzi, ognuna pensata per essere una pausa dal ritmo della città.</p>
+</section>
+
+<main>
+
+  <div class="struttura-block">
+    <div class="struttura-head">
+      <span class="eyebrow">InternoUno</span>
+      <h2>Via Campaldino 6</h2>
+      <span class="indirizzo-mini">30m da Piazzale delle Provincie · 400m metro B Piazza Bologna</span>
+    </div>
+    <div class="camere-grid">
+
+      <div class="camera-card">
+        <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1774367471/luirepyn5sizll2kh2v3.jpg" alt="Appartamento Bilocale 4pax">
+        <div class="info">
+          <h3>Appartamento Bilocale 4pax</h3>
+          <p>Due ambienti separati, un bagno, letto matrimoniale 160cm + soluzione per altri due ospiti.</p>
+          <div class="servizi">
+            <span>Smart TV Netflix</span>
+            <span>Aria condizionata</span>
+            <span>Angolo cottura</span>
+            <span>Bagno privato</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="camera-card">
+        <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687879801/fiagixgshax2972g62ya.jpg" alt="Tripla Standard">
+        <div class="info">
+          <h3>Tripla Standard</h3>
+          <p>Letto matrimoniale e letto singolo a scomparsa, bagno con doccia.</p>
+          <div class="servizi">
+            <span>Smart TV Netflix</span>
+            <span>Aria condizionata</span>
+            <span>Angolo cottura</span>
+            <span>Bagno privato</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="camera-card">
+        <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687888538/qausjmzm1soiepmwp13h.jpg" alt="Matrimoniale Standard">
+        <div class="info">
+          <h3>Matrimoniale Standard</h3>
+          <p>Letto matrimoniale, bagno con doccia, angolo cottura completo.</p>
+          <div class="servizi">
+            <span>Smart TV Netflix</span>
+            <span>Aria condizionata</span>
+            <span>Angolo cottura</span>
+            <span>Bagno privato</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="struttura-block">
+    <div class="struttura-head">
+      <span class="eyebrow">InternoUno Deluxe</span>
+      <h2>Via Lorenzo il Magnifico 158</h2>
+      <span class="indirizzo-mini">Proprio all'uscita della metro B Tiburtina</span>
+    </div>
+    <div class="camere-grid">
+
+      <div class="camera-card">
+        <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687879786/qjhlkcpknyditapbzkcp.jpg" alt="Matrimoniale Superior con Terrazza">
+        <div class="info">
+          <h3>Matrimoniale Superior con Terrazza</h3>
+          <p>Letto matrimoniale, terrazza privata, bagno con vasca idromassaggio.</p>
+          <div class="servizi">
+            <span>Terrazza privata</span>
+            <span>Idromassaggio</span>
+            <span>Smart TV Netflix</span>
+            <span>Angolo cottura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="camera-card">
+        <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687888207/rru6koforh5s9u6luidq.jpg" alt="Matrimoniale con Terrazza">
+        <div class="info">
+          <h3>Matrimoniale con Terrazza</h3>
+          <p>Letto matrimoniale, terrazza, bagno con vasca idromassaggio.</p>
+          <div class="servizi">
+            <span>Terrazza</span>
+            <span>Idromassaggio</span>
+            <span>Smart TV Netflix</span>
+            <span>Angolo cottura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="camera-card">
+        <img src="https://res.cloudinary.com/amenitiz/image/upload/w_700,q_auto/v1687879804/nwt49jagqbqgkvtavill.jpg" alt="Matrimoniale Economy">
+        <div class="info">
+          <h3>Matrimoniale Economy</h3>
+          <p>Letto matrimoniale 140cm, la soluzione più compatta, bagno privato.</p>
+          <div class="servizi">
+            <span>Bagno privato</span>
+            <span>Aria condizionata</span>
+            <span>Angolo cottura</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>InternoUno B&amp;B — Roma dal 2007</footer>
+
+</body>
+</html>
