@@ -155,7 +155,9 @@ window.IU_I18N = {
     rm_meta_ghetto:"8 tappe · ~2h30",
     rm_meta_esoterica:"9 tappe · ~3h",
     rm_no_eventi:"Nessun evento disponibile al momento.",
-    rm_no_concerti:"Nessun concerto disponibile al momento."
+    rm_no_concerti:"Nessun concerto disponibile al momento.",
+    rm_err_eventi:"Impossibile caricare gli eventi al momento.",
+    rm_err_concerti:"Impossibile caricare i concerti al momento."
   },
   en: {
     nav_home:"Home", nav_camere:"Rooms", nav_dove:"Location", nav_roma:"Rome", nav_info:"Info", nav_contatti:"Contact",
@@ -312,7 +314,9 @@ window.IU_I18N = {
     rm_meta_ghetto:"8 stops · ~2h30",
     rm_meta_esoterica:"9 stops · ~3h",
     rm_no_eventi:"No events available at the moment.",
-    rm_no_concerti:"No concerts available at the moment."
+    rm_no_concerti:"No concerts available at the moment.",
+    rm_err_eventi:"Unable to load events at the moment.",
+    rm_err_concerti:"Unable to load concerts at the moment."
   },
   es: {
     nav_home:"Inicio", nav_camere:"Habitaciones", nav_dove:"Ubicación", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contacto",
@@ -469,7 +473,9 @@ window.IU_I18N = {
     rm_meta_ghetto:"8 paradas · ~2h30",
     rm_meta_esoterica:"9 paradas · ~3h",
     rm_no_eventi:"No hay eventos disponibles en este momento.",
-    rm_no_concerti:"No hay conciertos disponibles en este momento."
+    rm_no_concerti:"No hay conciertos disponibles en este momento.",
+    rm_err_eventi:"No se pueden cargar los eventos en este momento.",
+    rm_err_concerti:"No se pueden cargar los conciertos en este momento."
   },
   fr: {
     nav_home:"Accueil", nav_camere:"Chambres", nav_dove:"Accès", nav_roma:"Rome", nav_info:"Infos", nav_contatti:"Contact",
@@ -626,7 +632,9 @@ window.IU_I18N = {
     rm_meta_ghetto:"8 étapes · ~2h30",
     rm_meta_esoterica:"9 étapes · ~3h",
     rm_no_eventi:"Aucun événement disponible pour le moment.",
-    rm_no_concerti:"Aucun concert disponible pour le moment."
+    rm_no_concerti:"Aucun concert disponible pour le moment.",
+    rm_err_eventi:"Impossible de charger les événements pour le moment.",
+    rm_err_concerti:"Impossible de charger les concerts pour le moment."
   },
   de: {
     nav_home:"Start", nav_camere:"Zimmer", nav_dove:"Anfahrt", nav_roma:"Rom", nav_info:"Info", nav_contatti:"Kontakt",
@@ -783,7 +791,9 @@ window.IU_I18N = {
     rm_meta_ghetto:"8 Stationen · ~2,5 Std.",
     rm_meta_esoterica:"9 Stationen · ~3 Std.",
     rm_no_eventi:"Derzeit keine Veranstaltungen verfügbar.",
-    rm_no_concerti:"Derzeit keine Konzerte verfügbar."
+    rm_no_concerti:"Derzeit keine Konzerte verfügbar.",
+    rm_err_eventi:"Veranstaltungen können momentan nicht geladen werden.",
+    rm_err_concerti:"Konzerte können momentan nicht geladen werden."
   },
   pt: {
     nav_home:"Início", nav_camere:"Quartos", nav_dove:"Localização", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contato",
@@ -940,7 +950,9 @@ window.IU_I18N = {
     rm_meta_ghetto:"8 paragens · ~2h30",
     rm_meta_esoterica:"9 paragens · ~3h",
     rm_no_eventi:"Nenhum evento disponível de momento.",
-    rm_no_concerti:"Nenhum concerto disponível de momento."
+    rm_no_concerti:"Nenhum concerto disponível de momento.",
+    rm_err_eventi:"Não é possível carregar os eventos de momento.",
+    rm_err_concerti:"Não é possível carregar os concertos de momento."
   },
   zh: {
     nav_home:"首页", nav_camere:"房间", nav_dove:"位置", nav_roma:"罗马", nav_info:"信息", nav_contatti:"联系",
@@ -1097,6 +1109,8 @@ window.IU_I18N = {
     rm_meta_ghetto:"8站 · 约2.5小时",
     rm_meta_esoterica:"9站 · 约3小时",
     rm_no_eventi:"暂无可用活动。",
-    rm_no_concerti:"暂无可用音乐会。"
+    rm_no_concerti:"暂无可用音乐会。",
+    rm_err_eventi:"暂时无法加载活动。",
+    rm_err_concerti:"暂时无法加载音乐会。"
   }
 };
