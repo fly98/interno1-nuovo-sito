@@ -317,6 +317,7 @@
 </style>
 <link rel="stylesheet" href="assets/chat-widget.css">
 <link rel="stylesheet" href="assets/reveal.css">
+  <link rel="stylesheet" href="assets/i18n.css">
 </head>
 <body>
 
@@ -326,21 +327,22 @@
     <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
   </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="camere.html" class="on">Camere</a>
-    <a href="dove-siamo.html">Dove siamo</a>
-    <a href="roma.html">Roma</a>
-    <a href="info.html">Info</a>
-    <a href="contatti.html">Contatti</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="camere.html" class="on" data-i18n="nav_camere">Camere</a>
+    <a href="dove-siamo.html" data-i18n="nav_dove">Dove siamo</a>
+    <a href="roma.html" data-i18n="nav_roma">Roma</a>
+    <a href="info.html" data-i18n="nav_info">Info</a>
+    <a href="contatti.html" data-i18n="nav_contatti">Contatti</a>
   </nav>
+  <div id="iu-lang-switch"></div>
   <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 <div class="nav-backdrop" id="navBackdrop"></div>
 
 <section class="page-hero">
-  <div class="eyebrow">Via Campaldino 6 · Via Lorenzo il Magnifico 158</div>
-  <h1>Le nostre camere</h1>
-  <p>Sei tipologie di camera in due indirizzi, ciascuna con caratteristiche e servizi diversi per adattarsi a ogni esigenza.</p>
+  <div class="eyebrow" data-i18n="cam_hero_eyebrow">Via Campaldino 6 · Via Lorenzo il Magnifico 158</div>
+  <h1 data-i18n="cam_hero_title">Le nostre camere</h1>
+  <p data-i18n="cam_hero_sub">Sei tipologie di camera in due indirizzi, ciascuna con caratteristiche e servizi diversi per adattarsi a ogni esigenza.</p>
 </section>
 
 <main>
@@ -356,13 +358,13 @@
       <a class="camera-card" href="camera-gialla.html">
         <video src="assets/camera-gialla.mp4" autoplay muted loop playsinline></video>
         <div class="info">
-          <h3>Appartamento Bilocale 4pax</h3>
-          <p>18 m² · Accoglie 5 persone. Bilocale con letto matrimoniale 160cm in una stanza, divano letto (2 singoli) e angolo cottura nell'altra. Vasca idromassaggio.</p>
+          <h3 data-i18n="room_gialla_name">Appartamento Bilocale 4pax</h3>
+          <p data-i18n="cam_gialla_desc">18 m² · Accoglie 5 persone. Bilocale con letto matrimoniale 160cm in una stanza, divano letto (2 singoli) e angolo cottura nell'altra. Vasca idromassaggio.</p>
           <div class="servizi">
-            <span>TV 43'' Netflix</span>
-            <span>Aria condizionata</span>
-            <span>Cucina</span>
-            <span>Idromassaggio</span>
+            <span data-i18n="sv_tv43">TV 43'' Netflix</span>
+            <span data-i18n="sv_ac">Aria condizionata</span>
+            <span data-i18n="sv_cucina">Cucina</span>
+            <span data-i18n="sv_idro">Idromassaggio</span>
           </div>
         </div>
       </a>
@@ -370,13 +372,13 @@
       <a class="camera-card" href="camera-marrone.html">
         <video src="assets/camera-marrone-card.mp4" autoplay muted loop playsinline></video>
         <div class="info">
-          <h3>Tripla Standard</h3>
-          <p>14 m² · Accoglie 3 persone. Monolocale con letto matrimoniale e letto singolo a scomparsa, bagno con doccia.</p>
+          <h3 data-i18n="room_marrone_name">Tripla Standard</h3>
+          <p data-i18n="cam_marrone_desc">14 m² · Accoglie 3 persone. Monolocale con letto matrimoniale e letto singolo a scomparsa, bagno con doccia.</p>
           <div class="servizi">
-            <span>TV 43'' Netflix</span>
-            <span>Aria condizionata</span>
-            <span>Angolo cottura</span>
-            <span>Doccia</span>
+            <span data-i18n="sv_tv43">TV 43'' Netflix</span>
+            <span data-i18n="sv_ac">Aria condizionata</span>
+            <span data-i18n="sv_angolo">Angolo cottura</span>
+            <span data-i18n="sv_doccia">Doccia</span>
           </div>
         </div>
       </a>
@@ -384,13 +386,13 @@
       <a class="camera-card" href="camera-standard.html">
         <video src="assets/camera-standard-card.mp4" autoplay muted loop playsinline></video>
         <div class="info">
-          <h3>Matrimoniale Standard</h3>
-          <p>13 m² · Accoglie 2 persone. Monolocale con letto matrimoniale, bagno con doccia, angolo cottura (piastra a induzione su richiesta per una delle camere).</p>
+          <h3 data-i18n="room_standard_name">Matrimoniale Standard</h3>
+          <p data-i18n="cam_standard_desc">13 m² · Accoglie 2 persone. Monolocale con letto matrimoniale, bagno con doccia, angolo cottura (piastra a induzione su richiesta per una delle camere).</p>
           <div class="servizi">
-            <span>TV 43'' Netflix</span>
-            <span>Aria condizionata</span>
-            <span>Angolo cottura</span>
-            <span>Doccia</span>
+            <span data-i18n="sv_tv43">TV 43'' Netflix</span>
+            <span data-i18n="sv_ac">Aria condizionata</span>
+            <span data-i18n="sv_angolo">Angolo cottura</span>
+            <span data-i18n="sv_doccia">Doccia</span>
           </div>
         </div>
       </a>
@@ -409,13 +411,13 @@
       <a class="camera-card" href="camera-superior.html">
         <video src="assets/hero-tenda-loop.mp4" autoplay muted loop playsinline></video>
         <div class="info">
-          <h3>Matrimoniale Superior con Terrazza</h3>
-          <p>15 m² · Accoglie 2 persone (3° letto su richiesta). Letto matrimoniale, terrazza privata con tavolo e sedie, bagno con vasca idromassaggio.</p>
+          <h3 data-i18n="room_superior_name">Matrimoniale Superior con Terrazza</h3>
+          <p data-i18n="cam_superior_desc">15 m² · Accoglie 2 persone (3° letto su richiesta). Letto matrimoniale, terrazza privata con tavolo e sedie, bagno con vasca idromassaggio.</p>
           <div class="servizi">
-            <span>Terrazza privata</span>
-            <span>Idromassaggio</span>
-            <span>TV 50'' Netflix</span>
-            <span>Angolo cottura</span>
+            <span data-i18n="sv_terrazza">Terrazza privata</span>
+            <span data-i18n="sv_idro">Idromassaggio</span>
+            <span data-i18n="sv_tv50">TV 50'' Netflix</span>
+            <span data-i18n="sv_angolo">Angolo cottura</span>
           </div>
         </div>
       </a>
@@ -423,13 +425,13 @@
       <a class="camera-card" href="camera-terrazza.html">
         <video src="assets/camera-terrazza-card.mp4" autoplay muted loop playsinline></video>
         <div class="info">
-          <h3>Matrimoniale con Terrazza</h3>
-          <p>12 m² · Accoglie 2 persone. Letto matrimoniale, terrazza privata, bagno con vasca idromassaggio. Stessi servizi della Superior, più compatta.</p>
+          <h3 data-i18n="room_terrazza_name">Matrimoniale con Terrazza</h3>
+          <p data-i18n="cam_terrazza_desc">12 m² · Accoglie 2 persone. Letto matrimoniale, terrazza privata, bagno con vasca idromassaggio. Stessi servizi della Superior, più compatta.</p>
           <div class="servizi">
-            <span>Terrazza privata</span>
-            <span>Idromassaggio</span>
-            <span>TV 32'' Netflix</span>
-            <span>Angolo cottura</span>
+            <span data-i18n="sv_terrazza">Terrazza privata</span>
+            <span data-i18n="sv_idro">Idromassaggio</span>
+            <span data-i18n="sv_tv32">TV 32'' Netflix</span>
+            <span data-i18n="sv_angolo">Angolo cottura</span>
           </div>
         </div>
       </a>
@@ -437,13 +439,13 @@
       <a class="camera-card" href="camera-economy.html">
         <video src="assets/camera-economy-card.mp4" autoplay muted loop playsinline></video>
         <div class="info">
-          <h3>Matrimoniale Economy</h3>
-          <p>9 m² · Accoglie 2 persone. Letto matrimoniale 140cm, la soluzione più compatta, bagno privato.</p>
-          <div class="card-warning">⚠️ Camera molto compatta — valuta bene le foto</div>
+          <h3 data-i18n="room_economy_name">Matrimoniale Economy</h3>
+          <p data-i18n="cam_economy_desc">9 m² · Accoglie 2 persone. Letto matrimoniale 140cm, la soluzione più compatta, bagno privato.</p>
+          <div class="card-warning" data-i18n="cam_economy_badge">⚠️ Camera molto compatta — valuta bene le foto</div>
           <div class="servizi">
-            <span>TV 32'' Netflix</span>
-            <span>Aria condizionata</span>
-            <span>Angolo cottura</span>
+            <span data-i18n="sv_tv32">TV 32'' Netflix</span>
+            <span data-i18n="sv_ac">Aria condizionata</span>
+            <span data-i18n="sv_angolo">Angolo cottura</span>
           </div>
         </div>
       </a>
@@ -455,7 +457,7 @@
 
 <footer>
   <div class="footer-top">
-    <span class="footer-brand">InternoUno — A Roma dal 2007</span>
+    <span class="footer-brand"><span data-i18n="foot_tagline">InternoUno — A Roma dal 2007</span></span>
     <div class="footer-social">
       <a class="social-icon whatsapp" href="https://wa.me/393922999914" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2m0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.21-8.21 8.21m4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.65.31-.22.24-.85.84-.85 2.04s.87 2.37 1 2.53c.12.17 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29"/></svg>
@@ -469,7 +471,7 @@
     </div>
   </div>
   <div class="footer-info">
-    <span>Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span>
+    <span><span data-i18n="foot_addr">Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span></span>
     <a href="tel:+393922999914">+39 392 299 9914</a>
     <a href="mailto:info@interno1.it">info@interno1.it</a>
   </div>
@@ -521,5 +523,7 @@
 <script src="assets/chat-widget.js"></script>
 
 <script src="assets/reveal.js"></script>
+  <script src="assets/translations.js"></script>
+  <script src="assets/i18n.js"></script>
 </body>
 </html>
