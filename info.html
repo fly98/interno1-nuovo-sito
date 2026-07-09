@@ -293,6 +293,95 @@
   footer .social-icon.whatsapp{ background:#25D366; }
   footer .social-icon.instagram{ background:linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
   footer .social-icon.facebook{ background:#1877F2; }
+  .roma-tabs{
+    display:flex;
+    gap:0.6rem;
+    justify-content:center;
+    margin-bottom:2rem;
+  }
+  .roma-tab{
+    background:#fff;
+    border:none;
+    border-radius:100px;
+    padding:0.6rem 1.4rem;
+    font-family:'Michroma', sans-serif;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:#8a7f68;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(30,25,15,0.06);
+  }
+  .roma-tab.on{ background:#FF6628; color:#fff; }
+  .info-panel{ display:none; }
+  .info-panel.on{ display:block; }
+  .info-acc{
+    background:#fff;
+    border-radius:12px;
+    margin-bottom:0.7rem;
+    box-shadow:0 4px 14px rgba(30,25,15,0.06);
+    overflow:hidden;
+  }
+  .info-acc summary{
+    padding:1rem 1.3rem;
+    cursor:pointer;
+    font-weight:500;
+    font-size:0.92rem;
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    list-style:none;
+  }
+  .info-acc summary::-webkit-details-marker{ display:none; }
+  .info-acc .body{
+    padding:0 1.3rem 1.1rem;
+    font-size:0.87rem;
+    color:#4a453a;
+    line-height:1.6;
+  }
+  .info-acc .body p{ margin-bottom:0.6rem; }
+  .info-acc .body b{ color:#3a352c; }
+  .info-section-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.15rem;
+    margin:2rem 0 1rem;
+  }
+  .info-pill-row{ display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
+  .info-pill{
+    background:var(--crema);
+    border-radius:100px;
+    padding:0.3rem 0.7rem;
+    font-size:0.78rem;
+    color:#4a4033;
+  }
+  .numeri-grid, .servizi-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.6rem;
+  }
+  .numero-item, .servizio-item{
+    background:#fff;
+    border-radius:10px;
+    padding:0.8rem 1rem;
+    font-size:0.85rem;
+    box-shadow:0 3px 10px rgba(30,25,15,0.05);
+  }
+  .servizio-item .nome{ font-weight:600; color:#3a352c; display:block; margin-bottom:0.2rem; }
+  .servizio-item .dettaglio{ color:#8a7f68; font-size:0.8rem; }
+  .rist-item{
+    background:#fff;
+    border-radius:10px;
+    padding:0.9rem 1.1rem;
+    margin-bottom:0.6rem;
+    box-shadow:0 3px 10px rgba(30,25,15,0.05);
+  }
+  .rist-item .nome-riga{ display:flex; justify-content:space-between; font-weight:600; color:#3a352c; font-size:0.9rem; margin-bottom:0.2rem;}
+  .rist-item .dettaglio{ font-size:0.78rem; color:#8a7f68; margin-bottom:0.35rem; }
+  .rist-item .descr{ font-size:0.84rem; color:#4a453a; line-height:1.5; }
+  @media (max-width: 560px){
+    .numeri-grid, .servizi-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -322,9 +411,15 @@
 </section>
 
 <main style="max-width:900px; margin:0 auto; padding:3rem 5vw;">
-  <p style="font-size:0.95rem; color:#6b6357; line-height:1.7;">
-    [BOZZA — in lavorazione] Qui confluirà il contenuto di "InternoUno Experience" — check-in/check-out, regole della casa, servizi, contatti utili. Contenuto da completare in una prossima sessione.
-  </p>
+
+  <div class="roma-tabs">
+    <button class="roma-tab on" data-target="campaldino">InternoUno</button>
+    <button class="roma-tab" data-target="lorenzo">InternoUno Deluxe</button>
+  </div>
+
+  <div class="info-panel on" id="panel-campaldino"><details class="info-acc"><summary><span>🕐</span><span>Check-in dalle 13:00</span></summary><div class="body"><p>Prima delle 8:00 non abbiamo personale in struttura. Da quell’orario puoi passare per lasciare il bagaglio, ma la camera non sarà disponibile finché non verrà liberata dall’ospite precedente e pulita (entro le 13:00).</p><p>Se non trovi il nostro staff, nella cassetta di sicurezza troverai una chiave singola per aprire la porta d’ingresso: usala per entrare, poi rimettila nella cassetta.</p><p>I bagagli puoi lasciarli nell’armadio con l’anta a specchio subito dopo la reception sulla destra.</p><p>Quando torni, nella stessa cassetta troverai la chiave della tua camera.</p></div></details><details class="info-acc"><summary><span>🕙</span><span>Check-out entro le 10:00</span></summary><div class="body"><p>Se alla partenza non trovi lo staff, lascia la chiave sul bancone della reception.</p></div></details><details class="info-acc"><summary><span>🚗</span><span>Parcheggio</span></summary><div class="body"><p>Via Campaldino e Via Cupa sono strade condominiali private: se c’è posto, il parcheggio è gratuito.</p><p>In alternativa <b>Garage Di Nezza</b>, sotto la struttura con ingresso da Via Cupa: <b>+39 320 8667617</b>.<br>Lun–Sab 6:30–01:00 · Dom 7:00–11:00 e 19:00–23:00</p><p>25€/giorno per vetture standard (tariffa maggiore per auto di grande valore o dimensioni importanti).</p></div></details><details class="info-acc"><summary><span>🧳</span><span>Deposito bagagli</span></summary><div class="body"><p>Puoi lasciare gratuitamente i bagagli nell’armadio a specchio sulla destra della reception e ritirarli in giornata. Porta con te la chiave quando esci: la lascerai sul bancone della reception solo al tuo ritorno, una volta ripreso il bagaglio.</p><p>Siamo una piccola struttura con poche camere, molto sicura — il deposito però non è custodito, quindi non possiamo prenderci la responsabilità di quanto lasciato: per stare tranquilli, ti consigliamo di portare con te gli oggetti a cui tieni di più.</p></div></details><details class="info-acc"><summary><span>🚇</span><span>Metro, bus e biglietti</span></summary><div class="body"><p><b>Metro:</b> Piazza Bologna – Linea B, a 400 m (10 min a piedi). Termini a 3 fermate, Colosseo a 5.<br>Orari: dom–gio 5:30–23:30 · ven–sab 5:30–01:30</p><p><b>Bus:</b> fermata a pochi metri dall’ingresso.</p><div class="info-pill-row"><span class="info-pill">€1,50 · 100 min</span><span class="info-pill">€7 · 24H</span><span class="info-pill">€12,50 · 48H</span><span class="info-pill">€18 · 72H</span></div><p style="margin-top:8px">🎟️ In metro, tabacchi, edicole o con l’app TicketAppy.</p></div></details><details class="info-acc"><summary><span>📺</span><span>Netflix gratuito</span></summary><div class="body"><p>Netflix è gratuito: ti basta premere il tasto dedicato sul telecomando per accedere.</p><p>Se trovi l’account disconnesso, mandaci su WhatsApp una foto del QR a schermo: lo riattiviamo subito.</p></div></details><details class="info-acc"><summary><span>🤫</span><span>Ore di silenzio 22:00–08:00</span></summary><div class="body"><p>Ti chiediamo di ridurre al minimo i rumori per garantire tranquillità a tutti gli ospiti.</p></div></details><details class="info-acc"><summary><span>💡</span><span>Energia e aria condizionata</span></summary><div class="body"><p>Spegni luci e dispositivi quando esci. <b>L’aria condizionata va sempre spenta uscendo dalla camera.</b></p></div></details><details class="info-acc"><summary><span>🐾</span><span>Animali domestici</span></summary><div class="body"><p>Benvenuti gratuitamente, nel rispetto di pulizia e sicurezza. Non devono salire sui letti né restare liberi nelle aree comuni.</p></div></details><details class="info-acc"><summary><span>🚭</span><span>Vietato fumare</span></summary><div class="body"><p>L’alloggio è rigorosamente non fumatori.</p></div></details><h2 class="info-section-title">☎️ Numeri utili</h2><div class="numeri-grid"><div class="numero-item">🚓 <b>Emergenze (Polizia/Carabinieri):</b> 112</div><div class="numero-item">🚑 <b>Emergenza medica:</b> 118</div><div class="numero-item">🚕 <b>Taxi Roma:</b> 06 3570</div><div class="numero-item">ℹ️ <b>Info turistiche Roma:</b> 06 0606</div></div><h2 class="info-section-title">📍 Servizi nelle vicinanze</h2><div class="servizi-grid"><div class="servizio-item"><span class="nome">🛒 Conad City</span><span class="dettaglio">Viale delle Provincie 156 — davanti alla struttura</span></div><div class="servizio-item"><span class="nome">🛒 Lidl</span><span class="dettaglio">Via della Lega Lombarda 32 — 5 min a piedi</span></div><div class="servizio-item"><span class="nome">🏧 ATM Banco BPM</span><span class="dettaglio">Viale delle Provincie 148</span></div><div class="servizio-item"><span class="nome">🧺 Lavanderia Al.Ba.</span><span class="dettaglio">Via Giuseppe de Mattheis 11 — 5 min</span></div><div class="servizio-item"><span class="nome">💊 Farmacia Caluori</span><span class="dettaglio">Piazzale delle Provincie 8 — la più vicina</span></div><div class="servizio-item"><span class="nome">🚇 Metro Piazza Bologna</span><span class="dettaglio">Linea B — 400m, 10 min a piedi</span></div></div><h2 class="info-section-title">🍽️ Ristoranti in zona</h2><div class="rist-item"><div class="nome-riga">☕ Bar Stendal</div><div class="dettaglio">Piazzale delle Provincie 1 · ~50 m · ~3€/persona</div><div class="descr">Il bar più vicino: perfetto per colazione e un dolce.</div></div><div class="rist-item"><div class="nome-riga">🔺 Trapizzino</div><div class="dettaglio">Piazzale delle Provincie 9 · ~150 m · ~8€/persona</div><div class="descr">Street food romano: il triangolo di pane caldo farcito con i sughi della tradizione.</div></div><div class="rist-item"><div class="nome-riga">🍔 Burger King</div><div class="dettaglio">Viale delle Provincie 136 · ~50 m · ~10€/persona</div><div class="descr">Fast food internazionale, praticamente sotto casa.</div></div><div class="rist-item"><div class="nome-riga">🍝 StradaRomana</div><div class="dettaglio">Via Teodorico 34 · ~600 m · ~28€/persona</div><div class="descr">Cucina romana, grigliate e pizza. Famoso per il risotto agli scampi.</div></div><div class="rist-item"><div class="nome-riga">🍝 Manco</div><div class="dettaglio">Via Adolfo Venturi 14 · ~600 m · ~30€/persona</div><div class="descr">Trattoria moderna e accogliente, ottima amatriciana. Solo cena.</div></div><div class="rist-item"><div class="nome-riga">🍝 Da Enrico</div><div class="dettaglio">Via Michele di Lando 28 · ~550 m · ~30€/persona</div><div class="descr">Trattoria di quartiere: polpette memorabili e amatriciana.</div></div><div class="rist-item"><div class="nome-riga">🍷 Osteria Urbana</div><div class="dettaglio">Via Bari 9 · ~600 m · ~30€/persona</div><div class="descr">Carbonara tra le più lodate della zona; personale che parla inglese.</div></div><div class="rist-item"><div class="nome-riga">🍝 Taverna del Fuorisede</div><div class="dettaglio">Via Giovanni da Procida 51 · ~450 m · ~25€/persona</div><div class="descr">Cucina romana verace e prezzi onesti: cacio e pepe e carbonara.</div></div><div class="rist-item"><div class="nome-riga">🦞 Puerto Fino</div><div class="dettaglio">Via Eleonora d’Arborea 40 · ~500 m · ~50€/persona</div><div class="descr">Pesce di qualità: il piatto forte sono le linguine all’aragosta.</div></div><div class="rist-item"><div class="nome-riga">🍷 Mamma Orso</div><div class="dettaglio">Via Arezzo 17 · ~500 m · ~45€/persona</div><div class="descr">Cucina raffinata e creativa, tempio del vino. Solo cena.</div></div><div class="rist-item"><div class="nome-riga">🐟 Da Franco</div><div class="dettaglio">Via Stamira 23 · ~650 m · ~40€/persona</div><div class="descr">Storica trattoria di pesce: risotto all’astice e crudi freschi.</div></div><div class="rist-item"><div class="nome-riga">🍣 Mojito Sushi</div><div class="dettaglio">Via Padova 55 · ~450 m · ~25€/persona</div><div class="descr">Sushi e cucina fusion con cocktail. Anche all-you-can-eat.</div></div><div class="rist-item"><div class="nome-riga">🍨 Gelato Romano</div><div class="dettaglio">Via Giacomo Boni 33 · ~750 m · ~4€/persona</div><div class="descr">Gelato artigianale eccellente, il più votato del quartiere.</div></div><div class="rist-item"><div class="nome-riga">🍸 Angry Monkey Bar</div><div class="dettaglio">Viale delle Provincie 56 · ~350 m · ~12€/persona</div><div class="descr">Gin bar dall’atmosfera notturna con buona musica.</div></div><div class="rist-item"><div class="nome-riga">🍹 Blend</div><div class="dettaglio">Piazza Lotario 5 · ~700 m · ~12€/persona</div><div class="descr">Cocktail d’autore e taglieri per un aperitivo curato.</div></div><h2 class="info-section-title">✨ Perle di Roma (centro)</h2><div class="rist-item"><div class="nome-riga">⭐ Orma Roma</div><div class="dettaglio">Via Boncompagni 31 · Veneto · ~150€+/persona</div><div class="descr">1 STELLA MICHELIN. Alta cucina creativa. Occasione speciale, prenotazione obbligatoria.</div></div><div class="rist-item"><div class="nome-riga">🥖 All’Antico Vinaio</div><div class="dettaglio">Piazza della Maddalena 3 · Pantheon · ~10€/persona</div><div class="descr">Le schiacciate leggendarie super farcite, istituzione fiorentina a Roma.</div></div><div class="rist-item"><div class="nome-riga">🍝 Tonnarello</div><div class="dettaglio">Piazza Capranica 77 · Pantheon · ~22€/persona</div><div class="descr">Pasta romana verace: carbonara, cacio e pepe e supplì.</div></div><div class="rist-item"><div class="nome-riga">🍝 Trattoria Antonio al Pantheon</div><div class="dettaglio">Via dei Pastini 12 · Pantheon · ~30€/persona</div><div class="descr">Trattoria intima: amatriciana e tiramisù memorabili.</div></div><div class="rist-item"><div class="nome-riga">🍝 Da Enzo al 29</div><div class="dettaglio">Via dei Vascellari 29 · Trastevere · ~30€/persona</div><div class="descr">Istituzione romana verace: carbonara e coda alla vaccinara. Niente prenotazioni.</div></div><div class="rist-item"><div class="nome-riga">🧀 Felice a Testaccio</div><div class="dettaglio">Via Mastro Giorgio 29 · Testaccio · ~35€/persona</div><div class="descr">Tempio della tradizione: cacio e pepe mantecata al tavolo. Prenotazione obbligatoria.</div></div><div class="rist-item"><div class="nome-riga">🍝 Osteria del Grillo</div><div class="dettaglio">Via del Seminario 110 · Monti · ~25€/persona</div><div class="descr">Carbonara tra le migliori, porchetta e polpette.</div></div><div class="rist-item"><div class="nome-riga">🌱 Origano Campo de’ Fiori</div><div class="dettaglio">Largo dei Chiavari 84 · Campo de’ Fiori · ~25€/persona</div><div class="descr">La migliore pizza vegana di Roma.</div></div><div class="rist-item"><div class="nome-riga">🍕 Pizzeria della Madonna dei Monti</div><div class="dettaglio">Via della Madonna dei Monti 110 · Monti · ~15€/persona</div><div class="descr">Pizza napoletana di qualità vicino al Colosseo.</div></div><div class="rist-item"><div class="nome-riga">🍷 Roscioli</div><div class="dettaglio">Via dei Giubbonari 21 · Campo de’ Fiori · ~55€/persona</div><div class="descr">Esperienza gourmet: salumi, formaggi e la celebre cacio e pepe.</div></div></div>
+  <div class="info-panel" id="panel-lorenzo"><details class="info-acc"><summary><span>🕐</span><span>Check-in dalle 13:00</span></summary><div class="body"><p>Prima delle 8:00 non abbiamo personale in struttura. Da quell’orario puoi passare per lasciare il bagaglio nello stanzino con la porta bianca a destra della reception, ritirando le chiavi. La camera sarà disponibile solo dopo la pulizia e la partenza del cliente precedente.</p><p>Quando torni, nella stessa cassetta troverai la chiave della tua camera.</p></div></details><details class="info-acc"><summary><span>🕙</span><span>Check-out entro le 10:00</span></summary><div class="body"><p>Se alla partenza non trovi lo staff, lascia la chiave sul bancone della reception.</p></div></details><details class="info-acc"><summary><span>🚗</span><span>Parcheggio</span></summary><div class="body"><p><b>Garage Bologna</b>, Via Lorenzo il Magnifico 83 (a pochi passi): <b>+39 06 4424 2664</b>.<br>Lun–Sab 6:00–01:00 · Dom 6:00–10:00 e 19:00–01:00</p><p>25€/giorno per vetture standard (tariffa maggiore per auto di grande valore o dimensioni importanti). C’è un garage più vicino a destra dell’entrata ma con tariffe molto più alte.</p></div></details><details class="info-acc"><summary><span>🧳</span><span>Deposito bagagli</span></summary><div class="body"><p>Puoi lasciare gratuitamente i bagagli nello stanzino con la porta bianca a destra della reception e ritirarli in giornata. Porta con te la chiave quando esci: la lascerai sul bancone della reception solo al tuo ritorno.</p><p>Il deposito non è custodito: ti consigliamo di portare con te gli oggetti a cui tieni di più.</p></div></details><details class="info-acc"><summary><span>🚇</span><span>Metro e treni</span></summary><div class="body"><p><b>Stazione Tiburtina</b>, Linea B, a soli 10 metri (meno di 1 minuto a piedi, davanti al cancello) — anche stazione ferroviaria Alta Velocità e regionali. Termini 4 fermate, Colosseo 6.</p><div class="info-pill-row"><span class="info-pill">€1,50 · 100 min</span><span class="info-pill">€7 · 24H</span><span class="info-pill">€12,50 · 48H</span><span class="info-pill">€18 · 72H</span></div><p style="margin-top:8px">🎟️ In metro, tabacchi, edicole o con l’app TicketAppy.</p></div></details><details class="info-acc"><summary><span>📺</span><span>Netflix gratuito</span></summary><div class="body"><p>Premi il tasto dedicato sul telecomando oppure seleziona l’ingresso HDMI dedicato sulla TV per accedere al menu e scegliere l’icona Netflix.</p><p>Se trovi l’account disconnesso, mandaci su WhatsApp una foto del QR a schermo: lo riattiviamo subito.</p></div></details><details class="info-acc"><summary><span>🤫</span><span>Ore di silenzio 22:00–08:00</span></summary><div class="body"><p>Ti chiediamo di ridurre al minimo i rumori per garantire tranquillità a tutti gli ospiti.</p></div></details><details class="info-acc"><summary><span>💡</span><span>Energia e aria condizionata</span></summary><div class="body"><p>Spegni luci e dispositivi quando esci. <b>L’aria condizionata va sempre spenta uscendo dalla camera.</b></p></div></details><details class="info-acc"><summary><span>🐾</span><span>Animali domestici</span></summary><div class="body"><p>Benvenuti gratuitamente, nel rispetto di pulizia e sicurezza. Non devono salire sui letti né restare liberi nelle aree comuni.</p></div></details><details class="info-acc"><summary><span>🚭</span><span>Vietato fumare</span></summary><div class="body"><p>L’alloggio è rigorosamente non fumatori.</p></div></details><details class="info-acc"><summary><span>💧</span><span>Vasca idromassaggio</span></summary><div class="body"><p>Se non parte, controlla l’interruttore vicino alla luce del bagno.</p></div></details><h2 class="info-section-title">☎️ Numeri utili</h2><div class="numeri-grid"><div class="numero-item">🚓 <b>Emergenze (Polizia/Carabinieri):</b> 112</div><div class="numero-item">🚑 <b>Emergenza medica:</b> 118</div><div class="numero-item">🚕 <b>Taxi Roma:</b> 06 3570</div><div class="numero-item">ℹ️ <b>Info turistiche Roma:</b> 06 0606</div><div class="numero-item">🏥 <b>Pronto Soccorso più vicino:</b> Osp. Sandro Pertini, Via dei Monti Tiburtini 385</div></div><h2 class="info-section-title">📍 Servizi nelle vicinanze</h2><div class="servizi-grid"><div class="servizio-item"><span class="nome">🛒 Market Magnificio</span><span class="dettaglio">Via Lorenzo il Magnifico 55</span></div><div class="servizio-item"><span class="nome">💊 Farmacia Lorenzo il Magnifico</span><span class="dettaglio">Via Lorenzo il Magnifico 56</span></div><div class="servizio-item"><span class="nome">🏧 Bancomat Mediobanca</span><span class="dettaglio">Piazza Bologna 12</span></div><div class="servizio-item"><span class="nome">🧺 Lavanderia Onda Blu</span><span class="dettaglio">Via Giuseppe Marcotti 52</span></div><div class="servizio-item"><span class="nome">🚬 Tabaccheria Magnifico</span><span class="dettaglio">Via Giovanni da Procida 24</span></div><div class="servizio-item"><span class="nome">📮 Ufficio Postale</span><span class="dettaglio">Via Giuseppe Marcotti 45</span></div></div><h2 class="info-section-title">🍽️ Ristoranti in zona</h2><div class="rist-item"><div class="nome-riga">☕ Roma Bar</div><div class="dettaglio">Circonvallazione Nomentana 546 · ~50 m · ~3€/persona</div><div class="descr">Il bar proprio di fronte: perfetto per colazione e un caffè al volo.</div></div><div class="rist-item"><div class="nome-riga">🔺 Trapizzino</div><div class="dettaglio">Piazzale delle Provincie 9 · ~700 m · ~8€/persona</div><div class="descr">Street food romano: il triangolo di pane caldo farcito con i sughi della tradizione.</div></div><div class="rist-item"><div class="nome-riga">🍔 Smash Tag</div><div class="dettaglio">Via Michele di Lando 22 · ~500 m · ~13€/persona</div><div class="descr">Hamburger di qualità (smash burger), tra i migliori d’Italia.</div></div><div class="rist-item"><div class="nome-riga">🍝 StradaRomana</div><div class="dettaglio">Via Teodorico 34 · ~250 m · ~28€/persona</div><div class="descr">Cucina romana, grigliate e pizza. Famoso per il risotto agli scampi.</div></div><div class="rist-item"><div class="nome-riga">🍝 Manco</div><div class="dettaglio">Via Adolfo Venturi 14 · ~500 m · ~30€/persona</div><div class="descr">Trattoria moderna e accogliente, ottima amatriciana. Solo cena.</div></div><div class="rist-item"><div class="nome-riga">🍝 Da Enrico</div><div class="dettaglio">Via Michele di Lando 28 · ~550 m · ~30€/persona</div><div class="descr">Trattoria di quartiere: polpette memorabili e amatriciana.</div></div><div class="rist-item"><div class="nome-riga">🍷 Osteria Urbana</div><div class="dettaglio">Via Bari 9 · ~650 m · ~30€/persona</div><div class="descr">Carbonara tra le più lodate della zona; personale che parla inglese.</div></div><div class="rist-item"><div class="nome-riga">🍝 Taverna del Fuorisede</div><div class="dettaglio">Via Giovanni da Procida 51 · ~550 m · ~25€/persona</div><div class="descr">Cucina romana verace e prezzi onesti.</div></div><div class="rist-item"><div class="nome-riga">🦞 Puerto Fino</div><div class="dettaglio">Via Eleonora d’Arborea 40 · ~550 m · ~50€/persona</div><div class="descr">Pesce di qualità: linguine all’aragosta.</div></div><div class="rist-item"><div class="nome-riga">🍷 Mamma Orso</div><div class="dettaglio">Via Arezzo 17 · ~700 m · ~45€/persona</div><div class="descr">Cucina raffinata e creativa, tempio del vino. Solo cena.</div></div><div class="rist-item"><div class="nome-riga">🐟 Da Franco</div><div class="dettaglio">Via Stamira 23 · ~500 m · ~40€/persona</div><div class="descr">Storica trattoria di pesce: risotto all’astice e crudi freschi.</div></div><div class="rist-item"><div class="nome-riga">🍣 Mojito Sushi</div><div class="dettaglio">Via Padova 55 · ~600 m · ~25€/persona</div><div class="descr">Sushi e cucina fusion con cocktail. Anche all-you-can-eat.</div></div><div class="rist-item"><div class="nome-riga">🍨 Gelato Romano</div><div class="dettaglio">Via Giacomo Boni 33 · ~600 m · ~4€/persona</div><div class="descr">Gelato artigianale eccellente, il più votato del quartiere.</div></div><div class="rist-item"><div class="nome-riga">🍸 Angry Monkey Bar</div><div class="dettaglio">Viale delle Provincie 56 · ~550 m · ~12€/persona</div><div class="descr">Gin bar dall’atmosfera notturna con buona musica.</div></div><div class="rist-item"><div class="nome-riga">🍹 Blend</div><div class="dettaglio">Piazza Lotario 5 · ~700 m · ~12€/persona</div><div class="descr">Cocktail d’autore e taglieri per un aperitivo curato.</div></div><h2 class="info-section-title">✨ Perle di Roma (centro)</h2><div class="rist-item"><div class="nome-riga">⭐ Orma Roma</div><div class="dettaglio">Via Boncompagni 31 · Veneto · ~150€+/persona</div><div class="descr">1 STELLA MICHELIN. Alta cucina creativa. Occasione speciale, prenotazione obbligatoria.</div></div><div class="rist-item"><div class="nome-riga">🥖 All’Antico Vinaio</div><div class="dettaglio">Piazza della Maddalena 3 · Pantheon · ~10€/persona</div><div class="descr">Le schiacciate leggendarie super farcite, istituzione fiorentina a Roma.</div></div><div class="rist-item"><div class="nome-riga">🍝 Tonnarello</div><div class="dettaglio">Piazza Capranica 77 · Pantheon · ~22€/persona</div><div class="descr">Pasta romana verace: carbonara, cacio e pepe e supplì.</div></div><div class="rist-item"><div class="nome-riga">🍝 Trattoria Antonio al Pantheon</div><div class="dettaglio">Via dei Pastini 12 · Pantheon · ~30€/persona</div><div class="descr">Trattoria intima: amatriciana e tiramisù memorabili.</div></div><div class="rist-item"><div class="nome-riga">🍝 Da Enzo al 29</div><div class="dettaglio">Via dei Vascellari 29 · Trastevere · ~30€/persona</div><div class="descr">Istituzione romana verace: carbonara e coda alla vaccinara. Niente prenotazioni.</div></div><div class="rist-item"><div class="nome-riga">🧀 Felice a Testaccio</div><div class="dettaglio">Via Mastro Giorgio 29 · Testaccio · ~35€/persona</div><div class="descr">Tempio della tradizione: cacio e pepe mantecata al tavolo. Prenotazione obbligatoria.</div></div><div class="rist-item"><div class="nome-riga">🍝 Osteria del Grillo</div><div class="dettaglio">Via del Seminario 110 · Monti · ~25€/persona</div><div class="descr">Carbonara tra le migliori, porchetta e polpette.</div></div><div class="rist-item"><div class="nome-riga">🌱 Origano Campo de’ Fiori</div><div class="dettaglio">Largo dei Chiavari 84 · Campo de’ Fiori · ~25€/persona</div><div class="descr">La migliore pizza vegana di Roma.</div></div><div class="rist-item"><div class="nome-riga">🍕 Pizzeria della Madonna dei Monti</div><div class="dettaglio">Via della Madonna dei Monti 110 · Monti · ~15€/persona</div><div class="descr">Pizza napoletana di qualità vicino al Colosseo.</div></div><div class="rist-item"><div class="nome-riga">🍷 Roscioli</div><div class="dettaglio">Via dei Giubbonari 21 · Campo de’ Fiori · ~55€/persona</div><div class="descr">Esperienza gourmet: salumi, formaggi e la celebre cacio e pepe.</div></div></div>
+
 </main>
 <footer>
   <div class="footer-top">
@@ -391,5 +486,20 @@
     });
   })();
 </script>
+<script>
+  (function(){
+    var tabs = document.querySelectorAll('.roma-tab');
+    var panels = document.querySelectorAll('.info-panel');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('on'); });
+        panels.forEach(function(p){ p.classList.remove('on'); });
+        tab.classList.add('on');
+        document.getElementById('panel-' + tab.dataset.target).classList.add('on');
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
