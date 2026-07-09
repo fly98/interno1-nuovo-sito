@@ -438,9 +438,12 @@
     padding:4.5rem 5vw;
     max-width:1000px;
     margin:0 auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:3rem;
+    display:flex;
+    justify-content:flex-end;
+  }
+  .contatti-block{
+    text-align:right;
+    max-width:380px;
   }
   .contatti .eyebrow{
     font-size:0.72rem;
@@ -457,6 +460,20 @@
   }
   .contatti p{ font-size:0.92rem; color:#4a453a; line-height:1.7; }
   .contatti a{ color:var(--testo-scuro); }
+  .whatsapp-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    background:#25D366;
+    color:#fff !important;
+    font-weight:500;
+    font-size:0.88rem;
+    padding:0.6rem 1.1rem;
+    border-radius:100px;
+    text-decoration:none;
+    margin-top:0.9rem;
+  }
+  .whatsapp-btn svg{ width:18px; height:18px; fill:#fff; }
   .social-row{
     display:flex;
     gap:1rem;
@@ -552,7 +569,9 @@
     .indirizzi{ grid-template-columns:1fr; }
     .perche-grid{ grid-template-columns:1fr 1fr; }
     .camere-grid{ grid-template-columns:1fr 1fr; }
-    .contatti{ grid-template-columns:1fr; }
+    .contatti{ justify-content:center; }
+    .contatti-block{ text-align:center; max-width:100%; }
+    .social-row{ justify-content:center; }
   }  /* --- modal prenotazione --- */
   .booking-modal{
     position:fixed;
@@ -747,25 +766,25 @@
 </section>
 
 <section class="contatti reveal">
-  <div>
-    <span class="eyebrow">Dove siamo</span>
-    <h2>Tra due metro della linea B</h2>
+  <div class="contatti-block">
+    <span class="eyebrow">Contatti</span>
+    <h2>Scrivici</h2>
     <p>
       Via Campaldino 6<br>
       Via Lorenzo il Magnifico 158<br>
       00162 Roma
     </p>
-  </div>
-  <div>
-    <span class="eyebrow">Contatti</span>
-    <h2>Scrivici</h2>
     <p>
       <a href="tel:+393922999914">+39 392 299 9914</a><br>
-      WhatsApp: risposta rapida, sempre
+      <a href="mailto:info@interno1.it">info@interno1.it</a>
     </p>
+    <a class="whatsapp-btn" href="https://wa.me/393922999914" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2m0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.21-8.21 8.21m4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.65.31-.22.24-.85.84-.85 2.04s.87 2.37 1 2.53c.12.17 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29"/></svg>
+      WhatsApp
+    </a>
     <div class="social-row">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
+      <a href="https://www.instagram.com/internounoguesthouse/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/internounoguesthouse" target="_blank" rel="noopener">Facebook</a>
     </div>
   </div>
 </section>
