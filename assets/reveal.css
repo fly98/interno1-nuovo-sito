@@ -1,0 +1,14 @@
+/* ---- Effetti a comparsa on-scroll ---- */
+.reveal-on{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);
+  will-change:opacity, transform;
+}
+.reveal-on.is-visible{
+  opacity:1;
+  transform:none;
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal-on{ opacity:1; transform:none; transition:none; }
+}
