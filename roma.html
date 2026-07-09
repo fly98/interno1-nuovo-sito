@@ -327,6 +327,7 @@
 </style>
 <link rel="stylesheet" href="assets/chat-widget.css">
 <link rel="stylesheet" href="assets/reveal.css">
+  <link rel="stylesheet" href="assets/i18n.css">
 </head>
 <body>
 
@@ -336,30 +337,31 @@
     <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
   </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="camere.html">Camere</a>
-    <a href="dove-siamo.html">Dove siamo</a>
-    <a href="roma.html" class="on">Roma</a>
-    <a href="info.html">Info</a>
-    <a href="contatti.html">Contatti</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="camere.html" data-i18n="nav_camere">Camere</a>
+    <a href="dove-siamo.html" data-i18n="nav_dove">Dove siamo</a>
+    <a href="roma.html" class="on" data-i18n="nav_roma">Roma</a>
+    <a href="info.html" data-i18n="nav_info">Info</a>
+    <a href="contatti.html" data-i18n="nav_contatti">Contatti</a>
   </nav>
+  <div id="iu-lang-switch"></div>
   <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 <div class="nav-backdrop" id="navBackdrop"></div>
 
 
 <section class="page-hero">
-  <div class="eyebrow">Vivi Roma con noi</div>
-  <h1>Roma</h1>
-  <p>Eventi, concerti, tour ed esperienze da vivere durante il soggiorno.</p>
+  <div class="eyebrow" data-i18n="rm_hero_eyebrow">Vivi Roma con noi</div>
+  <h1 data-i18n="rm_hero_title">Roma</h1>
+  <p data-i18n="rm_hero_sub">Eventi, concerti, tour ed esperienze da vivere durante il soggiorno.</p>
 </section>
 
 <main style="max-width:1000px; margin:0 auto; padding:3rem 5vw;">
 
   <div class="roma-tabs">
-    <button class="roma-tab on" data-target="tour">Tour</button>
-    <button class="roma-tab" data-target="eventi">Eventi</button>
-    <button class="roma-tab" data-target="concerti">Concerti</button>
+    <button class="roma-tab on" data-target="tour" data-i18n="rm_tab_tour">Tour</button>
+    <button class="roma-tab" data-target="eventi" data-i18n="rm_tab_eventi">Eventi</button>
+    <button class="roma-tab" data-target="concerti" data-i18n="rm_tab_concerti">Concerti</button>
   </div>
 
   <div class="roma-panel" id="panel-eventi">
@@ -375,48 +377,48 @@
   </div>
 
   <div class="roma-panel on" id="panel-tour">
-    <p class="tour-intro">I nostri ospiti hanno accesso gratuito alla nostra applicazione di <b>tour guidati con audioguida GPS</b> — basta uno smartphone, nessun download necessario. L'elenco cresce ed è sempre aggiornato: lo trovi anche su <b>InternoUno Experience</b>, il Welcome Book digitale che riceverai al check-in.</p>
+    <p class="tour-intro" data-i18n="rm_tour_intro" data-i18n-html>I nostri ospiti hanno accesso gratuito alla nostra applicazione di <b>tour guidati con audioguida GPS</b> — basta uno smartphone, nessun download necessario. L'elenco cresce ed è sempre aggiornato: lo trovi anche su <b>InternoUno Experience</b>, il Welcome Book digitale che riceverai al check-in.</p>
     <div class="tour-grid">
       <a class="tour-card" href="https://fly98.github.io/FlyTour/roma/index.html" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%20di%20Roma%20panoramic.jpg?width=700" alt="Roma in un Giorno">
         <div class="tour-info">
           <h3>Roma in un Giorno</h3>
-          <span class="tour-meta">14 tappe · Giornata intera</span>
+          <span class="tour-meta" data-i18n="rm_meta_1giorno">14 tappe · Giornata intera</span>
         </div>
       </a>
       <a class="tour-card" href="https://fly98.github.io/FlyTour/vaticano/index.html" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo%20-%20Creation%20of%20Adam%20(cropped).jpg?width=700" alt="Musei Vaticani e Cappella Sistina">
         <div class="tour-info">
           <h3>Musei Vaticani e Cappella Sistina</h3>
-          <span class="tour-meta">18 tappe · 2-3 ore</span>
+          <span class="tour-meta" data-i18n="rm_meta_vaticano">18 tappe · 2-3 ore</span>
         </div>
       </a>
       <a class="tour-card" href="https://fly98.github.io/FlyTour/trastevere/index.html" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trastevere_-_piazza_Trilussa_-_monumento_a_Trilussa_1531.JPG?width=700" alt="Trastevere Nascosta">
         <div class="tour-info">
           <h3>Trastevere Nascosta</h3>
-          <span class="tour-meta">8 tappe · ~2h30</span>
+          <span class="tour-meta" data-i18n="rm_meta_trastevere">8 tappe · ~2h30</span>
         </div>
       </a>
       <a class="tour-card" href="https://fly98.github.io/FlyTour/sanpietro/index.html" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/St.%20Peter%27s%20Square%20-%20north%20colonnade.jpg?width=700" alt="San Pietro e Borgo Pio">
         <div class="tour-info">
           <h3>San Pietro e Borgo Pio</h3>
-          <span class="tour-meta">8 tappe · 2-3 ore</span>
+          <span class="tour-meta" data-i18n="rm_meta_sanpietro">8 tappe · 2-3 ore</span>
         </div>
       </a>
       <a class="tour-card" href="https://fly98.github.io/FlyTour/ghetto-testaccio/index.html" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/S_Angelo_-_via_del_Portico_d%27Ottavia_1000373.JPG?width=700" alt="Dal Ghetto al Mattatoio">
         <div class="tour-info">
           <h3>Dal Ghetto al Mattatoio</h3>
-          <span class="tour-meta">8 tappe · ~2h30</span>
+          <span class="tour-meta" data-i18n="rm_meta_ghetto">8 tappe · ~2h30</span>
         </div>
       </a>
       <a class="tour-card" href="https://fly98.github.io/FlyTour/esoterica/index.html" target="_blank" rel="noopener">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flaminio%20Obelisk%20on%20the%20Piazza%20del%20Popolo.jpg?width=700" alt="Roma Esoterica">
         <div class="tour-info">
           <h3>Roma Esoterica</h3>
-          <span class="tour-meta">9 tappe · ~3h</span>
+          <span class="tour-meta" data-i18n="rm_meta_esoterica">9 tappe · ~3h</span>
         </div>
       </a>
     </div>
@@ -425,7 +427,7 @@
 </main>
 <footer>
   <div class="footer-top">
-    <span class="footer-brand">InternoUno — A Roma dal 2007</span>
+    <span class="footer-brand"><span data-i18n="foot_tagline">InternoUno — A Roma dal 2007</span></span>
     <div class="footer-social">
       <a class="social-icon whatsapp" href="https://wa.me/393922999914" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2m0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.21-8.21 8.21m4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.65.31-.22.24-.85.84-.85 2.04s.87 2.37 1 2.53c.12.17 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29"/></svg>
@@ -439,7 +441,7 @@
     </div>
   </div>
   <div class="footer-info">
-    <span>Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span>
+    <span><span data-i18n="foot_addr">Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span></span>
     <a href="tel:+393922999914">+39 392 299 9914</a>
     <a href="mailto:info@interno1.it">info@interno1.it</a>
   </div>
@@ -517,15 +519,21 @@
       }).join('');
     }
 
-    fetch('https://wb-worker.f-castiglioni.workers.dev/wb/campaldino/data?lang=it')
+    function t(key, fallback){
+      var lang = window.IU_CURRENT_LANG || 'it';
+      var dict = (window.IU_I18N && window.IU_I18N[lang]) || {};
+      return dict[key] || fallback;
+    }
+    var wbLang = window.IU_CURRENT_LANG || 'it';
+    fetch('https://wb-worker.f-castiglioni.workers.dev/wb/campaldino/data?lang=' + wbLang)
       .then(function(r){ return r.json(); })
       .then(function(data){
-        renderCards(document.getElementById('grid-eventi'), data.eventi, 'Nessun evento disponibile al momento.');
-        renderCards(document.getElementById('grid-concerti'), data.concerti, 'Nessun concerto disponibile al momento.');
+        renderCards(document.getElementById('grid-eventi'), data.eventi, t('rm_no_eventi','Nessun evento disponibile al momento.'));
+        renderCards(document.getElementById('grid-concerti'), data.concerti, t('rm_no_concerti','Nessun concerto disponibile al momento.'));
       })
       .catch(function(){
-        document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">Impossibile caricare gli eventi al momento.</p>';
-        document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">Impossibile caricare i concerti al momento.</p>';
+        document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">' + t('rm_err_eventi','Impossibile caricare gli eventi al momento.') + '</p>';
+        document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">' + t('rm_err_concerti','Impossibile caricare i concerti al momento.') + '</p>';
       });
   })();
 </script>
@@ -533,5 +541,7 @@
 <script src="assets/chat-widget.js"></script>
 
 <script src="assets/reveal.js"></script>
+  <script src="assets/translations.js"></script>
+  <script src="assets/i18n.js"></script>
 </body>
 </html>
