@@ -364,6 +364,54 @@
   @media (max-width: 640px){
     .roma-grid{ grid-template-columns:1fr; }
   }
+  .tour-intro{
+    font-size:0.9rem;
+    color:#4a453a;
+    line-height:1.6;
+    max-width:640px;
+    margin:0 auto 2rem;
+    text-align:center;
+  }
+  .tour-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.2rem;
+  }
+  .tour-card{
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(30,25,15,0.07);
+    text-decoration:none;
+    color:inherit;
+    display:block;
+    transition:transform .2s ease;
+  }
+  .tour-card:hover{ transform:translateY(-2px); }
+  .tour-card img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    display:block;
+  }
+  .tour-info{ padding:1rem 1.1rem; }
+  .tour-info h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:0.95rem;
+    margin-bottom:0.3rem;
+    line-height:1.3;
+  }
+  .tour-meta{
+    font-size:0.76rem;
+    color:#8a7f68;
+  }
+  @media (max-width: 780px){
+    .tour-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 480px){
+    .tour-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -397,6 +445,7 @@
   <div class="roma-tabs">
     <button class="roma-tab on" data-target="eventi">Eventi</button>
     <button class="roma-tab" data-target="concerti">Concerti</button>
+    <button class="roma-tab" data-target="tour">Tour</button>
   </div>
 
   <div class="roma-panel on" id="panel-eventi">
@@ -408,6 +457,54 @@
   <div class="roma-panel" id="panel-concerti">
     <div class="roma-grid" id="grid-concerti">
       <p class="roma-loading">Caricamento concerti…</p>
+    </div>
+  </div>
+
+  <div class="roma-panel" id="panel-tour">
+    <p class="tour-intro">I nostri ospiti hanno accesso gratuito alla nostra applicazione di <b>tour guidati con audioguida GPS</b> — basta uno smartphone, nessun download necessario. L'elenco cresce ed è sempre aggiornato: lo trovi anche su <b>InternoUno Experience</b>, il Welcome Book digitale che riceverai al check-in.</p>
+    <div class="tour-grid">
+      <a class="tour-card" href="https://fly98.github.io/FlyTour/roma/index.html" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%20di%20Roma%20panoramic.jpg?width=700" alt="Roma in un Giorno">
+        <div class="tour-info">
+          <h3>Roma in un Giorno</h3>
+          <span class="tour-meta">14 tappe · Giornata intera</span>
+        </div>
+      </a>
+      <a class="tour-card" href="https://fly98.github.io/FlyTour/vaticano/index.html" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo%20-%20Creation%20of%20Adam%20(cropped).jpg?width=700" alt="Musei Vaticani e Cappella Sistina">
+        <div class="tour-info">
+          <h3>Musei Vaticani e Cappella Sistina</h3>
+          <span class="tour-meta">18 tappe · 2-3 ore</span>
+        </div>
+      </a>
+      <a class="tour-card" href="https://fly98.github.io/FlyTour/trastevere/index.html" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trastevere_-_piazza_Trilussa_-_monumento_a_Trilussa_1531.JPG?width=700" alt="Trastevere Nascosta">
+        <div class="tour-info">
+          <h3>Trastevere Nascosta</h3>
+          <span class="tour-meta">8 tappe · ~2h30</span>
+        </div>
+      </a>
+      <a class="tour-card" href="https://fly98.github.io/FlyTour/sanpietro/index.html" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/St.%20Peter%27s%20Square%20-%20north%20colonnade.jpg?width=700" alt="San Pietro e Borgo Pio">
+        <div class="tour-info">
+          <h3>San Pietro e Borgo Pio</h3>
+          <span class="tour-meta">8 tappe · 2-3 ore</span>
+        </div>
+      </a>
+      <a class="tour-card" href="https://fly98.github.io/FlyTour/ghetto-testaccio/index.html" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/S_Angelo_-_via_del_Portico_d%27Ottavia_1000373.JPG?width=700" alt="Dal Ghetto al Mattatoio">
+        <div class="tour-info">
+          <h3>Dal Ghetto al Mattatoio</h3>
+          <span class="tour-meta">8 tappe · ~2h30</span>
+        </div>
+      </a>
+      <a class="tour-card" href="https://fly98.github.io/FlyTour/esoterica/index.html" target="_blank" rel="noopener">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flaminio%20Obelisk%20on%20the%20Piazza%20del%20Popolo.jpg?width=700" alt="Roma Esoterica">
+        <div class="tour-info">
+          <h3>Roma Esoterica</h3>
+          <span class="tour-meta">9 tappe · ~3h</span>
+        </div>
+      </a>
     </div>
   </div>
 
