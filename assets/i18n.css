@@ -55,3 +55,8 @@
     transform:translateX(-50%);
   }
 }
+
+/* ===== Logo piu' vicino al bordo sinistro ===== */
+@media (min-width: 721px){
+  header .logo{ margin-left:-2.5vw; }
+}
