@@ -199,7 +199,19 @@ window.IU_I18N = {
     inf_lr9_t:"Vietato fumare",
     inf_lr9_b:"<p>L’alloggio è rigorosamente non fumatori.</p>",
     inf_lr10_t:"Vasca idromassaggio",
-    inf_lr10_b:"<p>Se non parte, controlla l’interruttore vicino alla luce del bagno.</p>"
+    inf_lr10_b:"<p>Se non parte, controlla l’interruttore vicino alla luce del bagno.</p>",
+    rm_tourt_roma:"Roma in un Giorno",
+    rm_tourd_roma:"Le tappe imperdibili del centro storico e dell'area archeologica, per chi ha solo un giorno per scoprire Roma. 14 tappe dal Colosseo a Trastevere, con audioguida completa in italiano e inglese.",
+    rm_tourt_vaticano:"Musei Vaticani e Cappella Sistina",
+    rm_tourd_vaticano:"Le opere imperdibili in un paio d'ore: dalla Pinacoteca al Laocoonte, dalle Stanze di Raffaello fino alla Cappella Sistina. Percorso a tappe numerate, senza bisogno di GPS. 18 tappe, disponibile in italiano e inglese.",
+    rm_tourt_trastevere:"Trastevere Nascosta",
+    rm_tourd_trastevere:"Il lato del rione che i turisti non vedono. 8 tappe tra vicoli, chiostri e piazzette dimenticate.",
+    rm_tourt_sanpietro:"San Pietro e Borgo Pio",
+    rm_tourd_sanpietro:"Da Ponte Sant'Angelo alla Cupola di Michelangelo, passando per la Guardia Svizzera e l'ultimo quartiere popolare rimasto accanto al Vaticano. 8 tappe, disponibile in italiano e inglese.",
+    rm_tourt_ghetto_testaccio:"Dal Ghetto al Mattatoio",
+    rm_tourd_ghetto_testaccio:"La storia della cucina povera romana, dai carciofi alla giudia alla coda alla vaccinara. 8 tappe dal Ghetto ebraico a Testaccio.",
+    rm_tourt_esoterica:"Roma Esoterica",
+    rm_tourd_esoterica:"Fantasmi imperiali, astrologia nascosta nelle chiese, ossari trasformati in arte, leggende di scimmie salvifiche e quartieri costruiti come enigmi di pietra. 9 tappe nella Roma segreta, in italiano e inglese."
   },
   en: {
     nav_home:"Home", nav_camere:"Rooms", nav_dove:"Location", nav_roma:"Rome", nav_info:"Info", nav_contatti:"Contact",
@@ -400,7 +412,19 @@ window.IU_I18N = {
     inf_lr9_t:"No smoking",
     inf_lr9_b:"<p>The property is strictly non-smoking.</p>",
     inf_lr10_t:"In-room jacuzzi",
-    inf_lr10_b:"<p>Your room comes with a hydromassage tub, ready to use and included in your stay.</p><p>Mind the power switch: if the jets don’t start, check that the switch next to the bathroom light is turned on.</p>"
+    inf_lr10_b:"<p>Your room comes with a hydromassage tub, ready to use and included in your stay.</p><p>Mind the power switch: if the jets don’t start, check that the switch next to the bathroom light is turned on.</p>",
+    rm_tourt_roma:"Rome in a Day",
+    rm_tourd_roma:"The unmissable stops of the historic center and archaeological area, for those with just one day to discover Rome. 14 stops from the Colosseum to Trastevere, with full audio guide in Italian and English.",
+    rm_tourt_vaticano:"Vatican Museums and Sistine Chapel",
+    rm_tourd_vaticano:"The unmissable works in a couple of hours: from the Pinacoteca to the Laocoön, from the Raphael Rooms to the Sistine Chapel. Numbered stop-by-stop route, no GPS needed. 18 stops, available in Italian and English.",
+    rm_tourt_trastevere:"Hidden Trastevere",
+    rm_tourd_trastevere:"The side of the neighbourhood tourists don't see. 8 stops through alleys, cloisters and forgotten little squares.",
+    rm_tourt_sanpietro:"St. Peter's and Borgo Pio",
+    rm_tourd_sanpietro:"From Ponte Sant'Angelo to Michelangelo's Dome, passing through the Swiss Guard and the last working-class neighborhood left by the Vatican. 8 stops, available in Italian and English.",
+    rm_tourt_ghetto_testaccio:"From the Ghetto to the Slaughterhouse",
+    rm_tourd_ghetto_testaccio:"The story of humble Roman cuisine, from Jewish-style artichokes to oxtail stew. 8 stops from the Jewish Ghetto to Testaccio.",
+    rm_tourt_esoterica:"Esoteric Rome",
+    rm_tourd_esoterica:"Imperial ghosts, astrology hidden in churches, bone-filled crypts turned into art, legends of saving monkeys, and neighbourhoods built like stone riddles. 9 stops through secret Rome, in Italian and English."
   },
   es: {
     nav_home:"Inicio", nav_camere:"Habitaciones", nav_dove:"Ubicación", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contacto",
@@ -601,7 +625,19 @@ window.IU_I18N = {
     inf_lr9_t:"Prohibido fumar",
     inf_lr9_b:"<p>El alojamiento es estrictamente libre de humo.</p>",
     inf_lr10_t:"Jacuzzi en la habitación",
-    inf_lr10_b:"<p>Tu habitación cuenta con bañera de hidromasaje, lista para usar e incluida en la estancia.</p><p>Presta atención al interruptor de encendido: si el hidromasaje no arranca, comprueba que el interruptor junto a la luz del baño esté activado.</p>"
+    inf_lr10_b:"<p>Tu habitación cuenta con bañera de hidromasaje, lista para usar e incluida en la estancia.</p><p>Presta atención al interruptor de encendido: si el hidromasaje no arranca, comprueba que el interruptor junto a la luz del baño esté activado.</p>",
+    rm_tourt_roma:"Roma en un Día",
+    rm_tourd_roma:"Las paradas imprescindibles del centro histórico y del área arqueológica, para quienes solo tienen un día para descubrir Roma. 14 paradas desde el Coliseo hasta Trastevere, con audioguía completa en italiano e inglés.",
+    rm_tourt_vaticano:"Museos Vaticanos y Capilla Sixtina",
+    rm_tourd_vaticano:"Las obras imprescindibles en un par de horas: desde la Pinacoteca hasta el Laocoonte, desde las Estancias de Rafael hasta la Capilla Sixtina. Recorrido por paradas numeradas, sin necesidad de GPS. 18 paradas, disponible en italiano e inglés.",
+    rm_tourt_trastevere:"Trastevere Escondida",
+    rm_tourd_trastevere:"El lado del barrio que los turistas no ven. 8 paradas entre callejones, claustros y plazoletas olvidadas.",
+    rm_tourt_sanpietro:"San Pedro y Borgo Pio",
+    rm_tourd_sanpietro:"Desde el Puente de Sant'Angelo hasta la Cúpula de Miguel Ángel, pasando por la Guardia Suiza y el último barrio popular junto al Vaticano. 8 paradas, disponible en italiano e inglés.",
+    rm_tourt_ghetto_testaccio:"Del Gueto al Matadero",
+    rm_tourd_ghetto_testaccio:"La historia de la cocina humilde romana, desde las alcachofas a la judía hasta el rabo de toro. 8 paradas desde el Gueto judío hasta Testaccio.",
+    rm_tourt_esoterica:"Roma Esotérica",
+    rm_tourd_esoterica:"Fantasmas imperiales, astrología escondida en las iglesias, osarios convertidos en arte, leyendas de monos salvadores y barrios construidos como enigmas de piedra. 9 paradas en la Roma secreta, en italiano e inglés."
   },
   fr: {
     nav_home:"Accueil", nav_camere:"Chambres", nav_dove:"Accès", nav_roma:"Rome", nav_info:"Infos", nav_contatti:"Contact",
@@ -802,7 +838,19 @@ window.IU_I18N = {
     inf_lr9_t:"Interdiction de fumer",
     inf_lr9_b:"<p>Le logement est strictement non-fumeur.</p>",
     inf_lr10_t:"Jacuzzi dans la chambre",
-    inf_lr10_b:"<p>Votre chambre est équipée d’une baignoire à hydromassage, prête à l’emploi et incluse dans le séjour.</p><p>Attention à l’interrupteur : si l’hydromassage ne démarre pas, vérifiez que l’interrupteur près de la lumière de la salle de bain est activé.</p>"
+    inf_lr10_b:"<p>Votre chambre est équipée d’une baignoire à hydromassage, prête à l’emploi et incluse dans le séjour.</p><p>Attention à l’interrupteur : si l’hydromassage ne démarre pas, vérifiez que l’interrupteur près de la lumière de la salle de bain est activé.</p>",
+    rm_tourt_roma:"Rome en un Jour",
+    rm_tourd_roma:"Les étapes incontournables du centre historique et de la zone archéologique, pour qui n'a qu'une journée pour découvrir Rome. 14 étapes du Colisée à Trastevere, avec audioguide complet en italien et en anglais.",
+    rm_tourt_vaticano:"Musées du Vatican et Chapelle Sixtine",
+    rm_tourd_vaticano:"Les œuvres incontournables en quelques heures: de la Pinacothèque au Laocoon, des Chambres de Raphaël à la Chapelle Sixtine. Parcours par étapes numérotées, sans GPS. 18 étapes, disponible en italien et en anglais.",
+    rm_tourt_trastevere:"Trastevere Caché",
+    rm_tourd_trastevere:"Le côté du quartier que les touristes ne voient pas. 8 étapes entre ruelles, cloîtres et petites places oubliées.",
+    rm_tourt_sanpietro:"Saint-Pierre et Borgo Pio",
+    rm_tourd_sanpietro:"Du Ponte Sant'Angelo au Dôme de Michel-Ange, en passant par la Garde suisse et le dernier quartier populaire près du Vatican. 8 étapes, disponible en italien et en anglais.",
+    rm_tourt_ghetto_testaccio:"Du Ghetto à l'Abattoir",
+    rm_tourd_ghetto_testaccio:"L'histoire de la cuisine populaire romaine, des artichauts à la juive à la queue de bœuf. 8 étapes du Ghetto juif à Testaccio.",
+    rm_tourt_esoterica:"Rome Ésotérique",
+    rm_tourd_esoterica:"Fantômes impériaux, astrologie cachée dans les églises, ossuaires transformés en art, légendes de singes sauveurs et quartiers construits comme des énigmes de pierre. 9 étapes dans la Rome secrète, en italien et en anglais."
   },
   de: {
     nav_home:"Start", nav_camere:"Zimmer", nav_dove:"Anfahrt", nav_roma:"Rom", nav_info:"Info", nav_contatti:"Kontakt",
@@ -1003,7 +1051,19 @@ window.IU_I18N = {
     inf_lr9_t:"Rauchen verboten",
     inf_lr9_b:"<p>Die Unterkunft ist strikt Nichtraucher.</p>",
     inf_lr10_t:"Whirlpool im Zimmer",
-    inf_lr10_b:"<p>Ihr Zimmer verfügt über eine Whirlpool-Wanne, einsatzbereit und im Aufenthalt inbegriffen.</p><p>Achten Sie auf den Einschalter: Falls die Massagefunktion nicht startet, prüfen Sie, ob der Schalter neben dem Badezimmerlicht eingeschaltet ist.</p>"
+    inf_lr10_b:"<p>Ihr Zimmer verfügt über eine Whirlpool-Wanne, einsatzbereit und im Aufenthalt inbegriffen.</p><p>Achten Sie auf den Einschalter: Falls die Massagefunktion nicht startet, prüfen Sie, ob der Schalter neben dem Badezimmerlicht eingeschaltet ist.</p>",
+    rm_tourt_roma:"Rom an einem Tag",
+    rm_tourd_roma:"Die unverzichtbaren Stationen der Altstadt und des archäologischen Gebiets, für alle, die nur einen Tag Zeit haben, Rom zu entdecken. 14 Stationen vom Kolosseum bis Trastevere, mit vollständigem Audioguide auf Italienisch und Englisch.",
+    rm_tourt_vaticano:"Vatikanische Museen und Sixtinische Kapelle",
+    rm_tourd_vaticano:"Die unverzichtbaren Meisterwerke in ein paar Stunden: von der Pinakothek über den Laokoon bis zu den Raffael-Zimmern und der Sixtinischen Kapelle. Nummerierte Stationen, kein GPS nötig. 18 Stationen, verfügbar auf Italienisch und Englisch.",
+    rm_tourt_trastevere:"Verstecktes Trastevere",
+    rm_tourd_trastevere:"Die Seite des Viertels, die Touristen nicht sehen. 8 Stationen durch Gassen, Klosterhöfe und vergessene kleine Plätze.",
+    rm_tourt_sanpietro:"Sankt Peter und Borgo Pio",
+    rm_tourd_sanpietro:"Von der Engelsbrücke bis zur Kuppel Michelangelos, vorbei an der Schweizergarde und dem letzten Arbeiterviertel neben dem Vatikan. 8 Stationen, verfügbar auf Italienisch und Englisch.",
+    rm_tourt_ghetto_testaccio:"Vom Ghetto zum Schlachthof",
+    rm_tourd_ghetto_testaccio:"Die Geschichte der einfachen römischen Küche, von Artischocken nach jüdischer Art bis zum Ochsenschwanz-Ragout. 8 Stationen vom jüdischen Ghetto bis Testaccio.",
+    rm_tourt_esoterica:"Esoterisches Rom",
+    rm_tourd_esoterica:"Kaiserliche Geister, in Kirchen versteckte Astrologie, zu Kunst gewordene Gebeinkrypten, Legenden rettender Affen und Viertel, die wie steinerne Rätsel gebaut sind. 9 Stationen durch das geheime Rom, auf Italienisch und Englisch."
   },
   pt: {
     nav_home:"Início", nav_camere:"Quartos", nav_dove:"Localização", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contato",
@@ -1204,7 +1264,19 @@ window.IU_I18N = {
     inf_lr9_t:"Proibido fumar",
     inf_lr9_b:"<p>O alojamento é rigorosamente não-fumador.</p>",
     inf_lr10_t:"Jacuzzi no quarto",
-    inf_lr10_b:"<p>O seu quarto tem banheira de hidromassagem, pronta a usar e incluída na estadia.</p><p>Atenção ao interruptor de ligação: se a hidromassagem não arrancar, verifique se o interruptor junto à luz da casa de banho está ligado.</p>"
+    inf_lr10_b:"<p>O seu quarto tem banheira de hidromassagem, pronta a usar e incluída na estadia.</p><p>Atenção ao interruptor de ligação: se a hidromassagem não arrancar, verifique se o interruptor junto à luz da casa de banho está ligado.</p>",
+    rm_tourt_roma:"Roma em um Dia",
+    rm_tourd_roma:"As paragens imperdíveis do centro histórico e da área arqueológica, para quem tem apenas um dia para descobrir Roma. 14 paragens do Coliseu a Trastevere, com áudioguia completo em italiano e inglês.",
+    rm_tourt_vaticano:"Museus do Vaticano e Capela Sistina",
+    rm_tourd_vaticano:"As obras imperdíveis em cerca de duas horas: da Pinacoteca ao Laocoonte, das Salas de Rafael à Capela Sistina. Percurso por paragens numeradas, sem necessidade de GPS. 18 paragens, disponível em italiano e inglês.",
+    rm_tourt_trastevere:"Trastevere Escondida",
+    rm_tourd_trastevere:"O lado do bairro que os turistas não veem. 8 paragens entre vielas, claustros e pracinhas esquecidas.",
+    rm_tourt_sanpietro:"São Pedro e Borgo Pio",
+    rm_tourd_sanpietro:"Da Ponte Sant'Angelo à Cúpula de Miguel Ângelo, passando pela Guarda Suíça e o último bairro popular junto ao Vaticano. 8 paragens, disponível em italiano e inglês.",
+    rm_tourt_ghetto_testaccio:"Do Gueto ao Matadouro",
+    rm_tourd_ghetto_testaccio:"A história da cozinha humilde romana, das alcachofras à judaica ao rabo de boi. 8 paragens do Gueto judaico a Testaccio.",
+    rm_tourt_esoterica:"Roma Esotérica",
+    rm_tourd_esoterica:"Fantasmas imperiais, astrologia escondida nas igrejas, ossários transformados em arte, lendas de macacos salvadores e bairros construídos como enigmas de pedra. 9 paragens na Roma secreta, em italiano e inglês."
   },
   zh: {
     nav_home:"首页", nav_camere:"房间", nav_dove:"位置", nav_roma:"罗马", nav_info:"信息", nav_contatti:"联系",
@@ -1405,6 +1477,18 @@ window.IU_I18N = {
     inf_lr9_t:"禁止吸烟",
     inf_lr9_b:"<p>本住宿严格禁止吸烟。</p>",
     inf_lr10_t:"客房按摩浴缸",
-    inf_lr10_b:"<p>您的客房配备按摩浴缸，随时可用，已包含在住宿费用中。</p><p>请注意开关按钮：如按摩功能无法启动，请检查浴室灯旁边的开关是否已打开。</p>"
+    inf_lr10_b:"<p>您的客房配备按摩浴缸，随时可用，已包含在住宿费用中。</p><p>请注意开关按钮：如按摩功能无法启动，请检查浴室灯旁边的开关是否已打开。</p>",
+    rm_tourt_roma:"罗马一日游",
+    rm_tourd_roma:"适合只有一天时间探索罗马的您：历史中心和考古区不容错过的景点。14个站点从斗兽场到特拉斯提弗列，配有完整的意大利语和英语语音导览。",
+    rm_tourt_vaticano:"梵蒂冈博物馆与西斯廷教堂",
+    rm_tourd_vaticano:"两小时内游览必看杰作：从画廊到拉奥孔，从拉斐尔房间到西斯廷教堂。编号站点路线，无需GPS。18个站点，提供意大利语和英语版本。",
+    rm_tourt_trastevere:"隐秘的特拉斯提弗列",
+    rm_tourd_trastevere:"游客看不到的街区另一面。8个站点，穿梭于小巷、回廊和被遗忘的小广场之间。",
+    rm_tourt_sanpietro:"圣彼得大教堂与庇护城区",
+    rm_tourd_sanpietro:"从圣天使桥到米开朗基罗的穹顶，途经瑞士卫队和梵蒂冈旁最后的平民街区。8个站点，提供意大利语和英语版本。",
+    rm_tourt_ghetto_testaccio:"从犹太区到屠宰场",
+    rm_tourd_ghetto_testaccio:"罗马平民美食的故事，从犹太风味朝鲜蓟到牛尾炖菜。8个站点，从犹太区到泰斯塔乔。",
+    rm_tourt_esoterica:"神秘罗马",
+    rm_tourd_esoterica:"帝国幽灵、隐藏在教堂中的占星术、化为艺术的骸骨墓穴、拯救者猿猴的传说，以及如石头谜题般建造的街区。9个站点带您探索神秘罗马，配有意大利语和英语讲解。"
   }
 };
