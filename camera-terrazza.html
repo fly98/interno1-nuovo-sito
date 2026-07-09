@@ -367,6 +367,7 @@
 </style>
 <link rel="stylesheet" href="assets/chat-widget.css">
 <link rel="stylesheet" href="assets/reveal.css">
+  <link rel="stylesheet" href="assets/i18n.css">
 </head>
 <body>
 
@@ -376,19 +377,20 @@
     <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
   </div>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
     <a href="camere.html" class="on">Camere</a>
-    <a href="dove-siamo.html">Dove siamo</a>
-    <a href="roma.html">Roma</a>
-    <a href="info.html">Info</a>
-    <a href="contatti.html">Contatti</a>
+    <a href="dove-siamo.html" data-i18n="nav_dove">Dove siamo</a>
+    <a href="roma.html" data-i18n="nav_roma">Roma</a>
+    <a href="info.html" data-i18n="nav_info">Info</a>
+    <a href="contatti.html" data-i18n="nav_contatti">Contatti</a>
   </nav>
+  <div id="iu-lang-switch"></div>
   <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 <div class="nav-backdrop" id="navBackdrop"></div>
 
 <div class="breadcrumb">
-  <a href="camere.html">Camere</a> / <a href="camere.html">InternoUno Deluxe · Via Lorenzo il Magnifico 158</a> / Matrimoniale con Terrazza
+  <a href="camere.html" data-i18n="nav_camere">Camere</a> / <a href="camere.html">InternoUno Deluxe · Via Lorenzo il Magnifico 158</a> / Matrimoniale con Terrazza
 </div>
 
 <section class="room-hero">
@@ -398,55 +400,65 @@
     </video>
     <div class="overlay"></div>
     <div class="caption">
-      <span class="tag">InternoUno Deluxe · Via Lorenzo il Magnifico 158</span>
-      <h1>Matrimoniale con Terrazza</h1>
+      <span class="tag" data-i18n="rp_sede_lorenzo">InternoUno Deluxe · Via Lorenzo il Magnifico 158</span>
+      <h1 data-i18n="room_terrazza_name">Matrimoniale con Terrazza</h1>
     </div>
   </div>
 </section>
 
 <div class="room-facts">
-  <span>Accoglie 2 persone</span>
-  <span>12 m²</span>
-  <span>1 letto matrimoniale</span>
-  <span>Terrazza privata</span>
+  <span data-i18n="te_info1">Accoglie 2 persone</span>
+  <span data-i18n="te_info2">12 m²</span>
+  <span data-i18n="te_info3">1 letto matrimoniale</span>
+  <span data-i18n="te_info4">Terrazza privata</span>
 </div>
 
 <main>
   <div class="room-desc">
-    <h2>Descrizione</h2>
-    <p>Monolocale composto da un letto matrimoniale e un letto singolo a scomparsa. La camera dispone di bagno privato con doccia, angolo cottura completo e aria condizionata.</p>
-    <p>L'angolo cottura è dotato di piastra a induzione e della dotazione essenziale di piatti, pentole, bicchieri e posate, pensata per preparazioni semplici.</p>
+    <h2 data-i18n="rp_h_desc">Descrizione</h2>
+    <p data-i18n="te_desc1">Monolocale con letto matrimoniale e terrazza privata. Bagno privato con vasca idromassaggio, angolo cottura completo e aria condizionata. Stessi servizi della Superior, in dimensioni più compatte.</p>
+    <p data-i18n="te_desc2">L'angolo cottura è dotato della dotazione essenziale di piatti, pentole, bicchieri e posate, pensata per preparazioni semplici.</p>
 
-    <a class="room-cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener">Prenota questa camera</a>
+    <a class="room-cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener" data-i18n="rp_cta">Prenota questa camera</a>
   </div>
 
   <div class="room-amenities">
-    <h2>Dotazioni</h2>
+    <h2 data-i18n="rp_h_dotazioni">Dotazioni</h2>
     <ul>
-      <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="M9 8.5l2 2 4-4"/></svg> TV 32'' con Netflix incluso</li>
-      <li><svg viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg> Wifi</li>
-      <li><svg viewBox="0 0 24 24"><path d="M12 3v6M8 9h8l2 4H6l2-4Z"/><path d="M6 13v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/></svg> Appendiabiti</li>
-      <li><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 11v2M11 11v2M15 11v2"/></svg> Aria condizionata</li>
-      <li><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="2" rx="0.5"/><path d="M5 12v6M19 12v6"/><path d="M7 18h2M15 18h2"/></svg> Tavolo e sedie</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="6"/><path d="M15 14h5"/><path d="M6.5 11.5v5M11.5 11.5v5"/></svg> Angolo cottura</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="6.5"/><path d="M16.3 14H21"/><path d="M7.5 11.5v5M12.5 11.5v5"/></svg> Vasca idromassaggio</li>
-      <li><svg viewBox="0 0 24 24"><path d="M4 4v16M4 4h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4"/></svg> Terrazza privata</li>
-      <li><svg viewBox="0 0 24 24"><path d="M5 4c4 0 6 3 6 7s-2 9-2 9"/><path d="M13 4c4 3 4 8 2 12"/></svg> Asciugacapelli</li>
-      <li><svg viewBox="0 0 24 24"><path d="M8 3a4 4 0 0 1 8 0c0 3-2 3-2 6H10c0-3-2-3-2-6Z"/><path d="M7 12h10l-1 9H8l-1-9Z"/></svg> Doccia</li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="M9 8.5l2 2 4-4"/></svg> <span data-i18n="dt_tv32">TV 32'' con Netflix incluso</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg> <span data-i18n="dt_wifi">Wifi</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 3v6M8 9h8l2 4H6l2-4Z"/><path d="M6 13v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/></svg> <span data-i18n="dt_appendiabiti">Appendiabiti</span></li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 11v2M11 11v2M15 11v2"/></svg> <span data-i18n="dt_ac">Aria condizionata</span></li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="2" rx="0.5"/><path d="M5 12v6M19 12v6"/><path d="M7 18h2M15 18h2"/></svg> <span data-i18n="dt_tavolo">Tavolo e sedie</span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="6"/><path d="M15 14h5"/><path d="M6.5 11.5v5M11.5 11.5v5"/></svg> <span data-i18n="dt_angolo">Angolo cottura</span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="6.5"/><path d="M16.3 14H21"/><path d="M7.5 11.5v5M12.5 11.5v5"/></svg> <span data-i18n="dt_idro">Vasca idromassaggio</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 4v16M4 4h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4"/></svg> <span data-i18n="dt_terrazza">Terrazza privata</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M5 4c4 0 6 3 6 7s-2 9-2 9"/><path d="M13 4c4 3 4 8 2 12"/></svg> <span data-i18n="dt_asciugacapelli">Asciugacapelli</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M8 3a4 4 0 0 1 8 0c0 3-2 3-2 6H10c0-3-2-3-2-6Z"/><path d="M7 12h10l-1 9H8l-1-9Z"/></svg> <span data-i18n="dt_doccia">Doccia</span></li>
     </ul>
   </div>
 
   <div class="room-gallery">
-    <h2>Galleria fotografica</h2>
-    <p style="font-size:0.88rem; color:#6b6357; margin-bottom:1rem;">In arrivo — foto in preparazione.</p>
+    <h2 data-i18n="rp_h_galleria">Galleria fotografica</h2>
     <div class="gallery-grid" id="galleryGrid">
+      <img src="assets/gallery-terrazza-IMG_0094.jpg" alt="Foto camera 1">
+      <img src="assets/gallery-terrazza-IMG_0181.jpg" alt="Foto camera 2">
+      <img src="assets/gallery-terrazza-IMG_0095.jpg" alt="Foto camera 3">
+      <img src="assets/gallery-terrazza-IMG_0099.jpg" alt="Foto camera 4">
+      <img src="assets/gallery-terrazza-IMG_0092.jpg" alt="Foto camera 5">
+      <img src="assets/gallery-terrazza-IMG_0179.jpg" alt="Foto camera 6">
+      <img src="assets/gallery-terrazza-IMG_0183.jpg" alt="Foto camera 7">
+      <img src="assets/gallery-terrazza-IMG_0093.jpg" alt="Foto camera 8">
+      <img src="assets/gallery-terrazza-IMG_0090.jpg" alt="Foto camera 9">
+      <img src="assets/gallery-terrazza-IMG_0188.jpg" alt="Foto camera 10">
+      <img src="assets/gallery-terrazza-IMG_0209.jpg" alt="Foto camera 11">
     </div>
   </div>
 </main>
 
 <footer>
   <div class="footer-top">
-    <span class="footer-brand">InternoUno — A Roma dal 2007</span>
+    <span class="footer-brand"><span data-i18n="foot_tagline">InternoUno — A Roma dal 2007</span></span>
     <div class="footer-social">
       <a class="social-icon whatsapp" href="https://wa.me/393922999914" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2m0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.21-8.21 8.21m4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.65.31-.22.24-.85.84-.85 2.04s.87 2.37 1 2.53c.12.17 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29"/></svg>
@@ -460,7 +472,7 @@
     </div>
   </div>
   <div class="footer-info">
-    <span>Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span>
+    <span><span data-i18n="foot_addr">Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span></span>
     <a href="tel:+393922999914">+39 392 299 9914</a>
     <a href="mailto:info@interno1.it">info@interno1.it</a>
   </div>
@@ -561,5 +573,7 @@
 <script src="assets/chat-widget.js"></script>
 
 <script src="assets/reveal.js"></script>
+  <script src="assets/translations.js"></script>
+  <script src="assets/i18n.js"></script>
 </body>
 </html>
