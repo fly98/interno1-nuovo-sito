@@ -633,6 +633,8 @@
   .rating-row{
     display:flex;
     justify-content:center;
+    gap:1.2rem;
+    flex-wrap:wrap;
     margin-bottom:2.2rem;
   }
   .rating-badge{
@@ -645,6 +647,19 @@
     text-decoration:none;
     box-shadow:0 6px 20px rgba(30,25,15,0.08);
   }
+  .brand-logo{
+    font-weight:700;
+    font-size:0.95rem;
+    white-space:nowrap;
+  }
+  .brand-logo.booking{ color:#003580; }
+  .brand-logo.google{
+    display:flex;
+    align-items:center;
+    gap:0.3rem;
+    color:#3c4043;
+  }
+  .brand-logo.google svg{ width:20px; height:20px; }
   .rating-badge .rating-num{
     font-family:'Fraunces', serif;
     font-weight:600;
@@ -688,6 +703,21 @@
     font-size:0.78rem;
     color:#8a7f68;
     font-weight:500;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:0.4rem;
+  }
+  .review-card .source{
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    background:var(--crema);
+    padding:0.2rem 0.55rem;
+    border-radius:100px;
+    color:#6b6357;
+    font-weight:600;
   }
   @media (max-width: 780px){
     .reviews-grid{ grid-template-columns:1fr 1fr; }
@@ -809,41 +839,43 @@
 <section class="dicono-di-noi reveal">
   <span class="eyebrow">Dicono di noi</span>
   <div class="rating-row">
-    <a class="rating-badge" href="https://www.booking.com/hotel/it/interno-1.it.html" target="_blank" rel="noopener">
+    <a class="rating-badge" href="https://www.booking.com/hotel/it/internouno.html" target="_blank" rel="noopener">
+      <span class="brand-logo booking">Booking.com</span>
       <span class="rating-num">8,6</span>
-      <span class="rating-label">Favoloso<br><small>Booking.com · 703 recensioni</small></span>
+      <span class="rating-label">Favoloso<br><small>703 recensioni</small></span>
     </a>
+    <!-- Badge Google: da attivare quando arrivano i dati -->
   </div>
   <div class="reviews-grid">
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Perfetta è stata la struttura. Facile da raggiungere, pulita, confidenziale e ben organizzata."</p>
-      <span class="author">Lorenzo · 🇮🇹</span>
+      <span class="author">Lorenzo · 🇮🇹 <span class="source">Booking.com</span></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Stanza pulita e con molti confort. Posizione ottima con treni, autobus e metro vicinissimi."</p>
-      <span class="author">Ilenia · 🇮🇹</span>
+      <span class="author">Ilenia · 🇮🇹 <span class="source">Booking.com</span></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Struttura pulita e accogliente di fronte la stazione Tiburtina. Consigliato!"</p>
-      <span class="author">Wanda · 🇮🇹</span>
+      <span class="author">Wanda · 🇮🇹 <span class="source">Booking.com</span></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"The location is amazing, right next to the Tiburtina metro station, so commuting was incredibly easy."</p>
-      <span class="author">Dior · 🇬🇧</span>
+      <span class="author">Dior · 🇬🇧 <span class="source">Booking.com</span></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Localização, limpeza... hotel incrivelmente acolhedor, superou minhas expectativas."</p>
-      <span class="author">Nisia · 🇵🇹</span>
+      <span class="author">Nisia · 🇵🇹 <span class="source">Booking.com</span></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Très bien, juste à côté du métro, propriétaire très sympa et disponible."</p>
-      <span class="author">OEC1 · 🇫🇷</span>
+      <span class="author">OEC1 · 🇫🇷 <span class="source">Booking.com</span></span>
     </div>
   </div>
 </section>
