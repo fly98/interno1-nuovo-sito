@@ -214,24 +214,37 @@
     z-index:1;
   }
   .stop-marker{
-    padding:0.35rem 0.7rem;
-    border-radius:100px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     box-shadow:0 3px 8px rgba(0,0,0,0.3);
     border:2px solid #fff;
-    white-space:nowrap;
   }
   .stop-marker span{
     color:#fff;
     font-family:'Michroma', sans-serif;
-    font-size:0.58rem;
-    text-transform:uppercase;
-    letter-spacing:0.02em;
+    font-size:0.8rem;
   }
   .stop-marker.gialla{ background:#FF6628; }
   .stop-marker.deluxe{ background:#14171C; }
+  .box-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    color:#fff;
+    font-family:'Michroma', sans-serif;
+    font-size:0.62rem;
+    vertical-align:middle;
+    margin-right:0.2rem;
+  }
+  .box-num.gialla{ background:#FF6628; }
+  .box-num.deluxe{ background:#14171C; }
   .direzioni-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -349,7 +362,7 @@
 
   <div class="direzioni-grid">
     <div class="direzione-box">
-      <span class="eyebrow" style="color:#8a7f68;">InternoUno</span>
+      <span class="eyebrow" style="color:#8a7f68;"><span class="box-num gialla">1</span> InternoUno</span>
       <h3 class="via-title">Via Campaldino 6 <a class="nav-icon" href="https://www.google.com/maps/dir/?api=1&destination=41.9085842,12.5216869" target="_blank" rel="noopener" aria-label="Naviga fin qui">
         <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
       </a></h3>
@@ -374,7 +387,7 @@
       </div>
     </div>
     <div class="direzione-box">
-      <span class="eyebrow" style="color:#8a7f68;">InternoUno Deluxe</span>
+      <span class="eyebrow" style="color:#8a7f68;"><span class="box-num deluxe">2</span> InternoUno Deluxe</span>
       <h3 class="via-title">Via Lorenzo il Magnifico 158 <a class="nav-icon" href="https://www.google.com/maps/dir/?api=1&destination=41.9108676,12.5285824" target="_blank" rel="noopener" aria-label="Naviga fin qui">
         <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
       </a></h3>
@@ -478,15 +491,15 @@
 
   var giallaIcon = L.divIcon({
     className: '',
-    html: '<div class="stop-marker gialla"><span>InternoUno</span></div>',
-    iconSize: null,
-    iconAnchor: [40, 16]
+    html: '<div class="stop-marker gialla"><span>1</span></div>',
+    iconSize: [34, 34],
+    iconAnchor: [17, 17]
   });
   var deluxeIcon = L.divIcon({
     className: '',
-    html: '<div class="stop-marker deluxe"><span>InternoUno Deluxe</span></div>',
-    iconSize: null,
-    iconAnchor: [58, 16]
+    html: '<div class="stop-marker deluxe"><span>2</span></div>',
+    iconSize: [34, 34],
+    iconAnchor: [17, 17]
   });
 
   L.marker([41.9085842, 12.5216869], { icon: giallaIcon }).addTo(map)
