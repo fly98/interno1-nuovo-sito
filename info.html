@@ -154,94 +154,6 @@
     padding:3.5rem 5vw 4rem;
   }
 
-  .struttura-block{
-    margin-bottom:3.5rem;
-  }
-  .struttura-block .struttura-head{
-    display:flex;
-    align-items:baseline;
-    gap:0.8rem;
-    margin-bottom:1.6rem;
-    border-bottom:1px solid rgba(38,34,27,0.15);
-    padding-bottom:0.9rem;
-  }
-  .struttura-head .eyebrow{
-    font-family:'Michroma', sans-serif;
-    font-size:0.62rem;
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    color:var(--legno);
-  }
-  .struttura-head h2{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-size:1.5rem;
-  }
-  .struttura-head .indirizzo-mini{
-    font-size:0.82rem;
-    color:#6b6357;
-    margin-left:auto;
-  }
-
-  .camere-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:1.4rem;
-  }
-  .camera-card{
-    background:#fff;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 6px 18px rgba(30,25,15,0.08);
-    display:flex;
-    flex-direction:column;
-    text-decoration:none;
-    color:inherit;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .camera-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 26px rgba(30,25,15,0.13);
-  }
-  .camera-card img, .camera-card video{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    display:block;
-  }
-  .camera-card .info{
-    padding:1.2rem 1.3rem 1.5rem;
-    flex:1;
-    display:flex;
-    flex-direction:column;
-  }
-  .camera-card h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-size:1.08rem;
-    margin-bottom:0.7rem;
-  }
-  .camera-card .servizi{
-    display:flex;
-    flex-wrap:wrap;
-    gap:0.4rem;
-    margin-top:auto;
-  }
-  .camera-card .servizi span{
-    font-size:0.7rem;
-    letter-spacing:0.03em;
-    background:var(--crema);
-    color:#4a4033;
-    padding:0.3rem 0.6rem;
-    border-radius:100px;
-  }
-  .camera-card p{
-    font-size:0.87rem;
-    color:#4a453a;
-    line-height:1.55;
-    margin-bottom:0.9rem;
-  }
-
   footer{
     background:var(--notte);
     color:var(--testo-chiaro);
@@ -341,12 +253,6 @@
   }
   .info-acc .body p{ margin-bottom:0.6rem; }
   .info-acc .body b{ color:#3a352c; }
-  .info-section-title{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    font-size:1.15rem;
-    margin:2rem 0 1rem;
-  }
   .info-pill-row{ display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
   .info-pill{
     background:var(--crema);
@@ -367,18 +273,6 @@
     font-size:0.85rem;
     box-shadow:0 3px 10px rgba(30,25,15,0.05);
   }
-  .servizio-item .nome{ font-weight:600; color:#3a352c; display:block; margin-bottom:0.2rem; }
-  .servizio-item .dettaglio{ color:#8a7f68; font-size:0.8rem; }
-  .rist-item{
-    background:#fff;
-    border-radius:10px;
-    padding:0.9rem 1.1rem;
-    margin-bottom:0.6rem;
-    box-shadow:0 3px 10px rgba(30,25,15,0.05);
-  }
-  .rist-item .nome-riga{ display:flex; justify-content:space-between; font-weight:600; color:#3a352c; font-size:0.9rem; margin-bottom:0.2rem;}
-  .rist-item .dettaglio{ font-size:0.78rem; color:#8a7f68; margin-bottom:0.35rem; }
-  .rist-item .descr{ font-size:0.84rem; color:#4a453a; line-height:1.5; }
   @media (max-width: 560px){
     .numeri-grid, .servizi-grid{ grid-template-columns:1fr; }
   }
