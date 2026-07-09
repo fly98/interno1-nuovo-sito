@@ -248,6 +248,10 @@
     display:block;
     transition:transform .2s ease;
   }
+  .roma-card.has-img{ padding:0; overflow:hidden; }
+  .roma-card.has-img .roma-card-body{ padding:1.2rem 1.5rem 1.4rem; }
+  .roma-card-img{ width:100%; aspect-ratio:16/9; overflow:hidden; background:#f0ece3; }
+  .roma-card-img img{ width:100%; height:100%; object-fit:cover; display:block; }
   .roma-card:hover{ transform:translateY(-2px); }
   .roma-card .emoji{ font-size:1.3rem; margin-bottom:0.5rem; display:block; }
   .roma-card h3{
@@ -521,12 +525,17 @@
         return;
       }
       container.innerHTML = items.map(function(e){
-        return '<a class="roma-card" href="' + e.link + '" target="_blank" rel="noopener">' +
+        var foto = e.img ? '<div class="roma-card-img"><img src="' + e.img + '" alt="" loading="lazy"></div>' : '';
+        var cls = e.img ? 'roma-card has-img' : 'roma-card';
+        return '<a class="' + cls + '" href="' + e.link + '" target="_blank" rel="noopener">' +
+          foto +
+          '<div class="roma-card-body">' +
           '<span class="emoji">' + e.emoji + '</span>' +
           '<div class="quando">' + e.quando + '</div>' +
           '<h3>' + e.titolo + '</h3>' +
           '<div class="dove">' + e.dove + '</div>' +
           '<div class="descr">' + e.descr + '</div>' +
+          '</div>' +
         '</a>';
       }).join('');
     }
