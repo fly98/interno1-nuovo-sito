@@ -302,21 +302,21 @@
     z-index:1;
   }
   .stop-marker{
-    width:38px;
-    height:38px;
-    border-radius:50% 50% 50% 0;
-    transform:rotate(-45deg);
+    padding:0.35rem 0.7rem;
+    border-radius:100px;
     display:flex;
     align-items:center;
     justify-content:center;
     box-shadow:0 3px 8px rgba(0,0,0,0.3);
     border:2px solid #fff;
+    white-space:nowrap;
   }
   .stop-marker span{
-    transform:rotate(45deg);
     color:#fff;
     font-family:'Michroma', sans-serif;
-    font-size:0.6rem;
+    font-size:0.58rem;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
   }
   .stop-marker.gialla{ background:#FF6628; }
   .stop-marker.deluxe{ background:#14171C; }
@@ -380,16 +380,26 @@
     .direzioni-grid{ grid-template-columns:1fr; }
     #dove-map{ height:340px; }
   }
-  .nav-btn{
-    display:inline-block;
-    margin-bottom:1rem;
-    background:var(--legno);
-    color:#fff;
-    font-size:0.8rem;
-    font-weight:500;
-    padding:0.5rem 0.9rem;
-    border-radius:100px;
-    text-decoration:none;
+  .via-title{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .nav-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#2FA84F;
+    flex-shrink:0;
+  }
+  .nav-icon svg{
+    width:13px;
+    height:13px;
+    fill:#fff;
+    stroke:#fff;
   }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -428,8 +438,9 @@
   <div class="direzioni-grid">
     <div class="direzione-box">
       <span class="eyebrow" style="color:#8a7f68;">InternoUno</span>
-      <h3>Via Campaldino 6</h3>
-      <a class="nav-btn" href="https://www.google.com/maps/dir/?api=1&destination=41.9085842,12.5216869" target="_blank" rel="noopener">🧭 Naviga fin qui</a>
+      <h3 class="via-title">Via Campaldino 6 <a class="nav-icon" href="https://www.google.com/maps/dir/?api=1&destination=41.9085842,12.5216869" target="_blank" rel="noopener" aria-label="Naviga fin qui">
+        <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+      </a></h3>
 
       <div class="sub-section">
         <h4>🚆 Con i mezzi pubblici</h4>
@@ -452,8 +463,9 @@
     </div>
     <div class="direzione-box">
       <span class="eyebrow" style="color:#8a7f68;">InternoUno Deluxe</span>
-      <h3>Via Lorenzo il Magnifico 158</h3>
-      <a class="nav-btn" href="https://www.google.com/maps/dir/?api=1&destination=41.9108676,12.5285824" target="_blank" rel="noopener">🧭 Naviga fin qui</a>
+      <h3 class="via-title">Via Lorenzo il Magnifico 158 <a class="nav-icon" href="https://www.google.com/maps/dir/?api=1&destination=41.9108676,12.5285824" target="_blank" rel="noopener" aria-label="Naviga fin qui">
+        <svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+      </a></h3>
 
       <div class="sub-section">
         <h4>🚆 Con i mezzi pubblici</h4>
@@ -554,15 +566,15 @@
 
   var giallaIcon = L.divIcon({
     className: '',
-    html: '<div class="stop-marker gialla"><span>1</span></div>',
-    iconSize: [38, 38],
-    iconAnchor: [19, 38]
+    html: '<div class="stop-marker gialla"><span>InternoUno</span></div>',
+    iconSize: null,
+    iconAnchor: [40, 16]
   });
   var deluxeIcon = L.divIcon({
     className: '',
-    html: '<div class="stop-marker deluxe"><span>2</span></div>',
-    iconSize: [38, 38],
-    iconAnchor: [19, 38]
+    html: '<div class="stop-marker deluxe"><span>InternoUno Deluxe</span></div>',
+    iconSize: null,
+    iconAnchor: [58, 16]
   });
 
   L.marker([41.9085842, 12.5216869], { icon: giallaIcon }).addTo(map)
