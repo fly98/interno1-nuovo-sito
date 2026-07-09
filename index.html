@@ -648,11 +648,11 @@
     box-shadow:0 6px 20px rgba(30,25,15,0.08);
   }
   .brand-logo-img{
-    width:34px;
-    height:34px;
+    width:52px;
+    height:52px;
     object-fit:contain;
     flex-shrink:0;
-    border-radius:8px;
+    border-radius:10px;
   }
   .brand-logo-img.round{ border-radius:50%; }
   .rating-badge .rating-num{
@@ -671,31 +671,31 @@
   .reviews-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:1.2rem;
+    gap:0.9rem;
   }
   .review-card{
     background:#fff;
-    border-radius:14px;
-    padding:1.6rem 1.5rem;
+    border-radius:12px;
+    padding:1.15rem 1.2rem;
     text-align:left;
-    box-shadow:0 6px 20px rgba(30,25,15,0.07);
+    box-shadow:0 5px 16px rgba(30,25,15,0.07);
   }
   .review-card .stars{
     color:#FF6628;
-    font-size:0.9rem;
+    font-size:0.78rem;
     letter-spacing:0.1em;
     display:block;
-    margin-bottom:0.7rem;
+    margin-bottom:0.5rem;
   }
   .review-card p{
-    font-size:0.87rem;
+    font-size:0.82rem;
     color:#4a453a;
-    line-height:1.55;
-    margin-bottom:0.9rem;
+    line-height:1.45;
+    margin-bottom:0.6rem;
     font-style:italic;
   }
   .review-card .author{
-    font-size:0.78rem;
+    font-size:0.75rem;
     color:#8a7f68;
     font-weight:500;
     display:flex;
@@ -704,15 +704,12 @@
     flex-wrap:wrap;
     gap:0.4rem;
   }
-  .review-card .source{
-    font-size:0.68rem;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    background:var(--crema);
-    padding:0.2rem 0.55rem;
-    border-radius:100px;
-    color:#6b6357;
-    font-weight:600;
+  .review-card .source-icon{
+    width:20px;
+    height:20px;
+    object-fit:contain;
+    border-radius:5px;
+    flex-shrink:0;
   }
   @media (max-width: 780px){
     .reviews-grid{ grid-template-columns:1fr 1fr; }
@@ -849,52 +846,46 @@
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Perfetta è stata la struttura. Facile da raggiungere, pulita, confidenziale e ben organizzata."</p>
-      <span class="author">Lorenzo · 🇮🇹 <span class="source">Booking.com</span></span>
+      <span class="author">Lorenzo · 🇮🇹 <img class="source-icon" src="assets/logo-booking-mini.png" alt="Booking.com"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Stanza pulita e con molti confort. Posizione ottima con treni, autobus e metro vicinissimi."</p>
-      <span class="author">Ilenia · 🇮🇹 <span class="source">Booking.com</span></span>
+      <span class="author">Ilenia · 🇮🇹 <img class="source-icon" src="assets/logo-booking-mini.png" alt="Booking.com"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Struttura pulita e accogliente di fronte la stazione Tiburtina. Consigliato!"</p>
-      <span class="author">Wanda · 🇮🇹 <span class="source">Booking.com</span></span>
+      <span class="author">Wanda · 🇮🇹 <img class="source-icon" src="assets/logo-booking-mini.png" alt="Booking.com"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"The location is amazing, right next to the Tiburtina metro station, so commuting was incredibly easy."</p>
-      <span class="author">Dior · 🇬🇧 <span class="source">Booking.com</span></span>
+      <span class="author">Dior · 🇬🇧 <img class="source-icon" src="assets/logo-booking-mini.png" alt="Booking.com"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Localização, limpeza... hotel incrivelmente acolhedor, superou minhas expectativas."</p>
-      <span class="author">Nisia · 🇵🇹 <span class="source">Booking.com</span></span>
-    </div>
-    <div class="review-card">
-      <span class="stars">★★★★★</span>
-      <p>"Très bien, juste à côté du métro, propriétaire très sympa et disponible."</p>
-      <span class="author">OEC1 · 🇫🇷 <span class="source">Booking.com</span></span>
-    </div>
-    <div class="review-card">
+      <span class="author">Nisia · 🇵🇹 <img class="source-icon" src="assets/logo-booking-mini.png" alt="Booking.com"></span>
+    </div>    <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Viaggio per lavoro. Esperienza ottima. La camera graziosa e soprattutto pulita, come il bagno, è curata in ogni dettaglio, per farti sentire a casa."</p>
-      <span class="author">Rosita Accorinti · 🇮🇹 <span class="source">Google</span></span>
+      <span class="author">Rosita Accorinti · 🇮🇹 <img class="source-icon" src="assets/logo-google-mini.png" alt="Google"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Esperienza molto positiva, posizione comoda, la struttura è pulita e confortevole, personale gentile, penso di ritornare."</p>
-      <span class="author">Anna D'Angelo · 🇮🇹 <span class="source">Google</span></span>
+      <span class="author">Anna D'Angelo · 🇮🇹 <img class="source-icon" src="assets/logo-google-mini.png" alt="Google"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Personale molto cordiale ed accogliente, camere super fornite e confortevoli. Ci siamo trovati benissimo."</p>
-      <span class="author">Chiara Dapreda · 🇮🇹 <span class="source">Google</span></span>
+      <span class="author">Chiara Dapreda · 🇮🇹 <img class="source-icon" src="assets/logo-google-mini.png" alt="Google"></span>
     </div>
     <div class="review-card">
       <span class="stars">★★★★★</span>
       <p>"Ci siamo trovati davvero molto bene. Grande disponibilità di orario per il check-in e check-out in base al nostro orario di arrivo e partenza."</p>
-      <span class="author">Mascia Renzi · 🇮🇹 <span class="source">Google</span></span>
+      <span class="author">Mascia Renzi · 🇮🇹 <img class="source-icon" src="assets/logo-google-mini.png" alt="Google"></span>
     </div>
   </div>
 </section>
