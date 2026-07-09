@@ -45,3 +45,13 @@
   cursor:pointer;
 }
 .iu-lang-opt:hover{ background:#f3efe6; }
+
+/* ===== Layout header: menu centrato, lingua a destra ===== */
+@media (min-width: 721px){
+  header{ position:relative; }
+  header nav{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+  }
+}
