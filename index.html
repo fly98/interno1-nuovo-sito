@@ -616,6 +616,85 @@
     .indirizzi{ grid-template-columns:1fr; }
     .perche-grid{ grid-template-columns:1fr 1fr; }
   }
+  .dicono-di-noi{
+    max-width:1000px;
+    margin:0 auto;
+    padding:1rem 5vw 4rem;
+    text-align:center;
+  }
+  .dicono-di-noi .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#8a7f68;
+    display:block;
+    margin-bottom:1.2rem;
+  }
+  .rating-row{
+    display:flex;
+    justify-content:center;
+    margin-bottom:2.2rem;
+  }
+  .rating-badge{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    background:#fff;
+    border-radius:14px;
+    padding:1rem 1.6rem;
+    text-decoration:none;
+    box-shadow:0 6px 20px rgba(30,25,15,0.08);
+  }
+  .rating-badge .rating-num{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:2.1rem;
+    color:#003580;
+  }
+  .rating-badge .rating-label{
+    font-size:0.78rem;
+    color:#4a453a;
+    text-align:left;
+    line-height:1.3;
+  }
+  .rating-badge .rating-label small{ color:#8a7f68; }
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.2rem;
+  }
+  .review-card{
+    background:#fff;
+    border-radius:14px;
+    padding:1.6rem 1.5rem;
+    text-align:left;
+    box-shadow:0 6px 20px rgba(30,25,15,0.07);
+  }
+  .review-card .stars{
+    color:#FF6628;
+    font-size:0.9rem;
+    letter-spacing:0.1em;
+    display:block;
+    margin-bottom:0.7rem;
+  }
+  .review-card p{
+    font-size:0.87rem;
+    color:#4a453a;
+    line-height:1.55;
+    margin-bottom:0.9rem;
+    font-style:italic;
+  }
+  .review-card .author{
+    font-size:0.78rem;
+    color:#8a7f68;
+    font-weight:500;
+  }
+  @media (max-width: 780px){
+    .reviews-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 520px){
+    .reviews-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -727,10 +806,46 @@
 
 
 
-<section class="recensioni" style="max-width:1000px; margin:0 auto; padding:1rem 5vw 4rem;">
-  <!-- Elfsight Booking.com Reviews | Untitled Booking.com Reviews -->
-  <script src="https://elfsightcdn.com/platform.js" async></script>
-  <div class="elfsight-app-0804dc2d-ce5a-4ccd-ad28-9155e3db09bd" data-elfsight-app-lazy></div>
+<section class="dicono-di-noi reveal">
+  <span class="eyebrow">Dicono di noi</span>
+  <div class="rating-row">
+    <a class="rating-badge" href="https://www.booking.com/hotel/it/interno-1.it.html" target="_blank" rel="noopener">
+      <span class="rating-num">8,4</span>
+      <span class="rating-label">Booking.com<br><small>703 recensioni</small></span>
+    </a>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <span class="stars">★★★★★</span>
+      <p>"Perfetta è stata la struttura. Facile da raggiungere, pulita, confidenziale e ben organizzata."</p>
+      <span class="author">Lorenzo · 🇮🇹</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">★★★★★</span>
+      <p>"Stanza pulita e con molti confort. Posizione ottima con treni, autobus e metro vicinissimi."</p>
+      <span class="author">Ilenia · 🇮🇹</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">★★★★★</span>
+      <p>"Struttura pulita e accogliente di fronte la stazione Tiburtina. Consigliato!"</p>
+      <span class="author">Wanda · 🇮🇹</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">★★★★★</span>
+      <p>"The location is amazing, right next to the Tiburtina metro station, so commuting was incredibly easy."</p>
+      <span class="author">Dior · 🇬🇧</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">★★★★★</span>
+      <p>"Localização, limpeza... hotel incrivelmente acolhedor, superou minhas expectativas."</p>
+      <span class="author">Nisia · 🇵🇹</span>
+    </div>
+    <div class="review-card">
+      <span class="stars">★★★★★</span>
+      <p>"Très bien, juste à côté du métro, propriétaire très sympa et disponible."</p>
+      <span class="author">OEC1 · 🇫🇷</span>
+    </div>
+  </div>
 </section>
 
 <footer>
