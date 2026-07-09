@@ -230,6 +230,18 @@
   }
   .stop-marker.gialla{ background:#FF6628; }
   .stop-marker.deluxe{ background:#14171C; }
+  .transit-marker{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#5B7A99;
+    box-shadow:0 2px 6px rgba(0,0,0,0.25);
+    border:2px solid #fff;
+    font-size:0.85rem;
+  }
   .box-num{
     display:inline-flex;
     align-items:center;
@@ -510,12 +522,34 @@
   L.marker([41.9108676, 12.5285824], { icon: deluxeIcon }).addTo(map)
     .bindPopup('<strong>InternoUno Deluxe</strong><br>Via Lorenzo il Magnifico 158');
 
+  // Marker trasporti
+  function transitIcon(emoji){
+    return L.divIcon({
+      className: '',
+      html: '<div class="transit-marker">' + emoji + '</div>',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    });
+  }
+  function tt(key, fallback){
+    var lang = window.IU_CURRENT_LANG || 'it';
+    var dict = (window.IU_I18N && window.IU_I18N[lang]) || {};
+    return dict[key] || fallback;
+  }
+  L.marker([41.9111184, 12.5314223], { icon: transitIcon('🚇') }).addTo(map)
+    .bindPopup('<strong>' + tt('ds_map_tiburtina','Stazione Tiburtina') + '</strong><br>' + tt('ds_map_tiburtina_sub','Metro B · Treni AV e regionali'));
+  L.marker([41.9136626, 12.5208135], { icon: transitIcon('🚇') }).addTo(map)
+    .bindPopup('<strong>' + tt('ds_map_bologna','Metro Piazza Bologna') + '</strong><br>' + tt('ds_map_bologna_sub','Linea B'));
+  L.marker([41.9092166, 12.5283612], { icon: transitIcon('🚌') }).addTo(map)
+    .bindPopup('<strong>' + tt('ds_map_tibus','Autostazione TIBUS') + '</strong><br>' + tt('ds_map_tibus_sub','Autobus a lunga percorrenza'));
+
   // Include anche Stazione Tiburtina e Piazza Bologna nella vista
   var bounds = L.latLngBounds([
     [41.9085842, 12.5216869],
     [41.9108676, 12.5285824],
-    [41.9109666, 12.5312697],
-    [41.9134235, 12.5211763]
+    [41.9111184, 12.5314223],
+    [41.9136626, 12.5208135],
+    [41.9092166, 12.5283612]
   ]);
   map.fitBounds(bounds, { padding: [40, 40] });
 </script>
