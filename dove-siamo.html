@@ -293,7 +293,68 @@
   footer .social-icon.whatsapp{ background:#25D366; }
   footer .social-icon.instagram{ background:linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
   footer .social-icon.facebook{ background:#1877F2; }
+  #dove-map{
+    width:100%;
+    height:440px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(30,25,15,0.1);
+    margin-bottom:2.5rem;
+    z-index:1;
+  }
+  .stop-marker{
+    width:38px;
+    height:38px;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.3);
+    border:2px solid #fff;
+  }
+  .stop-marker span{
+    transform:rotate(45deg);
+    color:#fff;
+    font-family:'Michroma', sans-serif;
+    font-size:0.6rem;
+  }
+  .stop-marker.gialla{ background:#FF6628; }
+  .stop-marker.deluxe{ background:#14171C; }
+  .direzioni-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.5rem;
+  }
+  .direzione-box{
+    background:#fff;
+    border-radius:14px;
+    padding:1.6rem 1.8rem;
+    box-shadow:0 6px 20px rgba(30,25,15,0.07);
+  }
+  .direzione-box .eyebrow{
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:0.4rem;
+  }
+  .direzione-box h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .direzione-box .placeholder-note{
+    font-size:0.85rem;
+    color:#a89d87;
+    font-style:italic;
+  }
+  @media (max-width: 640px){
+    .direzioni-grid{ grid-template-columns:1fr; }
+    #dove-map{ height:340px; }
+  }
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -321,10 +382,23 @@
   <p>Come raggiungerci, in metro, in auto o a piedi da Termini.</p>
 </section>
 
-<main style="max-width:900px; margin:0 auto; padding:3rem 5vw;">
-  <p style="font-size:0.95rem; color:#6b6357; line-height:1.7;">
-    [BOZZA — in lavorazione] Qui inseriremo una mappa interattiva con entrambi gli indirizzi, le indicazioni per arrivare in metro (fermate Piazza Bologna e Tiburtina), in auto, e a piedi dalle principali stazioni. Contenuto da completare in una prossima sessione.
-  </p>
+<main style="max-width:1000px; margin:0 auto; padding:3rem 5vw;">
+
+  <div id="dove-map"></div>
+
+  <div class="direzioni-grid">
+    <div class="direzione-box">
+      <span class="eyebrow" style="color:#8a7f68;">InternoUno</span>
+      <h3>Via Campaldino 6</h3>
+      <p class="placeholder-note">[BOZZA] Indicazioni per raggiungere questa sede in arrivo.</p>
+    </div>
+    <div class="direzione-box">
+      <span class="eyebrow" style="color:#8a7f68;">InternoUno Deluxe</span>
+      <h3>Via Lorenzo il Magnifico 158</h3>
+      <p class="placeholder-note">[BOZZA] Indicazioni per raggiungere questa sede in arrivo.</p>
+    </div>
+  </div>
+
 </main>
 <footer>
   <div class="footer-top">
@@ -391,5 +465,43 @@
     });
   })();
 </script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var map = L.map('dove-map', { zoomControl: true, attributionControl: true, scrollWheelZoom: false })
+    .setView([41.9110, 12.5260], 15);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+    maxZoom: 20
+  }).addTo(map);
+
+  var giallaIcon = L.divIcon({
+    className: '',
+    html: '<div class="stop-marker gialla"><span>1</span></div>',
+    iconSize: [38, 38],
+    iconAnchor: [19, 38]
+  });
+  var deluxeIcon = L.divIcon({
+    className: '',
+    html: '<div class="stop-marker deluxe"><span>2</span></div>',
+    iconSize: [38, 38],
+    iconAnchor: [19, 38]
+  });
+
+  L.marker([41.9085842, 12.5216869], { icon: giallaIcon }).addTo(map)
+    .bindPopup('<strong>InternoUno</strong><br>Via Campaldino 6');
+  L.marker([41.9108676, 12.5285824], { icon: deluxeIcon }).addTo(map)
+    .bindPopup('<strong>InternoUno Deluxe</strong><br>Via Lorenzo il Magnifico 158');
+
+  // Include anche Stazione Tiburtina e Piazza Bologna nella vista
+  var bounds = L.latLngBounds([
+    [41.9085842, 12.5216869],
+    [41.9108676, 12.5285824],
+    [41.9109666, 12.5312697],
+    [41.9134235, 12.5211763]
+  ]);
+  map.fitBounds(bounds, { padding: [40, 40] });
+</script>
+
 </body>
 </html>
