@@ -293,6 +293,77 @@
   footer .social-icon.whatsapp{ background:#25D366; }
   footer .social-icon.instagram{ background:linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
   footer .social-icon.facebook{ background:#1877F2; }
+  .roma-tabs{
+    display:flex;
+    gap:0.6rem;
+    justify-content:center;
+    margin-bottom:2rem;
+  }
+  .roma-tab{
+    background:#fff;
+    border:none;
+    border-radius:100px;
+    padding:0.6rem 1.4rem;
+    font-family:'Michroma', sans-serif;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:#8a7f68;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(30,25,15,0.06);
+  }
+  .roma-tab.on{ background:#FF6628; color:#fff; }
+  .roma-panel{ display:none; }
+  .roma-panel.on{ display:block; }
+  .roma-loading{
+    text-align:center;
+    color:#a89d87;
+    font-size:0.9rem;
+    padding:2rem 0;
+  }
+  .roma-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1.2rem;
+  }
+  .roma-card{
+    background:#fff;
+    border-radius:14px;
+    padding:1.4rem 1.5rem;
+    box-shadow:0 6px 18px rgba(30,25,15,0.07);
+    text-decoration:none;
+    color:inherit;
+    display:block;
+    transition:transform .2s ease;
+  }
+  .roma-card:hover{ transform:translateY(-2px); }
+  .roma-card .emoji{ font-size:1.3rem; margin-bottom:0.5rem; display:block; }
+  .roma-card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.02rem;
+    margin-bottom:0.5rem;
+    line-height:1.35;
+  }
+  .roma-card .quando{
+    font-size:0.78rem;
+    color:#FF6628;
+    font-weight:600;
+    margin-bottom:0.3rem;
+  }
+  .roma-card .dove{
+    font-size:0.8rem;
+    color:#8a7f68;
+    margin-bottom:0.5rem;
+  }
+  .roma-card .descr{
+    font-size:0.83rem;
+    color:#4a453a;
+    line-height:1.5;
+  }
+  @media (max-width: 640px){
+    .roma-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -321,10 +392,25 @@
   <p>Eventi, concerti, tour ed esperienze da vivere durante il soggiorno.</p>
 </section>
 
-<main style="max-width:900px; margin:0 auto; padding:3rem 5vw;">
-  <p style="font-size:0.95rem; color:#6b6357; line-height:1.7;">
-    [BOZZA — in lavorazione] Sezione dedicata a eventi, concerti e tour a Roma, sullo stile di "InternoUno Experience". Contenuto da completare in una prossima sessione.
-  </p>
+<main style="max-width:1000px; margin:0 auto; padding:3rem 5vw;">
+
+  <div class="roma-tabs">
+    <button class="roma-tab on" data-target="eventi">Eventi</button>
+    <button class="roma-tab" data-target="concerti">Concerti</button>
+  </div>
+
+  <div class="roma-panel on" id="panel-eventi">
+    <div class="roma-grid" id="grid-eventi">
+      <p class="roma-loading">Caricamento eventi…</p>
+    </div>
+  </div>
+
+  <div class="roma-panel" id="panel-concerti">
+    <div class="roma-grid" id="grid-concerti">
+      <p class="roma-loading">Caricamento concerti…</p>
+    </div>
+  </div>
+
 </main>
 <footer>
   <div class="footer-top">
@@ -391,5 +477,47 @@
     });
   })();
 </script>
+<script>
+  (function(){
+    var tabs = document.querySelectorAll('.roma-tab');
+    var panels = document.querySelectorAll('.roma-panel');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('on'); });
+        panels.forEach(function(p){ p.classList.remove('on'); });
+        tab.classList.add('on');
+        document.getElementById('panel-' + tab.dataset.target).classList.add('on');
+      });
+    });
+
+    function renderCards(container, items, emptyMsg){
+      if (!items || !items.length){
+        container.innerHTML = '<p class="roma-loading">' + emptyMsg + '</p>';
+        return;
+      }
+      container.innerHTML = items.map(function(e){
+        return '<a class="roma-card" href="' + e.link + '" target="_blank" rel="noopener">' +
+          '<span class="emoji">' + e.emoji + '</span>' +
+          '<div class="quando">' + e.quando + '</div>' +
+          '<h3>' + e.titolo + '</h3>' +
+          '<div class="dove">' + e.dove + '</div>' +
+          '<div class="descr">' + e.descr + '</div>' +
+        '</a>';
+      }).join('');
+    }
+
+    fetch('https://wb-worker.f-castiglioni.workers.dev/wb/campaldino/data?lang=it')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        renderCards(document.getElementById('grid-eventi'), data.eventi, 'Nessun evento disponibile al momento.');
+        renderCards(document.getElementById('grid-concerti'), data.concerti, 'Nessun concerto disponibile al momento.');
+      })
+      .catch(function(){
+        document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">Impossibile caricare gli eventi al momento.</p>';
+        document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">Impossibile caricare i concerti al momento.</p>';
+      });
+  })();
+</script>
+
 </body>
 </html>
