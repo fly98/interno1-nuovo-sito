@@ -260,6 +260,7 @@
 </style>
 <link rel="stylesheet" href="assets/chat-widget.css">
 <link rel="stylesheet" href="assets/reveal.css">
+  <link rel="stylesheet" href="assets/i18n.css">
 </head>
 <body>
 
@@ -269,22 +270,23 @@
     <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
   </div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="camere.html">Camere</a>
-    <a href="dove-siamo.html">Dove siamo</a>
-    <a href="roma.html">Roma</a>
-    <a href="info.html">Info</a>
-    <a href="contatti.html" class="on">Contatti</a>
+    <a href="index.html" data-i18n="nav_home">Home</a>
+    <a href="camere.html" data-i18n="nav_camere">Camere</a>
+    <a href="dove-siamo.html" data-i18n="nav_dove">Dove siamo</a>
+    <a href="roma.html" data-i18n="nav_roma">Roma</a>
+    <a href="info.html" data-i18n="nav_info">Info</a>
+    <a href="contatti.html" class="on" data-i18n="nav_contatti">Contatti</a>
   </nav>
+  <div id="iu-lang-switch"></div>
   <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 <div class="nav-backdrop" id="navBackdrop"></div>
 
 
 <section class="page-hero">
-  <div class="eyebrow">Siamo qui per te</div>
-  <h1>Contatti</h1>
-  <p>Scrivici un messaggio, ti rispondiamo il prima possibile.</p>
+  <div class="eyebrow" data-i18n="ct_eyebrow">Siamo qui per te</div>
+  <h1 data-i18n="ct_title">Contatti</h1>
+  <p data-i18n="ct_sub">Scrivici un messaggio, ti rispondiamo il prima possibile.</p>
 </section>
 
 <main style="max-width:600px; margin:0 auto; padding:3rem 5vw;">
@@ -293,17 +295,17 @@
     <input type="hidden" name="subject" value="Nuovo messaggio dal sito InternoUno">
     <input type="checkbox" name="botcheck" style="display:none;">
 
-    <label>Nome<input type="text" name="name" required></label>
-    <label>Email<input type="email" name="email" required></label>
-    <label>Messaggio<textarea name="message" rows="5" required></textarea></label>
+    <label><span data-i18n="ct_name">Nome</span><input type="text" name="name" required></label>
+    <label><span data-i18n="ct_email">Email</span><input type="email" name="email" required></label>
+    <label><span data-i18n="ct_message">Messaggio</span><textarea name="message" rows="5" required></textarea></label>
 
-    <button type="submit" class="contact-submit">Invia messaggio</button>
+    <button type="submit" class="contact-submit" data-i18n="ct_send">Invia messaggio</button>
     <p id="contactStatus" class="contact-status"></p>
   </form>
 </main>
 <footer>
   <div class="footer-top">
-    <span class="footer-brand">InternoUno — A Roma dal 2007</span>
+    <span class="footer-brand"><span data-i18n="foot_tagline">InternoUno — A Roma dal 2007</span></span>
     <div class="footer-social">
       <a class="social-icon whatsapp" href="https://wa.me/393922999914" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2m0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.21-8.21 8.21m4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.65.31-.22.24-.85.84-.85 2.04s.87 2.37 1 2.53c.12.17 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29"/></svg>
@@ -317,7 +319,7 @@
     </div>
   </div>
   <div class="footer-info">
-    <span>Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span>
+    <span><span data-i18n="foot_addr">Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span></span>
     <a href="tel:+393922999914">+39 392 299 9914</a>
     <a href="mailto:info@interno1.it">info@interno1.it</a>
   </div>
@@ -373,9 +375,14 @@
     if (!form) return;
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      function t(key, fallback){
+        var lang = window.IU_CURRENT_LANG || 'it';
+        var dict = (window.IU_I18N && window.IU_I18N[lang]) || {};
+        return dict[key] || fallback;
+      }
       var btn = form.querySelector('.contact-submit');
       btn.disabled = true;
-      status.textContent = 'Invio in corso…';
+      status.textContent = t('ct_sending','Invio in corso…');
       status.className = 'contact-status';
 
       var data = new FormData(form);
@@ -387,16 +394,16 @@
       .then(function(r){ return r.json(); })
       .then(function(json){
         if (json.success){
-          status.textContent = 'Messaggio inviato, grazie! Ti risponderemo il prima possibile.';
+          status.textContent = t('ct_ok','Messaggio inviato, grazie!');
           status.className = 'contact-status ok';
           form.reset();
         } else {
-          status.textContent = 'Qualcosa non ha funzionato. Scrivici su WhatsApp nel frattempo.';
+          status.textContent = t('ct_err','Qualcosa non ha funzionato.');
           status.className = 'contact-status err';
         }
       })
       .catch(function(){
-        status.textContent = 'Errore di rete. Scrivici su WhatsApp nel frattempo.';
+        status.textContent = t('ct_neterr','Errore di rete.');
         status.className = 'contact-status err';
       })
       .finally(function(){
@@ -409,5 +416,7 @@
 <script src="assets/chat-widget.js"></script>
 
 <script src="assets/reveal.js"></script>
+  <script src="assets/translations.js"></script>
+  <script src="assets/i18n.js"></script>
 </body>
 </html>
