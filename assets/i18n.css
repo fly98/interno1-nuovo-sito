@@ -1,0 +1,47 @@
+/* ===== Selettore lingua InternoUno ===== */
+#iu-lang-switch{
+  position:relative;
+  display:inline-block;
+}
+#iu-lang-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.35rem;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.35);
+  color:inherit;
+  border-radius:100px;
+  padding:0.35rem 0.7rem;
+  font-family:'Inter', sans-serif;
+  font-size:0.78rem;
+  font-weight:500;
+  cursor:pointer;
+  line-height:1;
+}
+#iu-lang-btn svg{ opacity:0.85; }
+#iu-lang-menu{
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 8px 28px rgba(0,0,0,0.18);
+  padding:0.4rem;
+  display:none;
+  flex-direction:column;
+  min-width:150px;
+  z-index:300;
+}
+#iu-lang-menu.open{ display:flex; }
+.iu-lang-opt{
+  background:none;
+  border:none;
+  text-align:left;
+  padding:0.55rem 0.8rem;
+  border-radius:7px;
+  font-family:'Inter', sans-serif;
+  font-size:0.85rem;
+  color:#3a352c;
+  cursor:pointer;
+}
+.iu-lang-opt:hover{ background:#f3efe6; }
