@@ -298,7 +298,13 @@ window.IU_I18N = {
     inf_lrrist22_d:"Carbonara tra le migliori, porchetta e polpette, in un’atmosfera romantica e non turistica.",
     inf_lrrist23_d:"La migliore pizza vegana di Roma (con opzioni classiche): impasto soffice e ottimo formaggio vegetale.",
     inf_lrrist24_d:"Pizza napoletana di qualità a due passi dal Colosseo, con prezzi onesti.",
-    inf_lrrist25_d:"Esperienza gourmet tra salumi, formaggi e la celebre cacio e pepe, con una carta vini eccezionale."
+    inf_lrrist25_d:"Esperienza gourmet tra salumi, formaggi e la celebre cacio e pepe, con una carta vini eccezionale.",
+    ds_map_tiburtina:"Stazione Tiburtina",
+    ds_map_tiburtina_sub:"Metro B · Treni AV e regionali",
+    ds_map_bologna:"Metro Piazza Bologna",
+    ds_map_bologna_sub:"Linea B",
+    ds_map_tibus:"Autostazione TIBUS",
+    ds_map_tibus_sub:"Autobus a lunga percorrenza"
   },
   en: {
     nav_home:"Home", nav_camere:"Rooms", nav_dove:"Location", nav_roma:"Rome", nav_info:"Info", nav_contatti:"Contact",
@@ -598,7 +604,13 @@ window.IU_I18N = {
     inf_lrrist22_d:"One of the best carbonaras, porchetta and meatballs, in a romantic, non-touristy setting.",
     inf_lrrist23_d:"The best vegan pizza in Rome (with classic options too): fluffy dough and excellent plant-based cheese.",
     inf_lrrist24_d:"Quality Neapolitan pizza a short walk from the Colosseum, at fair prices.",
-    inf_lrrist25_d:"A gourmet experience of cured meats, cheeses and the famous cacio e pepe, with an exceptional wine list."
+    inf_lrrist25_d:"A gourmet experience of cured meats, cheeses and the famous cacio e pepe, with an exceptional wine list.",
+    ds_map_tiburtina:"Tiburtina Station",
+    ds_map_tiburtina_sub:"Metro B · High-speed & regional trains",
+    ds_map_bologna:"Metro Piazza Bologna",
+    ds_map_bologna_sub:"Line B",
+    ds_map_tibus:"TIBUS Coach Station",
+    ds_map_tibus_sub:"Long-distance coaches"
   },
   es: {
     nav_home:"Inicio", nav_camere:"Habitaciones", nav_dove:"Ubicación", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contacto",
@@ -898,7 +910,13 @@ window.IU_I18N = {
     inf_lrrist22_d:"Una de las mejores carbonaras, porchetta y albóndigas, en un ambiente romántico y no turístico.",
     inf_lrrist23_d:"La mejor pizza vegana de Roma (también con opciones clásicas): masa esponjosa y excelente queso vegetal.",
     inf_lrrist24_d:"Pizza napolitana de calidad a dos pasos del Coliseo, a precios justos.",
-    inf_lrrist25_d:"Experiencia gourmet entre embutidos, quesos y la célebre cacio e pepe, con una carta de vinos excepcional."
+    inf_lrrist25_d:"Experiencia gourmet entre embutidos, quesos y la célebre cacio e pepe, con una carta de vinos excepcional.",
+    ds_map_tiburtina:"Estación de Tiburtina",
+    ds_map_tiburtina_sub:"Metro B · Trenes AV y regionales",
+    ds_map_bologna:"Metro Piazza Bologna",
+    ds_map_bologna_sub:"Línea B",
+    ds_map_tibus:"Estación de autobuses TIBUS",
+    ds_map_tibus_sub:"Autobuses de larga distancia"
   },
   fr: {
     nav_home:"Accueil", nav_camere:"Chambres", nav_dove:"Accès", nav_roma:"Rome", nav_info:"Infos", nav_contatti:"Contact",
@@ -1198,7 +1216,13 @@ window.IU_I18N = {
     inf_lrrist22_d:"L’une des meilleures carbonara, porchetta et boulettes, dans un cadre romantique et non touristique.",
     inf_lrrist23_d:"La meilleure pizza végane de Rome (avec des options classiques) : pâte moelleuse et excellent fromage végétal.",
     inf_lrrist24_d:"Pizza napolitaine de qualité à deux pas du Colisée, à prix honnêtes.",
-    inf_lrrist25_d:"Une expérience gourmet entre charcuteries, fromages et la célèbre cacio e pepe, avec une carte des vins exceptionnelle."
+    inf_lrrist25_d:"Une expérience gourmet entre charcuteries, fromages et la célèbre cacio e pepe, avec une carte des vins exceptionnelle.",
+    ds_map_tiburtina:"Gare de Tiburtina",
+    ds_map_tiburtina_sub:"Métro B · Trains AV et régionaux",
+    ds_map_bologna:"Métro Piazza Bologna",
+    ds_map_bologna_sub:"Ligne B",
+    ds_map_tibus:"Gare routière TIBUS",
+    ds_map_tibus_sub:"Autocars longue distance"
   },
   de: {
     nav_home:"Start", nav_camere:"Zimmer", nav_dove:"Anfahrt", nav_roma:"Rom", nav_info:"Info", nav_contatti:"Kontakt",
@@ -1498,7 +1522,13 @@ window.IU_I18N = {
     inf_lrrist22_d:"Eine der besten Carbonara, Porchetta und Fleischbällchen, in romantischer, nicht touristischer Atmosphäre.",
     inf_lrrist23_d:"Die beste vegane Pizza Roms (auch mit klassischen Optionen): fluffiger Teig und ausgezeichneter pflanzlicher Käse.",
     inf_lrrist24_d:"Hochwertige neapolitanische Pizza nur wenige Schritte vom Kolosseum, zu fairen Preisen.",
-    inf_lrrist25_d:"Ein Gourmet-Erlebnis aus Wurstwaren, Käse und der berühmten Cacio e Pepe, mit außergewöhnlicher Weinkarte."
+    inf_lrrist25_d:"Ein Gourmet-Erlebnis aus Wurstwaren, Käse und der berühmten Cacio e Pepe, mit außergewöhnlicher Weinkarte.",
+    ds_map_tiburtina:"Bahnhof Tiburtina",
+    ds_map_tiburtina_sub:"U-Bahn B · Hochgeschwindigkeits- und Regionalzüge",
+    ds_map_bologna:"U-Bahn Piazza Bologna",
+    ds_map_bologna_sub:"Linie B",
+    ds_map_tibus:"Busbahnhof TIBUS",
+    ds_map_tibus_sub:"Fernbusse"
   },
   pt: {
     nav_home:"Início", nav_camere:"Quartos", nav_dove:"Localização", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contato",
@@ -1798,7 +1828,13 @@ window.IU_I18N = {
     inf_lrrist22_d:"Uma das melhores carbonaras, porchetta e almôndegas, num ambiente romântico e não turístico.",
     inf_lrrist23_d:"A melhor pizza vegana de Roma (também com opções clássicas): massa fofa e excelente queijo vegetal.",
     inf_lrrist24_d:"Pizza napolitana de qualidade a dois passos do Coliseu, a preços justos.",
-    inf_lrrist25_d:"Uma experiência gourmet entre enchidos, queijos e a célebre cacio e pepe, com uma carta de vinhos excecional."
+    inf_lrrist25_d:"Uma experiência gourmet entre enchidos, queijos e a célebre cacio e pepe, com uma carta de vinhos excecional.",
+    ds_map_tiburtina:"Estação de Tiburtina",
+    ds_map_tiburtina_sub:"Metro B · Comboios AV e regionais",
+    ds_map_bologna:"Metro Piazza Bologna",
+    ds_map_bologna_sub:"Linha B",
+    ds_map_tibus:"Estação de autocarros TIBUS",
+    ds_map_tibus_sub:"Autocarros de longa distância"
   },
   zh: {
     nav_home:"首页", nav_camere:"房间", nav_dove:"位置", nav_roma:"罗马", nav_info:"信息", nav_contatti:"联系",
@@ -2098,6 +2134,12 @@ window.IU_I18N = {
     inf_lrrist22_d:"最出色的卡波纳拉之一,还有烤猪肉和肉丸,氛围浪漫、不落俗套。",
     inf_lrrist23_d:"罗马最好的纯素披萨(也有经典口味):面团松软,植物奶酪出色。",
     inf_lrrist24_d:"距斗兽场几步之遥的优质那不勒斯披萨,价格实惠。",
-    inf_lrrist25_d:"集腌肉、奶酪与著名 cacio e pepe 于一体的美食体验,酒单极为出色。"
+    inf_lrrist25_d:"集腌肉、奶酪与著名 cacio e pepe 于一体的美食体验,酒单极为出色。",
+    ds_map_tiburtina:"蒂布尔蒂纳车站",
+    ds_map_tiburtina_sub:"B线地铁 · 高铁和区域列车",
+    ds_map_bologna:"波洛尼亚广场地铁站",
+    ds_map_bologna_sub:"B线",
+    ds_map_tibus:"TIBUS长途汽车站",
+    ds_map_tibus_sub:"长途巴士"
   }
 };
