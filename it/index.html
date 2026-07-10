@@ -574,6 +574,55 @@
   @media (max-width: 520px){
     .reviews-grid{ grid-template-columns:1fr; }
   }
+  .booking-modal{
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.85);
+    z-index:200;
+    align-items:center;
+    justify-content:center;
+    padding:3vw;
+  }
+  .booking-modal.open{ display:flex; }
+  .booking-modal .booking-box{
+    width:100%;
+    max-width:900px;
+    height:92vh;
+    background:#EFE7D6;
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+  }
+  .booking-modal .booking-frame-wrap{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:relative;
+  }
+  .booking-modal iframe{
+    position:absolute;
+    top:-260px; left:0;
+    width:100%;
+    height:calc(100% + 260px);
+    border:none;
+    display:block;
+  }
+  .booking-modal .close-btn{
+    position:absolute;
+    top:0.6rem; right:0.6rem;
+    width:36px; height:36px;
+    background:rgba(0,0,0,0.55);
+    border:none;
+    border-radius:50%;
+    color:#fff;
+    font-size:1.3rem;
+    cursor:pointer;
+    line-height:1;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 </style>
 <link rel="stylesheet" href="/assets/chat-widget.css">
 <link rel="stylesheet" href="/assets/reveal.css">
@@ -649,7 +698,7 @@
   <div class="eyebrow" data-i18n="hm_hero_eyebrow">Tra Piazza Bologna e Stazione Tiburtina — dal 2007</div>
   <h1>Interno<span class="accent">Uno</span>,<br><span data-i18n="hm_hero_l2">dove Roma diventa casa.</span></h1>
   <p data-i18n="hm_hero_sub">Due indirizzi, ognuno a un passo da una fermata della metro B, dove la porta si chiude e la città resta fuori.</p>
-  <a class="cta" href="https://internouno.amenitiz.io/it/booking/room" target="_blank" rel="noopener" data-i18n="hm_hero_cta">Prenota il tuo soggiorno</a>
+  <button class="cta" type="button" onclick="openBookingModal()" data-i18n="hm_hero_cta">Prenota il tuo soggiorno</button>
 </section>
 
 <section class="soglia">
@@ -950,5 +999,19 @@
 <script src="/assets/reveal.js"></script>
   <script src="/assets/translations.js"></script>
   <script src="/assets/i18n.js"></script>
+<div class="booking-modal" id="bookingModal">
+  <div class="booking-box">
+    <button class="close-btn" onclick="document.getElementById('bookingModal').classList.remove('open'); document.getElementById('bookingFrame').src='';">✕</button>
+    <div class="booking-frame-wrap">
+      <iframe id="bookingFrame" src="" title="Prenotazione InternoUno"></iframe>
+    </div>
+  </div>
+</div>
+<script>
+function openBookingModal(){
+  document.getElementById('bookingFrame').src = 'https://internouno.amenitiz.io/it/booking/room';
+  document.getElementById('bookingModal').classList.add('open');
+}
+</script>
 </body>
 </html>
