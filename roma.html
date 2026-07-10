@@ -545,17 +545,26 @@
       var dict = (window.IU_I18N && window.IU_I18N[lang]) || {};
       return dict[key] || fallback;
     }
-    var wbLang = window.IU_CURRENT_LANG || 'it';
-    fetch('https://wb-worker.f-castiglioni.workers.dev/wb/campaldino/data?lang=' + wbLang)
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        renderCards(document.getElementById('grid-eventi'), data.eventi, t('rm_no_eventi','Nessun evento disponibile al momento.'));
-        renderCards(document.getElementById('grid-concerti'), data.concerti, t('rm_no_concerti','Nessun concerto disponibile al momento.'));
-      })
-      .catch(function(){
-        document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">' + t('rm_err_eventi','Impossibile caricare gli eventi al momento.') + '</p>';
-        document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">' + t('rm_err_concerti','Impossibile caricare i concerti al momento.') + '</p>';
-      });
+
+    function loadEventi(){
+      var wbLang = window.IU_CURRENT_LANG || 'it';
+      document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">' + t('rm_loading_eventi','Caricamento eventi…') + '</p>';
+      document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">' + t('rm_loading_eventi','Caricamento eventi…') + '</p>';
+      fetch('https://wb-worker.f-castiglioni.workers.dev/wb/campaldino/data?lang=' + wbLang)
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          renderCards(document.getElementById('grid-eventi'), data.eventi, t('rm_no_eventi','Nessun evento disponibile al momento.'));
+          renderCards(document.getElementById('grid-concerti'), data.concerti, t('rm_no_concerti','Nessun concerto disponibile al momento.'));
+        })
+        .catch(function(){
+          document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">' + t('rm_err_eventi','Impossibile caricare gli eventi al momento.') + '</p>';
+          document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">' + t('rm_err_concerti','Impossibile caricare i concerti al momento.') + '</p>';
+        });
+    }
+
+    loadEventi();
+    // ricarica gli eventi nella lingua giusta quando l'utente cambia lingua dallo switcher
+    document.addEventListener('iu:langchange', loadEventi);
   })();
 </script>
 
