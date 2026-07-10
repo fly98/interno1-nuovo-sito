@@ -1,7 +1,8 @@
 /* ===== Traduzioni InternoUno (7 lingue) ===== */
 window.IU_I18N = {
   it: {
-    nav_home:"Home", nav_camere:"Camere", nav_dove:"Dove siamo", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contatti",
+    nav_home:"Home", nav_camere:"Camere", nav_dove:"Dove siamo", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contatti", nav_prenota:"Prenota",
+    bk_eyebrow:"Prenotazione diretta, senza commissioni", bk_title:"Prenota il tuo soggiorno", bk_sub:"Scegli le date e la camera direttamente qui sotto — nessun passaggio da altri siti.",
     foot_tagline:"InternoUno — A Roma dal 2007",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma",
     ct_eyebrow:"Siamo qui per te", ct_title:"Contatti",
@@ -307,7 +308,8 @@ window.IU_I18N = {
     ds_map_tibus_sub:"Autobus a lunga percorrenza"
   },
   en: {
-    nav_home:"Home", nav_camere:"Rooms", nav_dove:"Location", nav_roma:"Rome", nav_info:"Info", nav_contatti:"Contact",
+    nav_home:"Home", nav_camere:"Rooms", nav_dove:"Location", nav_roma:"Rome", nav_info:"Info", nav_contatti:"Contact", nav_prenota:"Book now",
+    bk_eyebrow:"Direct booking, no commission", bk_title:"Book your stay", bk_sub:"Choose your dates and room right below — no redirect to other sites.",
     foot_tagline:"InternoUno — In Rome since 2007",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Rome",
     ct_eyebrow:"We're here for you", ct_title:"Contact",
@@ -613,7 +615,8 @@ window.IU_I18N = {
     ds_map_tibus_sub:"Long-distance coaches"
   },
   es: {
-    nav_home:"Inicio", nav_camere:"Habitaciones", nav_dove:"Ubicación", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contacto",
+    nav_home:"Inicio", nav_camere:"Habitaciones", nav_dove:"Ubicación", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contacto", nav_prenota:"Reservar",
+    bk_eyebrow:"Reserva directa, sin comisiones", bk_title:"Reserva tu estancia", bk_sub:"Elige las fechas y la habitación aquí abajo — sin pasar por otros sitios.",
     foot_tagline:"InternoUno — En Roma desde 2007",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma",
     ct_eyebrow:"Estamos aquí para ti", ct_title:"Contacto",
@@ -919,7 +922,8 @@ window.IU_I18N = {
     ds_map_tibus_sub:"Autobuses de larga distancia"
   },
   fr: {
-    nav_home:"Accueil", nav_camere:"Chambres", nav_dove:"Accès", nav_roma:"Rome", nav_info:"Infos", nav_contatti:"Contact",
+    nav_home:"Accueil", nav_camere:"Chambres", nav_dove:"Accès", nav_roma:"Rome", nav_info:"Infos", nav_contatti:"Contact", nav_prenota:"Réserver",
+    bk_eyebrow:"Réservation directe, sans commission", bk_title:"Réservez votre séjour", bk_sub:"Choisissez vos dates et votre chambre juste en dessous — sans passer par un autre site.",
     foot_tagline:"InternoUno — À Rome depuis 2007",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Rome",
     ct_eyebrow:"Nous sommes là pour vous", ct_title:"Contact",
@@ -1225,7 +1229,8 @@ window.IU_I18N = {
     ds_map_tibus_sub:"Autocars longue distance"
   },
   de: {
-    nav_home:"Start", nav_camere:"Zimmer", nav_dove:"Anfahrt", nav_roma:"Rom", nav_info:"Info", nav_contatti:"Kontakt",
+    nav_home:"Start", nav_camere:"Zimmer", nav_dove:"Anfahrt", nav_roma:"Rom", nav_info:"Info", nav_contatti:"Kontakt", nav_prenota:"Buchen",
+    bk_eyebrow:"Direkte Buchung, keine Gebühren", bk_title:"Buchen Sie Ihren Aufenthalt", bk_sub:"Wählen Sie Datum und Zimmer direkt hier unten — ohne Umweg über andere Seiten.",
     foot_tagline:"InternoUno — In Rom seit 2007",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Rom",
     ct_eyebrow:"Wir sind für Sie da", ct_title:"Kontakt",
@@ -1531,7 +1536,8 @@ window.IU_I18N = {
     ds_map_tibus_sub:"Fernbusse"
   },
   pt: {
-    nav_home:"Início", nav_camere:"Quartos", nav_dove:"Localização", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contato",
+    nav_home:"Início", nav_camere:"Quartos", nav_dove:"Localização", nav_roma:"Roma", nav_info:"Info", nav_contatti:"Contato", nav_prenota:"Reservar",
+    bk_eyebrow:"Reserva direta, sem comissões", bk_title:"Reserve a sua estadia", bk_sub:"Escolha as datas e o quarto aqui em baixo — sem passar por outros sites.",
     foot_tagline:"InternoUno — Em Roma desde 2007",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma",
     ct_eyebrow:"Estamos aqui para si", ct_title:"Contato",
@@ -1837,7 +1843,8 @@ window.IU_I18N = {
     ds_map_tibus_sub:"Autocarros de longa distância"
   },
   zh: {
-    nav_home:"首页", nav_camere:"房间", nav_dove:"位置", nav_roma:"罗马", nav_info:"信息", nav_contatti:"联系",
+    nav_home:"首页", nav_camere:"房间", nav_dove:"位置", nav_roma:"罗马", nav_info:"信息", nav_contatti:"联系", nav_prenota:"预订",
+    bk_eyebrow:"直接预订，无手续费", bk_title:"预订您的住宿", bk_sub:"在下方直接选择日期和房间——无需跳转到其他网站。",
     foot_tagline:"InternoUno — 自2007年起在罗马",
     foot_addr:"Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 罗马",
     ct_eyebrow:"我们随时为您服务", ct_title:"联系我们",
