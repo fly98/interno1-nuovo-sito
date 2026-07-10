@@ -288,13 +288,19 @@
   .video-modal video{ width:100%; height:auto; max-height:88vh; aspect-ratio:480/854; display:block; object-fit:contain; background:#000; }
   .video-modal .close-btn{
     position:absolute;
-    top:-2.2rem; right:0;
-    background:none;
+    top:0.6rem; right:0.6rem;
+    width:36px; height:36px;
+    background:rgba(0,0,0,0.55);
     border:none;
+    border-radius:50%;
     color:#fff;
-    font-size:1.6rem;
+    font-size:1.3rem;
     cursor:pointer;
     line-height:1;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 
   @media (max-width:640px){
@@ -317,13 +323,6 @@
   <h1 data-i18n="ci_welcome">Benvenuti.</h1>
   <p data-i18n="ci_subtitle">4 passi per raggiungere la vostra camera</p>
 </section>
-
-<div class="video-cta-wrap">
-  <button class="video-cta" onclick="document.getElementById('checkinVideoModal').classList.add('open'); document.getElementById('checkinVideoEl').src='/assets/checkin-procedura-completa.mp4'; document.getElementById('checkinVideoEl').play();">
-    <span class="play-icon"><img src="/assets/checkin-video-thumb.jpg" alt=""></span>
-    <span data-i18n="ci_video_cta">Guarda il video della procedura completa</span>
-  </button>
-</div>
 
 <div class="video-modal" id="checkinVideoModal">
   <div class="video-box">
@@ -422,6 +421,13 @@
         <img src="/assets/checkin-step4-corridoio.jpg" alt="Corridoio con indicazioni per raggiungere le camere" loading="lazy">
       </div>
     </div>
+  </div>
+
+  <div class="video-cta-wrap">
+    <button class="video-cta" onclick="document.getElementById('checkinVideoModal').classList.add('open'); document.getElementById('checkinVideoEl').src='/assets/checkin-procedura-completa.mp4'; document.getElementById('checkinVideoEl').play();">
+      <span class="play-icon"><img src="/assets/checkin-video-thumb.jpg" alt=""></span>
+      <span data-i18n="ci_video_cta">Guarda il video della procedura completa</span>
+    </button>
   </div>
 
   <div class="address-box">
