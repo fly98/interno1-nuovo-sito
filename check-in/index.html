@@ -269,6 +269,7 @@
     margin:1.6rem 0 0.4rem;
   }
   .video-cta, .print-cta{
+    text-decoration:none;
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -527,10 +528,10 @@
       <span class="play-icon"><img src="/assets/checkin-video-thumb.jpg" alt=""></span>
       <span data-i18n="ci_video_cta">Guarda il video della procedura completa</span>
     </button>
-    <button class="print-cta" onclick="window.print();">
-      <span class="icon">🖨️</span>
+    <a class="print-cta" id="pdfDownloadBtn" href="/assets/checkin-guida-it.pdf" download>
+      <span class="icon">&#8595;</span>
       <span data-i18n="ci_print_cta">Scarica versione stampabile</span>
-    </button>
+    </a>
   </div>
 
   <div class="address-box">
@@ -847,6 +848,24 @@ window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
   ci_video_cta: '观看完整入住流程视频',
   ci_print_cta: '下载可打印版本',
 });
+</script>
+<script>
+(function(){
+  var SUPPORTED = ['it','en','es','fr','de','pt','zh'];
+  function setPdfLink(){
+    var el = document.getElementById('pdfDownloadBtn');
+    if (!el) return;
+    var lang = window.IU_CURRENT_LANG || 'it';
+    var l = SUPPORTED.indexOf(lang) !== -1 ? lang : 'it';
+    el.href = '/assets/checkin-guida-' + l + '.pdf';
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', setPdfLink);
+  } else {
+    setPdfLink();
+  }
+  document.addEventListener('iu:langchange', setPdfLink);
+})();
 </script>
 </body>
 </html>
