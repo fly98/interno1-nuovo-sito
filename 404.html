@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>InternoUno</title>
+<style>
+  body{
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    background:#F4F1EA;
+    color:#26221B;
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem;
+  }
+  .box{ max-width:420px; }
+  h1{ font-size:1.4rem; margin-bottom:0.6rem; }
+  p{ opacity:0.75; margin-bottom:1.6rem; font-size:0.95rem; }
+  a.home-link{
+    display:inline-block;
+    background:#14171C;
+    color:#EDEAE2;
+    text-decoration:none;
+    padding:0.8rem 1.8rem;
+    border-radius:30px;
+    font-size:0.9rem;
+  }
+</style>
+</head>
+<body>
+<div class="box" id="fallback">
+  <h1>Pagina non trovata</h1>
+  <p>Il link che hai seguito potrebbe essere obsoleto o scaduto.</p>
+  <a class="home-link" href="/it/">Torna alla home di InternoUno</a>
+</div>
+<script>
+(function(){
+  var path = window.location.pathname;
+  // Vecchi link generati da Amenitiz (es. link di pagamento, booking engine, ecc.)
+  // Qualsiasi percorso che inizia con /booking/ viene rimandato al dominio Amenitiz originale,
+  // preservando esattamente lo stesso percorso e parametri.
+  if (path.indexOf('/booking/') === 0) {
+    var target = 'https://internouno.amenitiz.io' + path + window.location.search;
+    window.location.replace(target);
+  }
+})();
+</script>
+</body>
+</html>
