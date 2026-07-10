@@ -42,6 +42,7 @@
   }
   header .logo{ display:flex; align-items:center; gap:0.6rem; }
   header .logo img{ width:30px; height:30px; }
+  header .logo img{ width:30px; height:30px; }
   header .logo .wordmark{
     font-family:'Michroma', sans-serif;
     text-transform:uppercase;
@@ -265,7 +266,7 @@
     display:inline-flex;
     align-items:center;
     gap:0.7rem;
-    background:var(--notte);
+    background:var(--grigio);
     color:#fff;
     border:none;
     cursor:pointer;
@@ -287,6 +288,38 @@
     transform:translate(-50%,-50%);
     font-size:0.6rem; color:#fff;
     text-shadow:0 0 3px rgba(0,0,0,0.7);
+  }
+  .video-cta-wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:0.8rem;
+  }
+  .print-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    background:var(--grigio);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    padding:0.7rem 1.4rem;
+    border-radius:40px;
+    font-family:'Inter', sans-serif;
+    font-size:0.88rem;
+  }
+  .print-cta .icon{ font-size:1.1rem; }
+
+  @media print{
+    header, .video-cta-wrap, .video-modal, #checkinVideoModal{ display:none !important; }
+    body{ background:#fff; }
+    .step, .info-card, .keycode-box, .inbox-item, .warning-box, .address-box{
+      box-shadow:none !important;
+      border:1px solid #ccc;
+      break-inside:avoid;
+    }
+    .hero{ background:#fff !important; color:#000 !important; }
+    .hero .eyebrow{ color:#666 !important; }
   }
 
   .video-modal{
@@ -343,6 +376,7 @@
 
 <header>
   <div class="logo" onclick="location.href='https://interno1.it/it/'" style="cursor:pointer;">
+    <img src="/assets/logo-icon.png" alt="InternoUno" onerror="this.style.display='none'">
     <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
   </div>
   <div id="iu-lang-switch"></div>
@@ -446,6 +480,10 @@
       <span class="play-icon"><img src="/assets/checkin-video-thumb.jpg" alt=""></span>
       <span data-i18n="ci_video_cta">Guarda il video della procedura completa</span>
     </button>
+    <button class="print-cta" onclick="window.print();">
+      <span class="icon">🖨️</span>
+      <span data-i18n="ci_print_cta">Scarica versione stampabile</span>
+    </button>
   </div>
 
   <div class="address-box">
@@ -502,6 +540,7 @@ window.IU_I18N.it = Object.assign(window.IU_I18N.it || {}, {
   ci_maps_cta: 'Apri in Google Maps',
   ci_contact_cta: 'Contattaci',
   ci_video_cta: 'Guarda il video della procedura completa',
+  ci_print_cta: 'Scarica versione stampabile',
 });
 window.IU_I18N.en = Object.assign(window.IU_I18N.en || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -544,6 +583,7 @@ window.IU_I18N.en = Object.assign(window.IU_I18N.en || {}, {
   ci_maps_cta: 'Open in Google Maps',
   ci_contact_cta: 'Contact us',
   ci_video_cta: 'Watch the full step-by-step video',
+  ci_print_cta: 'Download printable version',
 });
 window.IU_I18N.es = Object.assign(window.IU_I18N.es || {}, {
   ci_eyebrow: 'AUTO CHECK-IN',
@@ -586,6 +626,7 @@ window.IU_I18N.es = Object.assign(window.IU_I18N.es || {}, {
   ci_maps_cta: 'Abrir en Google Maps',
   ci_contact_cta: 'Contactar',
   ci_video_cta: 'Ver el video del proceso completo',
+  ci_print_cta: 'Descargar versión imprimible',
 });
 window.IU_I18N.fr = Object.assign(window.IU_I18N.fr || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -628,6 +669,7 @@ window.IU_I18N.fr = Object.assign(window.IU_I18N.fr || {}, {
   ci_maps_cta: 'Ouvrir dans Google Maps',
   ci_contact_cta: 'Nous contacter',
   ci_video_cta: 'Voir la vidéo de la procédure complète',
+  ci_print_cta: 'Télécharger la version imprimable',
 });
 window.IU_I18N.de = Object.assign(window.IU_I18N.de || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -670,6 +712,7 @@ window.IU_I18N.de = Object.assign(window.IU_I18N.de || {}, {
   ci_maps_cta: 'In Google Maps öffnen',
   ci_contact_cta: 'Kontaktiere uns',
   ci_video_cta: 'Video der vollständigen Anleitung ansehen',
+  ci_print_cta: 'Druckbare Version herunterladen',
 });
 window.IU_I18N.pt = Object.assign(window.IU_I18N.pt || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -712,6 +755,7 @@ window.IU_I18N.pt = Object.assign(window.IU_I18N.pt || {}, {
   ci_maps_cta: 'Abrir no Google Maps',
   ci_contact_cta: 'Contacte-nos',
   ci_video_cta: 'Ver o vídeo do processo completo',
+  ci_print_cta: 'Descarregar versão para impressão',
 });
 window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
   ci_eyebrow: '自助入住',
@@ -754,6 +798,7 @@ window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
   ci_maps_cta: '在 Google 地图中打开',
   ci_contact_cta: '联系我们',
   ci_video_cta: '观看完整入住流程视频',
+  ci_print_cta: '下载可打印版本',
 });
 </script>
 </body>
