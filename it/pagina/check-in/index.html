@@ -279,12 +279,13 @@
   .video-modal .video-box{
     width:100%;
     max-width:480px;
+    max-height:88vh;
     background:#000;
     border-radius:14px;
     overflow:hidden;
     position:relative;
   }
-  .video-modal video{ width:100%; display:block; }
+  .video-modal video{ width:100%; height:auto; max-height:88vh; aspect-ratio:480/854; display:block; object-fit:contain; background:#000; }
   .video-modal .close-btn{
     position:absolute;
     top:-2.2rem; right:0;
