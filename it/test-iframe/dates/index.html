@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test date preselezionate</title>
+<style>
+  body{ margin:0; font-family:sans-serif; background:#EFE7D6; }
+  h2{ font-size:0.95rem; padding:0.8rem 1rem 0.3rem; margin:0; }
+  p.url{ font-size:0.7rem; padding:0 1rem; margin:0 0 0.5rem; opacity:0.6; word-break:break-all; }
+  iframe{ width:100%; height:60vh; border:2px solid #B08355; display:block; margin-bottom:1rem; }
+</style>
+</head>
+<body>
+
+<h2>Test 1 — parametri ?start / ?end</h2>
+<p class="url">https://internouno.amenitiz.io/it/booking/room?start=2026-08-14&end=2026-08-16</p>
+<iframe src="https://internouno.amenitiz.io/it/booking/room?start=2026-08-14&end=2026-08-16"></iframe>
+
+<h2>Test 2 — parametri ?checkin / ?checkout</h2>
+<p class="url">https://internouno.amenitiz.io/it/booking/room?checkin=2026-08-14&checkout=2026-08-16</p>
+<iframe src="https://internouno.amenitiz.io/it/booking/room?checkin=2026-08-14&checkout=2026-08-16"></iframe>
+
+<h2>Test 3 — dentro l'hash esistente</h2>
+<p class="url">https://internouno.amenitiz.io/it/booking/room#DatesGuests-BE?start=2026-08-14&end=2026-08-16</p>
+<iframe src="https://internouno.amenitiz.io/it/booking/room#DatesGuests-BE?start=2026-08-14&end=2026-08-16"></iframe>
+
+</body>
+</html>
