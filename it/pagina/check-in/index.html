@@ -237,6 +237,65 @@
     font-size:0.9rem;
   }
 
+  .video-cta-wrap{ text-align:center; margin:1.6rem 0 0.4rem; }
+  .video-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:0.7rem;
+    background:var(--notte);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    padding:0.7rem 1.4rem 0.7rem 0.7rem;
+    border-radius:40px;
+    font-family:'Inter', sans-serif;
+    font-size:0.88rem;
+  }
+  .video-cta img{
+    width:44px; height:44px; object-fit:cover; border-radius:50%;
+    border:2px solid var(--legno);
+  }
+  .video-cta .play-icon{
+    position:relative;
+  }
+  .video-cta .play-icon::after{
+    content:"▶";
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    font-size:0.6rem; color:#fff;
+    text-shadow:0 0 3px rgba(0,0,0,0.7);
+  }
+
+  .video-modal{
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.85);
+    z-index:100;
+    align-items:center;
+    justify-content:center;
+    padding:5vw;
+  }
+  .video-modal.open{ display:flex; }
+  .video-modal .video-box{
+    width:100%;
+    max-width:480px;
+    background:#000;
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+  }
+  .video-modal video{ width:100%; display:block; }
+  .video-modal .close-btn{
+    position:absolute;
+    top:-2.2rem; right:0;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:1.6rem;
+    cursor:pointer;
+    line-height:1;
+  }
+
   @media (max-width:640px){
     .inbox-grid{ grid-template-columns:1fr; }
     .rooms-grid{ grid-template-columns:1fr; }
@@ -257,6 +316,20 @@
   <h1 data-i18n="ci_welcome">Benvenuti.</h1>
   <p data-i18n="ci_subtitle">4 passi per raggiungere la vostra camera</p>
 </section>
+
+<div class="video-cta-wrap">
+  <button class="video-cta" onclick="document.getElementById('checkinVideoModal').classList.add('open'); document.getElementById('checkinVideoEl').src='/assets/checkin-procedura-completa.mp4'; document.getElementById('checkinVideoEl').play();">
+    <span class="play-icon"><img src="/assets/checkin-video-thumb.jpg" alt=""></span>
+    <span data-i18n="ci_video_cta">Guarda il video della procedura completa</span>
+  </button>
+</div>
+
+<div class="video-modal" id="checkinVideoModal">
+  <div class="video-box">
+    <button class="close-btn" onclick="var v=document.getElementById('checkinVideoEl'); v.pause(); v.removeAttribute('src'); v.load(); document.getElementById('checkinVideoModal').classList.remove('open');">✕</button>
+    <video id="checkinVideoEl" controls playsinline></video>
+  </div>
+</div>
 
 <main>
 
@@ -400,6 +473,7 @@ window.IU_I18N.it = Object.assign(window.IU_I18N.it || {}, {
   ci_rooms2_b: '🛏 Corridoio a sinistra: 5 prima, 4 seconda, 3 terza',
   ci_maps_cta: 'Apri in Google Maps',
   ci_contact_cta: 'Contattaci',
+  ci_video_cta: 'Guarda il video della procedura completa',
 });
 window.IU_I18N.en = Object.assign(window.IU_I18N.en || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -441,6 +515,7 @@ window.IU_I18N.en = Object.assign(window.IU_I18N.en || {}, {
   ci_rooms2_b: '🛏 Left corridor: 5 first, 4 second, 3 third',
   ci_maps_cta: 'Open in Google Maps',
   ci_contact_cta: 'Contact us',
+  ci_video_cta: 'Watch the full step-by-step video',
 });
 window.IU_I18N.es = Object.assign(window.IU_I18N.es || {}, {
   ci_eyebrow: 'AUTO CHECK-IN',
@@ -482,6 +557,7 @@ window.IU_I18N.es = Object.assign(window.IU_I18N.es || {}, {
   ci_rooms2_b: '🛏 Pasillo izquierdo: 5 primera, 4 segunda, 3 tercera',
   ci_maps_cta: 'Abrir en Google Maps',
   ci_contact_cta: 'Contactar',
+  ci_video_cta: 'Ver el video del proceso completo',
 });
 window.IU_I18N.fr = Object.assign(window.IU_I18N.fr || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -523,6 +599,7 @@ window.IU_I18N.fr = Object.assign(window.IU_I18N.fr || {}, {
   ci_rooms2_b: '🛏 Couloir de gauche : 5 en premier, 4 en second, 3 en troisième',
   ci_maps_cta: 'Ouvrir dans Google Maps',
   ci_contact_cta: 'Nous contacter',
+  ci_video_cta: 'Voir la vidéo de la procédure complète',
 });
 window.IU_I18N.de = Object.assign(window.IU_I18N.de || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -564,6 +641,7 @@ window.IU_I18N.de = Object.assign(window.IU_I18N.de || {}, {
   ci_rooms2_b: '🛏 Linker Flur: 5 zuerst, 4 zweitens, 3 drittens',
   ci_maps_cta: 'In Google Maps öffnen',
   ci_contact_cta: 'Kontaktiere uns',
+  ci_video_cta: 'Video der vollständigen Anleitung ansehen',
 });
 window.IU_I18N.pt = Object.assign(window.IU_I18N.pt || {}, {
   ci_eyebrow: 'SELF CHECK-IN',
@@ -605,6 +683,7 @@ window.IU_I18N.pt = Object.assign(window.IU_I18N.pt || {}, {
   ci_rooms2_b: '🛏 Corredor à esquerda: 5 primeiro, 4 segundo, 3 terceiro',
   ci_maps_cta: 'Abrir no Google Maps',
   ci_contact_cta: 'Contacte-nos',
+  ci_video_cta: 'Ver o vídeo do processo completo',
 });
 window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
   ci_eyebrow: '自助入住',
@@ -646,6 +725,7 @@ window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
   ci_rooms2_b: '🛏 左侧走廊：5号第一间，4号第二间，3号第三间',
   ci_maps_cta: '在 Google 地图中打开',
   ci_contact_cta: '联系我们',
+  ci_video_cta: '观看完整入住流程视频',
 });
 </script>
 <script src="/assets/translations.js"></script>
