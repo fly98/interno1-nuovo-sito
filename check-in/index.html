@@ -25,6 +25,7 @@
     --legno:#B08355;
     --testo-chiaro:#EDEAE2;
     --testo-scuro:#26221B;
+    --grigio:#565b62;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
@@ -97,25 +98,12 @@
   .info-card a.tel{ color:var(--testo-scuro); text-decoration:none; }
 
   .step{
-    display:flex; gap:1.2rem;
     background:#fff;
     border-radius:16px;
     padding:1.6rem;
     margin-bottom:1.3rem;
     box-shadow:0 2px 10px rgba(0,0,0,0.05);
   }
-  .step .num{
-    flex-shrink:0;
-    width:38px; height:38px;
-    border-radius:50%;
-    background:var(--notte);
-    color:var(--legno);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.1rem;
-  }
-  .step .content{ flex:1; }
   .step .step-label{
     font-family:'Michroma', sans-serif;
     font-size:0.6rem;
@@ -125,10 +113,24 @@
     margin-bottom:0.4rem;
   }
   .step h2{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
     font-family:'Fraunces', serif;
     font-weight:600;
     font-size:1.2rem;
     margin-bottom:0.6rem;
+  }
+  .step h2 .num{
+    flex-shrink:0;
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--grigio);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Michroma', sans-serif;
+    font-weight:400;
+    font-size:0.85rem;
   }
   .step p{ line-height:1.6; }
   .step .caption{
@@ -139,8 +141,8 @@
   }
   .step-photos{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0.6rem;
+    grid-template-columns:1fr;
+    gap:0.8rem;
     margin-top:1rem;
   }
   .step-photos img{
@@ -150,9 +152,12 @@
     border-radius:10px;
     display:block;
   }
+  @media (min-width:640px){
+    .step-photos{ grid-template-columns:1fr 1fr; }
+  }
 
   .keycode-box{
-    background:var(--notte);
+    background:var(--grigio);
     color:var(--testo-chiaro);
     border-radius:16px;
     padding:1.6rem;
@@ -168,10 +173,10 @@
     margin-bottom:0.6rem;
   }
   .keycode-box .code{
-    font-family:'Fraunces', serif;
-    font-size:2.4rem;
-    font-weight:600;
-    letter-spacing:0.05em;
+    font-family:'Michroma', sans-serif;
+    font-size:1.7rem;
+    font-weight:400;
+    letter-spacing:0.08em;
     margin-bottom:1rem;
   }
   .keycode-box ol{
@@ -189,9 +194,18 @@
   }
   .inbox-item{
     background:#fff;
+    border:1px solid rgba(0,0,0,0.08);
     border-radius:14px;
-    padding:1.1rem;
+    padding:1rem;
     text-align:center;
+  }
+  .inbox-item img{
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:0.6rem;
+    display:block;
   }
   .inbox-item .t{ font-weight:600; margin-bottom:0.4rem; font-size:0.95rem; }
   .inbox-item .b{ font-size:0.8rem; opacity:0.7; line-height:1.4; }
@@ -315,7 +329,6 @@
   @media (max-width:640px){
     .inbox-grid{ grid-template-columns:1fr; }
     .rooms-grid{ grid-template-columns:1fr; }
-    .step{ flex-direction:column; }
   }
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-820SJBZQF0"></script>
@@ -364,79 +377,67 @@
   </div>
 
   <div class="step">
-    <div class="num">1</div>
-    <div class="content">
-      <div class="step-label" data-i18n="ci_s1_step">Primo passo</div>
-      <h2 data-i18n="ci_s1_h">📍 Trovate l'ingresso</h2>
-      <p data-i18n="ci_s1_b" data-i18n-html>Arrivate in Via Lorenzo il Magnifico 158 🏠. Il cancello è tra Auto Moto e l'Anytime Fitness. Sul citofono a sinistra del cancello suonate <strong>Interno1</strong> 🔔: apriremo automaticamente.</p>
-      <div class="step-photos">
-        <img src="/assets/checkin-step1-cancello.jpg" alt="Cancello di ingresso tra Auto Moto e Anytime Fitness" loading="lazy">
-        <img src="/assets/checkin-step1-citofono.jpg" alt="Citofono esterno, cercare Interno1" loading="lazy">
-      </div>
+    <div class="step-label" data-i18n="ci_s1_step">Primo passo</div>
+    <h2><span class="num">1</span> <span data-i18n="ci_s1_h">📍 Trovate l'ingresso</span></h2>
+    <p data-i18n="ci_s1_b" data-i18n-html>Arrivate in Via Lorenzo il Magnifico 158 🏠. Il cancello è tra Auto Moto e l'Anytime Fitness. Sul citofono a sinistra del cancello suonate <strong>Interno1</strong> 🔔: apriremo automaticamente.</p>
+    <div class="step-photos">
+      <img src="/assets/checkin-step1-cancello.jpg" alt="Cancello di ingresso tra Auto Moto e Anytime Fitness" loading="lazy">
+      <img src="/assets/checkin-step1-citofono.jpg" alt="Citofono esterno, cercare Interno1" loading="lazy">
     </div>
   </div>
 
   <div class="step">
-    <div class="num">2</div>
-    <div class="content">
-      <div class="step-label" data-i18n="ci_s2_step">Secondo passo</div>
-      <h2 data-i18n="ci_s2_h">🚶 Secondo portone nell'androne</h2>
-      <p data-i18n="ci_s2_b" data-i18n-html>Entrati nell'androne trovate un secondo portone in vetro 🚪. C'è un altro citofono sulla destra: suonate ancora <strong>Interno1 (INT. 3)</strong> 🔔 e apriremo anche questo.</p>
-      <div class="step-photos">
-        <img src="/assets/checkin-step2-portone.jpg" alt="Secondo portone in vetro nell'androne" loading="lazy">
-        <img src="/assets/checkin-step2-citofono.jpg" alt="Citofono interno, cercare INT.3 Interno1" loading="lazy">
-      </div>
+    <div class="step-label" data-i18n="ci_s2_step">Secondo passo</div>
+    <h2><span class="num">2</span> <span data-i18n="ci_s2_h">🚶 Secondo portone nell'androne</span></h2>
+    <p data-i18n="ci_s2_b" data-i18n-html>Entrati nell'androne trovate un secondo portone in vetro 🚪. C'è un altro citofono sulla destra: suonate ancora <strong>Interno1 (INT. 3)</strong> 🔔 e apriremo anche questo.</p>
+    <div class="step-photos">
+      <img src="/assets/checkin-step2-portone.jpg" alt="Secondo portone in vetro nell'androne" loading="lazy">
+      <img src="/assets/checkin-step2-citofono.jpg" alt="Citofono interno, cercare INT.3 Interno1" loading="lazy">
     </div>
   </div>
 
   <div class="step">
-    <div class="num">3</div>
-    <div class="content">
-      <div class="step-label" data-i18n="ci_s3_step">Terzo passo</div>
-      <h2 data-i18n="ci_s3_h">🔒 La cassetta delle chiavi</h2>
-      <p data-i18n="ci_s3_b">Subito a destra trovate la porta con il logo InternoUno 🚪. Accanto c'è la cassetta di sicurezza con le vostre chiavi.</p>
-      <div class="step-photos">
-        <img src="/assets/checkin-step3-porta-cassetta.jpg" alt="Porta InternoUno con cassetta di sicurezza a fianco" loading="lazy">
-        <img src="/assets/checkin-step3-tastierino.jpg" alt="Tastierino della cassetta di sicurezza" loading="lazy">
-      </div>
+    <div class="step-label" data-i18n="ci_s3_step">Terzo passo</div>
+    <h2><span class="num">3</span> <span data-i18n="ci_s3_h">🔒 La cassetta delle chiavi</span></h2>
+    <p data-i18n="ci_s3_b">Subito a destra trovate la porta con il logo InternoUno 🚪. Accanto c'è la cassetta di sicurezza con le vostre chiavi.</p>
+    <div class="step-photos">
+      <img src="/assets/checkin-step3-porta-cassetta.jpg" alt="Porta InternoUno con cassetta di sicurezza a fianco" loading="lazy">
+      <img src="/assets/checkin-step3-tastierino.jpg" alt="Tastierino della cassetta di sicurezza" loading="lazy">
+    </div>
 
-      <div class="keycode-box">
-        <div class="label" data-i18n="ci_keycode_label">Codice cassetta di sicurezza</div>
-        <div class="code">3044 + E</div>
-        <ol>
-          <li data-i18n="ci_keycode_1">Digitate 3-0-4-4</li>
-          <li data-i18n="ci_keycode_2">Premete E (in basso a destra)</li>
-          <li data-i18n="ci_keycode_3">Girate la manopola in senso orario</li>
-        </ol>
-      </div>
+    <div class="keycode-box">
+      <div class="label" data-i18n="ci_keycode_label">Codice cassetta di sicurezza</div>
+      <div class="code">3044 + E</div>
+      <ol>
+        <li data-i18n="ci_keycode_1">Digitate 3-0-4-4</li>
+        <li data-i18n="ci_keycode_2">Premete E (in basso a destra)</li>
+        <li data-i18n="ci_keycode_3">Girate la manopola in senso orario</li>
+      </ol>
+    </div>
 
-      <h3 style="font-family:'Fraunces',serif; font-size:1rem; margin-bottom:0.7rem;" data-i18n="ci_inbox_title">Cosa trovate nella cassetta</h3>
-      <div class="inbox-grid">
-        <div class="inbox-item"><img src="/assets/checkin-tessera-rfid.jpg" alt="Tessera magnetica RFID" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; margin-bottom:0.6rem;" loading="lazy"><div class="t" data-i18n="ci_inbox1_t">🔑 Tessera magnetica</div><div class="b" data-i18n="ci_inbox1_b">Apre entrambi i cancelli di ingresso</div></div>
-        <div class="inbox-item"><div class="t" data-i18n="ci_inbox2_t">🗝 Chiave grande</div><div class="b" data-i18n="ci_inbox2_b">Porta principale InternoUno</div></div>
-        <div class="inbox-item"><div class="t" data-i18n="ci_inbox3_t">🗝 Chiave camera</div><div class="b" data-i18n="ci_inbox3_b">Porta della tua stanza</div></div>
-      </div>
+    <h3 style="font-family:'Fraunces',serif; font-size:1rem; margin-bottom:0.7rem;" data-i18n="ci_inbox_title">Cosa trovate nella cassetta</h3>
+    <div class="inbox-grid">
+      <div class="inbox-item"><img src="/assets/checkin-tessera-rfid.jpg" alt="Tessera magnetica RFID" loading="lazy"><div class="t" data-i18n="ci_inbox1_t">🔑 Tessera magnetica</div><div class="b" data-i18n="ci_inbox1_b">Apre entrambi i cancelli di ingresso</div></div>
+      <div class="inbox-item"><img src="/assets/checkin-chiave-grande.jpg" alt="Chiave grande, porta principale" loading="lazy"><div class="t" data-i18n="ci_inbox2_t">🗝 Chiave grande</div><div class="b" data-i18n="ci_inbox2_b">Porta principale InternoUno</div></div>
+      <div class="inbox-item"><img src="/assets/checkin-chiave-camera.jpg" alt="Chiave camera" loading="lazy"><div class="t" data-i18n="ci_inbox3_t">🗝 Chiave camera</div><div class="b" data-i18n="ci_inbox3_b">Porta della tua stanza</div></div>
+    </div>
 
-      <div class="warning-box">
-        <h3 data-i18n="ci_warn_t">⚠️ Attenzione — le camere sono tutte dentro l'appartamento</h3>
-        <p data-i18n="ci_warn_b">Una volta prese le chiavi, non cercate le camere nel palazzo 🚫. InternoUno è un piccolo affittacamere: tutte le stanze si trovano all'interno dell'appartamento, entrando dalla porta con il logo InternoUno alla sinistra della cassetta di sicurezza ➡️.</p>
-      </div>
+    <div class="warning-box">
+      <h3 data-i18n="ci_warn_t">⚠️ Attenzione — le camere sono tutte dentro l'appartamento</h3>
+      <p data-i18n="ci_warn_b">Una volta prese le chiavi, non cercate le camere nel palazzo 🚫. InternoUno è un piccolo affittacamere: tutte le stanze si trovano all'interno dell'appartamento, entrando dalla porta con il logo InternoUno alla sinistra della cassetta di sicurezza ➡️.</p>
     </div>
   </div>
 
   <div class="step">
-    <div class="num">4</div>
-    <div class="content">
-      <div class="step-label" data-i18n="ci_s4_step">Quarto passo</div>
-      <h2 data-i18n="ci_s4_h">🏨 La vostra camera</h2>
-      <p data-i18n="ci_s4_b">Entrati nella struttura, la reception è davanti a voi 😊. Trovate la porta con il numero corrispondente alla vostra chiave.</p>
-      <div class="rooms-grid">
-        <div class="rooms-card"><div class="l" data-i18n="ci_rooms1_l">Camere 1 & 2</div><div class="b" data-i18n="ci_rooms1_b">🛏 Subito a destra appena entrati</div></div>
-        <div class="rooms-card"><div class="l" data-i18n="ci_rooms2_l">Camere 3 · 4 · 5</div><div class="b" data-i18n="ci_rooms2_b">🛏 Corridoio a sinistra: 5 prima, 4 seconda, 3 terza</div></div>
-      </div>
-      <div class="step-photos" style="grid-template-columns:1fr; margin-top:1rem;">
-        <img src="/assets/checkin-step4-corridoio.jpg" alt="Corridoio con indicazioni per raggiungere le camere" loading="lazy">
-      </div>
+    <div class="step-label" data-i18n="ci_s4_step">Quarto passo</div>
+    <h2><span class="num">4</span> <span data-i18n="ci_s4_h">🏨 La vostra camera</span></h2>
+    <p data-i18n="ci_s4_b">Entrati nella struttura, la reception è davanti a voi 😊. Trovate la porta con il numero corrispondente alla vostra chiave.</p>
+    <div class="rooms-grid">
+      <div class="rooms-card"><div class="l" data-i18n="ci_rooms1_l">Camere 1 & 2</div><div class="b" data-i18n="ci_rooms1_b">🛏 Subito a destra appena entrati</div></div>
+      <div class="rooms-card"><div class="l" data-i18n="ci_rooms2_l">Camere 3 · 4 · 5</div><div class="b" data-i18n="ci_rooms2_b">🛏 Corridoio a sinistra: 5 prima, 4 seconda, 3 terza</div></div>
+    </div>
+    <div class="step-photos" style="grid-template-columns:1fr; margin-top:1rem;">
+      <img src="/assets/checkin-step4-corridoio.jpg" alt="Corridoio con indicazioni per raggiungere le camere" loading="lazy">
     </div>
   </div>
 
