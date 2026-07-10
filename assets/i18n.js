@@ -52,6 +52,10 @@
     // aggiorna l'etichetta del selettore
     var cur = document.getElementById('iu-lang-current');
     if (cur) cur.textContent = lang.toUpperCase();
+    // avvisa il resto della pagina (es. contenuti dinamici come gli eventi) che la lingua è cambiata
+    try {
+      document.dispatchEvent(new CustomEvent('iu:langchange', { detail: { lang: lang } }));
+    } catch(e){}
   }
 
   // costruisce il selettore lingua nell'header
