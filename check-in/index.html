@@ -303,15 +303,70 @@
   .print-cta .icon{ font-size:1.1rem; flex-shrink:0; }
 
   @media print{
-    header, .video-cta-wrap, .video-modal, #checkinVideoModal{ display:none !important; }
+    @page{ size:A4; margin:8mm; }
+    html{ font-size:6.3px; }
+    header, .video-cta-wrap, .video-modal, #checkinVideoModal, .hero .eyebrow, .hero p{ display:none !important; }
     body{ background:#fff; }
-    .step, .info-card, .keycode-box, .inbox-item, .warning-box, .address-box{
+    main{ max-width:100% !important; padding:0 !important; }
+    .hero{ background:#fff !important; color:#000 !important; padding:0.3rem 0 0.6rem !important; }
+    .hero h1{ font-size:2.2rem !important; }
+    .info-row{ margin-bottom:0.6rem !important; gap:0.5rem !important; }
+    .info-card{ padding:0.4rem 0.6rem !important; box-shadow:none !important; border:1px solid #ddd; }
+    .info-card .value{ font-size:1.3rem !important; }
+    .info-card .sub{ font-size:0.9rem !important; }
+    .step{
       box-shadow:none !important;
-      border:1px solid #ccc;
+      border:1px solid #ddd;
+      padding:0.6rem !important;
+      margin-bottom:0.5rem !important;
       break-inside:avoid;
     }
-    .hero{ background:#fff !important; color:#000 !important; }
-    .hero .eyebrow{ color:#666 !important; }
+    .step h2{ font-size:1.1rem !important; margin-bottom:0.3rem !important; gap:0.4rem !important; }
+    .step h2 .num{ width:1.6rem !important; height:1.6rem !important; font-size:0.9rem !important; }
+    .step .step-label{ font-size:0.7rem !important; margin-bottom:0.2rem !important; }
+    .step p{ font-size:0.85rem !important; line-height:1.35 !important; }
+    .step .caption{ display:none !important; }
+    .step-photos{
+      display:flex !important;
+      flex-wrap:wrap;
+      gap:0.3rem !important;
+      margin-top:0.4rem !important;
+    }
+    .step-photos img{
+      width:auto !important;
+      height:2.1cm !important;
+      aspect-ratio:auto !important;
+      flex:0 0 auto;
+    }
+    .keycode-box{
+      background:#f0f0f0 !important;
+      color:#000 !important;
+      padding:0.5rem !important;
+      margin:0.5rem 0 !important;
+      break-inside:avoid;
+    }
+    .keycode-box .label{ color:#555 !important; font-size:0.7rem !important; }
+    .keycode-box .code{ font-size:1.4rem !important; margin-bottom:0.4rem !important; }
+    .keycode-box ol{ font-size:0.8rem !important; }
+    .inbox-grid{ gap:0.4rem !important; margin-bottom:0.5rem !important; }
+    .inbox-item{
+      box-shadow:none !important;
+      border:1px solid #ddd;
+      padding:0.4rem !important;
+    }
+    .inbox-item img{ height:1.6cm !important; width:auto !important; aspect-ratio:auto !important; margin-bottom:0.3rem !important; }
+    .inbox-item .t{ font-size:0.85rem !important; }
+    .inbox-item .b{ font-size:0.7rem !important; }
+    .warning-box{ padding:0.5rem !important; margin-bottom:0 !important; break-inside:avoid; }
+    .warning-box h3{ font-size:0.9rem !important; }
+    .warning-box p{ font-size:0.75rem !important; }
+    .rooms-grid{ gap:0.4rem !important; }
+    .rooms-card{ padding:0.5rem !important; }
+    .rooms-card .l{ font-size:0.85rem !important; }
+    .rooms-card .b{ font-size:0.75rem !important; }
+    .address-box{ margin-top:0.6rem !important; padding-top:0.5rem !important; }
+    .address-box .addr{ font-size:1rem !important; }
+    .address-box a.maps-cta, .address-box a.contact-cta{ display:none !important; }
   }
 
   .video-modal{
