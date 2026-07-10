@@ -289,7 +289,7 @@
   .contact-status.err{ color:#c0392b; }
   .booking-frame-wrap{
     width:100%;
-    height:1000px;
+    height:950px;
     overflow:hidden;
     position:relative;
     border-radius:14px;
@@ -298,9 +298,9 @@
   }
   .booking-frame-wrap iframe{
     position:absolute;
-    top:-320px; left:0;
+    top:-400px; left:0;
     width:120%;
-    height:calc(120% + 320px);
+    height:calc(120% + 400px);
     border:none;
     display:block;
     transform:scale(0.833);
@@ -344,7 +344,7 @@
 
 <main style="max-width:900px; margin:0 auto; padding:2rem 5vw 4rem;">
   <div class="booking-frame-wrap">
-    <iframe src="https://internouno.amenitiz.io/it/booking/room" title="Prenotazione InternoUno" loading="lazy"></iframe>
+    <iframe id="bookingIframe" src="" title="Prenotazione InternoUno" loading="lazy"></iframe>
   </div>
 </main>
 <footer>
@@ -467,5 +467,27 @@
 <script src="/assets/reveal.js"></script>
   <script src="/assets/translations.js"></script>
   <script src="/assets/i18n.js"></script>
+<script>
+  (function(){
+    var SUPPORTED = ['it','en','es'];
+    function bookingUrl(lang){
+      var l = SUPPORTED.indexOf(lang) !== -1 ? lang : 'en';
+      return 'https://internouno.amenitiz.io/' + l + '/booking/room#DatesGuests-BE';
+    }
+    function setSrc(){
+      var iframe = document.getElementById('bookingIframe');
+      if (!iframe) return;
+      var lang = window.IU_CURRENT_LANG || 'it';
+      var url = bookingUrl(lang);
+      if (iframe.getAttribute('src') !== url) iframe.src = url;
+    }
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', setSrc);
+    } else {
+      setSrc();
+    }
+    document.addEventListener('iu:langchange', setSrc);
+  })();
+</script>
 </body>
 </html>
