@@ -128,6 +128,19 @@
     opacity:0.6;
     font-style:italic;
   }
+  .step-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.6rem;
+    margin-top:1rem;
+  }
+  .step-photos img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+  }
 
   .keycode-box{
     background:var(--notte);
@@ -266,6 +279,10 @@
       <div class="step-label" data-i18n="ci_s1_step">Primo passo</div>
       <h2 data-i18n="ci_s1_h">📍 Trovate l'ingresso</h2>
       <p data-i18n="ci_s1_b" data-i18n-html>Arrivate in Via Lorenzo il Magnifico 158 🏠. Il cancello è tra Auto Moto e l'Anytime Fitness. Sul citofono a sinistra del cancello suonate <strong>Interno1</strong> 🔔: apriremo automaticamente.</p>
+      <div class="step-photos">
+        <img src="/assets/checkin-step1-cancello.jpg" alt="Cancello di ingresso tra Auto Moto e Anytime Fitness" loading="lazy">
+        <img src="/assets/checkin-step1-citofono.jpg" alt="Citofono esterno, cercare Interno1" loading="lazy">
+      </div>
     </div>
   </div>
 
@@ -275,6 +292,10 @@
       <div class="step-label" data-i18n="ci_s2_step">Secondo passo</div>
       <h2 data-i18n="ci_s2_h">🚶 Secondo portone nell'androne</h2>
       <p data-i18n="ci_s2_b" data-i18n-html>Entrati nell'androne trovate un secondo portone in vetro 🚪. C'è un altro citofono sulla destra: suonate ancora <strong>Interno1 (INT. 3)</strong> 🔔 e apriremo anche questo.</p>
+      <div class="step-photos">
+        <img src="/assets/checkin-step2-portone.jpg" alt="Secondo portone in vetro nell'androne" loading="lazy">
+        <img src="/assets/checkin-step2-citofono.jpg" alt="Citofono interno, cercare INT.3 Interno1" loading="lazy">
+      </div>
     </div>
   </div>
 
@@ -284,6 +305,10 @@
       <div class="step-label" data-i18n="ci_s3_step">Terzo passo</div>
       <h2 data-i18n="ci_s3_h">🔒 La cassetta delle chiavi</h2>
       <p data-i18n="ci_s3_b">Subito a destra trovate la porta con il logo InternoUno 🚪. Accanto c'è la cassetta di sicurezza con le vostre chiavi.</p>
+      <div class="step-photos">
+        <img src="/assets/checkin-step3-porta-cassetta.jpg" alt="Porta InternoUno con cassetta di sicurezza a fianco" loading="lazy">
+        <img src="/assets/checkin-step3-tastierino.jpg" alt="Tastierino della cassetta di sicurezza" loading="lazy">
+      </div>
 
       <div class="keycode-box">
         <div class="label" data-i18n="ci_keycode_label">Codice cassetta di sicurezza</div>
@@ -318,6 +343,9 @@
       <div class="rooms-grid">
         <div class="rooms-card"><div class="l" data-i18n="ci_rooms1_l">Camere 1 & 2</div><div class="b" data-i18n="ci_rooms1_b">🛏 Subito a destra appena entrati</div></div>
         <div class="rooms-card"><div class="l" data-i18n="ci_rooms2_l">Camere 3 · 4 · 5</div><div class="b" data-i18n="ci_rooms2_b">🛏 Corridoio a sinistra: 5 prima, 4 seconda, 3 terza</div></div>
+      </div>
+      <div class="step-photos" style="grid-template-columns:1fr; margin-top:1rem;">
+        <img src="/assets/checkin-step4-corridoio.jpg" alt="Corridoio con indicazioni per raggiungere le camere" loading="lazy">
       </div>
     </div>
   </div>
