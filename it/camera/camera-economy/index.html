@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrimoniale Economy — InternoUno Deluxe</title>
+<link rel="canonical" href="https://interno1.it/it/camera/camera-economy/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=Michroma&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --notte:#14171C;
+    --notte-2:#1D2128;
+    --crema:#EFE7D6;
+    --legno:#B08355;
+    --testo-chiaro:#EDEAE2;
+    --testo-scuro:#26221B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--crema);
+    color:var(--testo-scuro);
+  }
+
+  header{
+    background:var(--notte);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 5vw;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  header .logo{ display:flex; align-items:center; gap:0.6rem; }
+  header .logo img{ width:36px; height:27px; object-fit:contain; display:block; }
+  header .logo .wordmark{
+    font-family:'Michroma', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-size:1.05rem;
+    color:#fff;
+  }
+  header .logo .wordmark .accent{ color:#FF6628; }
+  header nav{ display:flex; gap:1.8rem; }
+  header nav a{
+    color:var(--testo-chiaro);
+    text-decoration:none;
+    opacity:0.85;
+    font-family:'Michroma', sans-serif;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    width:32px;
+    height:24px;
+    position:relative;
+    cursor:pointer;
+    padding:0;
+    z-index:20;
+  }
+  .menu-toggle span{
+    position:absolute;
+    left:0;
+    right:0;
+    height:2px;
+    background:#fff;
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .menu-toggle span:nth-child(1){ top:2px; }
+  .menu-toggle span:nth-child(2){ top:11px; }
+  .menu-toggle span:nth-child(3){ top:20px; }
+  .menu-toggle.open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2){ opacity:0; }
+  .menu-toggle.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+
+  @media (max-width: 720px){
+    .menu-toggle{ display:block; }
+    header nav{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      position:fixed;
+      top:0; right:0;
+      width:min(78vw, 300px);
+      height:100vh;
+      background:var(--notte);
+      padding:5.5rem 2rem 2rem;
+      transform:translateX(100%);
+      transition:transform .3s ease;
+      z-index:15;
+    }
+    header nav.open{ transform:translateX(0); }
+    header nav a{
+      font-size:0.82rem;
+      padding:0.9rem 0;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      opacity:1;
+    }
+    .nav-backdrop{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.5);
+      z-index:1;
+    }
+    .nav-backdrop.open{ display:block; }
+  }
+  header nav a.on{ opacity:1; color:#FF6628; }
+
+  .breadcrumb{
+    max-width:1100px;
+    margin:0 auto;
+    padding:1.3rem 5vw 0;
+    font-size:0.8rem;
+    color:#6b6357;
+  }
+  .breadcrumb a{ color:#6b6357; text-decoration:none; }
+  .breadcrumb a:hover{ text-decoration:underline; }
+
+  .room-hero{
+    max-width:1100px;
+    margin:1.2rem auto 0;
+    padding:0 5vw;
+  }
+  .room-hero-media{
+    position:relative;
+    border-radius:14px;
+    overflow:hidden;
+    aspect-ratio:3 / 2;
+    box-shadow:0 12px 32px rgba(20,15,5,0.16);
+  }
+  .room-hero-media video, .room-hero-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .room-hero-media .overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg, rgba(10,8,4,0.6) 0%, rgba(10,8,4,0.05) 45%, rgba(10,8,4,0) 65%);
+  }
+  .room-hero-media .caption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:2rem 2.2rem;
+    color:#fff;
+  }
+  .room-hero-media .caption .tag{
+    font-family:'Michroma', sans-serif;
+    font-size:0.6rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:#FF9C6E;
+    margin-bottom:0.5rem;
+    display:block;
+  }
+  .room-hero-media .caption h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(1.6rem, 4vw, 2.3rem);
+  }
+
+  .room-facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7rem;
+    max-width:1100px;
+    margin:1.4rem auto 0;
+    padding:0 5vw;
+  }
+  .room-facts span{
+    background:#fff;
+    border-radius:100px;
+    padding:0.55rem 1.1rem;
+    font-size:0.85rem;
+    color:#4a4033;
+    box-shadow:0 3px 10px rgba(30,25,15,0.06);
+  }
+
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:2.6rem 5vw 4rem;
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:3rem;
+  }
+
+  .room-desc h2, .room-amenities h2, .room-gallery h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.35rem;
+    margin-bottom:1rem;
+  }
+  .room-desc p{
+    font-size:0.96rem;
+    line-height:1.7;
+    color:#4a453a;
+    margin-bottom:2.2rem;
+  }
+
+  .room-amenities ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.8rem;
+  }
+  .room-amenities li{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    font-size:0.88rem;
+    color:#4a453a;
+    background:#fff;
+    padding:0.7rem 0.9rem;
+    border-radius:8px;
+    box-shadow:0 3px 10px rgba(30,25,15,0.05);
+  }
+  .room-amenities li svg{
+    width:18px; height:18px;
+    stroke:var(--legno);
+    fill:none;
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    flex-shrink:0;
+  }
+
+  .room-cta{
+    margin-top:2rem;
+    display:block;
+    text-align:center;
+    background:#FF6628;
+    color:#fff;
+    font-weight:500;
+    font-size:0.95rem;
+    padding:1rem;
+    border-radius:8px;
+    text-decoration:none;
+  }
+
+  .room-gallery{
+    grid-column:1 / -1;
+    margin-top:1rem;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0.7rem;
+  }
+  .gallery-grid img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    border-radius:8px;
+    cursor:pointer;
+    display:block;
+  }
+
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    background:rgba(10,8,4,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:2rem;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{
+    max-width:100%;
+    max-height:88vh;
+    border-radius:6px;
+  }
+  .lightbox .lb-close{
+    position:absolute;
+    top:1.5rem;
+    right:1.5rem;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:2rem;
+    cursor:pointer;
+  }
+  .lightbox .lb-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.12);
+    border:none;
+    color:#fff;
+    font-size:1.6rem;
+    width:48px; height:48px;
+    border-radius:50%;
+    cursor:pointer;
+  }
+  .lightbox .lb-prev{ left:1.5rem; }
+  .lightbox .lb-next{ right:1.5rem; }
+
+  footer{
+    background:var(--notte);
+    color:var(--testo-chiaro);
+    text-align:center;
+    padding:2rem 1.5rem;
+  }
+  footer .footer-top{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:0.9rem;
+    margin-bottom:0.6rem;
+  }
+  footer .footer-brand{
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    opacity:0.8;
+  }
+  footer .footer-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:0.4rem 1.2rem;
+    font-size:0.8rem;
+    text-transform:none;
+    letter-spacing:normal;
+    opacity:0.85;
+  }
+  footer .footer-info a{ color:var(--testo-chiaro); text-decoration:none; }
+  footer .footer-social{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:0.6rem;
+  }
+  footer .social-icon{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  footer .social-icon svg{ width:13px; height:13px; }
+  footer .social-icon.whatsapp{ background:#25D366; }
+  footer .social-icon.instagram{ background:linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  footer .social-icon.facebook{ background:#1877F2; }
+  @media (max-width: 820px){
+    main{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 520px){
+    .room-amenities ul{ grid-template-columns:1fr; }
+  }
+  .warning-box{
+    display:flex;
+    gap:0.9rem;
+    align-items:flex-start;
+    background:#FFF4E0;
+    border:1px solid #F0C674;
+    border-radius:10px;
+    padding:1rem 1.2rem;
+    margin-bottom:2rem;
+  }
+  .warning-box svg{
+    width:22px;
+    height:22px;
+    stroke:#B8791A;
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    flex-shrink:0;
+    margin-top:0.1rem;
+  }
+  .warning-box strong{
+    display:block;
+    font-size:0.9rem;
+    color:#8a5a10;
+    margin-bottom:0.35rem;
+  }
+  .warning-box p{
+    font-size:0.85rem;
+    color:#6b5433;
+    line-height:1.5;
+  }
+</style>
+<link rel="stylesheet" href="/assets/chat-widget.css">
+<link rel="stylesheet" href="/assets/reveal.css">
+  <link rel="stylesheet" href="/assets/i18n.css">
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+    <img src="/assets/logo-icon.png" alt="InternoUno" onerror="this.style.display='none'">
+    <span class="wordmark">INTERNO<span class="accent">UNO</span></span>
+  </div>
+  <nav>
+    <a href="/it/" data-i18n="nav_home">Home</a>
+    <a href="/it/camere/" class="on">Camere</a>
+    <a href="/it/dove-siamo/" data-i18n="nav_dove">Dove siamo</a>
+    <a href="/it/roma/" data-i18n="nav_roma">Roma</a>
+    <a href="/it/info/" data-i18n="nav_info">Info</a>
+    <a href="/it/contatto/" data-i18n="nav_contatti">Contatti</a>
+  </nav>
+  <div id="iu-lang-switch"></div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<div class="breadcrumb">
+  <a href="/it/camere/" data-i18n="nav_camere">Camere</a> / <a href="/it/camere/">InternoUno Deluxe · Via Lorenzo il Magnifico 158</a> / Matrimoniale Economy
+</div>
+
+<section class="room-hero">
+  <div class="room-hero-media">
+    <video id="heroRoomVideo" autoplay muted loop playsinline>
+      <source src="/assets/camera-economy-hero.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="caption">
+      <span class="tag" data-i18n="rp_sede_lorenzo">InternoUno Deluxe · Via Lorenzo il Magnifico 158</span>
+      <h1 data-i18n="room_economy_name">Matrimoniale Economy</h1>
+    </div>
+  </div>
+</section>
+
+<div class="room-facts">
+  <span data-i18n="e_info1">Accoglie 2 persone</span>
+  <span data-i18n="e_info2">9 m²</span>
+  <span data-i18n="e_info3">1 letto matrimoniale 140cm</span>
+  <span data-i18n="e_info4">Monolocale</span>
+</div>
+
+<main>
+  <div class="room-desc">
+    <h2 data-i18n="rp_h_desc">Descrizione</h2>
+    <p data-i18n="e_desc1">Piccolo monolocale (molto compatto) con letto matrimoniale da 140cm. La camera dispone di bagno privato (senza bidet), piccolo angolo cottura e aria condizionata.</p>
+
+    <div class="warning-box">
+      <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+      <div>
+        <strong data-i18n="e_warn_title">Camera molto compatta (9 m²)</strong>
+        <p data-i18n="e_warn_body">Ti consigliamo di valutare attentamente le foto prima di prenotare. Se preferisci più spazio, scrivici per richiedere un upgrade a una camera superiore: ti invieremo disponibilità e differenza di costo.</p>
+      </div>
+    </div>
+
+    <a class="room-cta" href="https://www.interno1.it/it/booking/room" target="_blank" rel="noopener" data-i18n="rp_cta">Prenota questa camera</a>
+  </div>
+
+  <div class="room-amenities">
+    <h2 data-i18n="rp_h_dotazioni">Dotazioni</h2>
+    <ul>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="M9 8.5l2 2 4-4"/></svg> <span data-i18n="dt_tv32">TV 32'' con Netflix incluso</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg> <span data-i18n="dt_wifi">Wifi</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 3v6M8 9h8l2 4H6l2-4Z"/><path d="M6 13v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/></svg> <span data-i18n="dt_appendiabiti">Appendiabiti</span></li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 11v2M11 11v2M15 11v2"/></svg> <span data-i18n="dt_ac">Aria condizionata</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 20V10a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10"/><path d="M4 15h16M9 20v-5M15 20v-5"/></svg> <span data-i18n="dt_scrivania_picc">Piccola scrivania</span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="6"/><path d="M15 14h5"/><path d="M6.5 11.5v5M11.5 11.5v5"/></svg> <span data-i18n="dt_angolo">Angolo cottura</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M5 4c4 0 6 3 6 7s-2 9-2 9"/><path d="M13 4c4 3 4 8 2 12"/></svg> <span data-i18n="dt_asciugacapelli">Asciugacapelli</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M8 3a4 4 0 0 1 8 0c0 3-2 3-2 6H10c0-3-2-3-2-6Z"/><path d="M7 12h10l-1 9H8l-1-9Z"/></svg> <span data-i18n="dt_doccia">Doccia</span></li>
+    </ul>
+  </div>
+
+  <div class="room-gallery">
+    <h2 data-i18n="rp_h_galleria">Galleria fotografica</h2>
+        <div class="gallery-grid" id="galleryGrid">
+      <img src="/assets/gallery-economy-IMG_0171.jpg" alt="Foto camera 1">
+      <img src="/assets/gallery-economy-IMG_0172.jpg" alt="Foto camera 2">
+      <img src="/assets/gallery-economy-IMG_0173.jpg" alt="Foto camera 3">
+      <img src="/assets/gallery-economy-IMG_0174.jpg" alt="Foto camera 4">
+      <img src="/assets/gallery-economy-IMG_0176.jpg" alt="Foto camera 5">
+      <img src="/assets/gallery-economy-IMG_0177.jpg" alt="Foto camera 6">
+      <img src="/assets/gallery-economy-IMG_0178.jpg" alt="Foto camera 7">
+      <img src="/assets/gallery-economy-IMG_0180.jpg" alt="Foto camera 8">
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <span class="footer-brand"><span data-i18n="foot_tagline">InternoUno — A Roma dal 2007</span></span>
+    <div class="footer-social">
+      <a class="social-icon whatsapp" href="https://wa.me/393922999914" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2m0 18.13h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.37c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.21-8.21 8.21m4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.96-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.42.06-.65.31-.22.24-.85.84-.85 2.04s.87 2.37 1 2.53c.12.17 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.29"/></svg>
+      </a>
+      <a class="social-icon instagram" href="https://www.instagram.com/internounoguesthouse/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="#fff" stroke="none"/></svg>
+      </a>
+      <a class="social-icon facebook" href="https://www.facebook.com/internounobb" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M14 22v-8h2.7l.4-3.1H14V9c0-.9.25-1.5 1.53-1.5H17V4.7C16.71 4.66 15.71 4.57 14.55 4.57c-2.42 0-4.08 1.48-4.08 4.19V11H7.75v3.1h2.72V22h3.53z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-info">
+    <span><span data-i18n="foot_addr">Via Campaldino 6 · Via Lorenzo il Magnifico 158, 00162 Roma</span></span>
+    <a href="tel:+393922999914">+39 392 299 9914</a>
+    <a href="mailto:info@interno1.it">info@interno1.it</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Chiudi">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Precedente">&#8249;</button>
+  <img id="lbImage" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Successiva">&#8250;</button>
+</div>
+
+<script>
+  (function(){
+    var grid = document.getElementById('galleryGrid');
+    var imgs = Array.prototype.slice.call(grid.querySelectorAll('img'));
+    var lightbox = document.getElementById('lightbox');
+    var lbImage = document.getElementById('lbImage');
+    var idx = 0;
+
+    function show(i){
+      idx = (i + imgs.length) % imgs.length;
+      lbImage.src = imgs[idx].src;
+    }
+    imgs.forEach(function(img, i){
+      img.addEventListener('click', function(){
+        show(i);
+        lightbox.classList.add('open');
+      });
+    });
+    document.getElementById('lbClose').addEventListener('click', function(){
+      lightbox.classList.remove('open');
+    });
+    document.getElementById('lbPrev').addEventListener('click', function(){ show(idx - 1); });
+    document.getElementById('lbNext').addEventListener('click', function(){ show(idx + 1); });
+    lightbox.addEventListener('click', function(e){
+      if (e.target === lightbox) lightbox.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e){
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'ArrowLeft') show(idx - 1);
+    });
+
+    // Swipe con il dito per passare da una foto all'altra
+    var touchStartX = 0;
+    var touchEndX = 0;
+    lightbox.addEventListener('touchstart', function(e){
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', function(e){
+      touchEndX = e.changedTouches[0].screenX;
+      var delta = touchEndX - touchStartX;
+      if (Math.abs(delta) > 40){
+        if (delta < 0) show(idx + 1); // swipe verso sinistra -> foto successiva
+        else show(idx - 1);           // swipe verso destra -> foto precedente
+      }
+    }, { passive: true });
+  })();
+
+  (function(){
+    var v = document.getElementById('heroRoomVideo');
+    if (!v) return;
+    function tryPlay(){
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+    v.addEventListener('pause', function(){ if (!document.hidden) tryPlay(); });
+    document.addEventListener('visibilitychange', function(){ if (!document.hidden) tryPlay(); });
+    setInterval(function(){ if (v.paused && !document.hidden) tryPlay(); }, 4000);
+  })();
+</script>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuToggle');
+    var nav = document.querySelector('header nav');
+    var backdrop = document.getElementById('navBackdrop');
+    if (!btn || !nav) return;
+    function toggle(){
+      btn.classList.toggle('open');
+      nav.classList.toggle('open');
+      if (backdrop) backdrop.classList.toggle('open');
+    }
+    btn.addEventListener('click', toggle);
+    if (backdrop) backdrop.addEventListener('click', toggle);
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        nav.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
+      });
+    });
+  })();
+</script>
+<script>window.IU_CHAT_SLUG='lorenzo';</script>
+<script src="/assets/chat-widget.js"></script>
+
+<script src="/assets/reveal.js"></script>
+  <script src="/assets/translations.js"></script>
+  <script src="/assets/i18n.js"></script>
+</body>
+</html>
