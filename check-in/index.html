@@ -484,7 +484,9 @@
     <p data-i18n="ci_s3_b">Subito a destra trovate la porta con il logo InternoUno 🚪. Accanto c'è la cassetta di sicurezza con le vostre chiavi.</p>
     <div class="step-photos">
       <img src="/assets/checkin-step3-porta-cassetta.jpg" alt="Porta InternoUno con cassetta di sicurezza a fianco" loading="lazy">
-      <video src="/assets/checkin-cassaforte-demo.mp4" autoplay muted loop playsinline style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px; display:block;"></video>
+      <video class="safe-demo-video" muted autoplay loop playsinline webkit-playsinline preload="auto" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px; display:block;">
+        <source src="/assets/checkin-cassaforte-demo.mp4" type="video/mp4">
+      </video>
     </div>
 
     <div class="keycode-box">
@@ -872,6 +874,29 @@ window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
     setPdfLink();
   }
   document.addEventListener('iu:langchange', setPdfLink);
+})();
+</script>
+<script>
+(function(){
+  function startSafeVideo(){
+    var v = document.querySelector('.safe-demo-video');
+    if (!v) return;
+    v.muted = true;
+    v.setAttribute('muted','');
+    var p = v.play();
+    if (p && p.catch) { p.catch(function(){ /* riprova al primo tocco */ }); }
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', startSafeVideo);
+  } else {
+    startSafeVideo();
+  }
+  // fallback: se l'autoplay è bloccato, parte al primo tocco sulla pagina
+  document.addEventListener('touchstart', function once(){
+    var v = document.querySelector('.safe-demo-video');
+    if (v && v.paused) { v.play().catch(function(){}); }
+    document.removeEventListener('touchstart', once);
+  }, {passive:true});
 })();
 </script>
 </body>
