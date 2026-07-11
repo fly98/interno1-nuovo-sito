@@ -878,25 +878,39 @@ window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
 </script>
 <script>
 (function(){
-  function startSafeVideo(){
-    var v = document.querySelector('.safe-demo-video');
-    if (!v) return;
-    v.muted = true;
-    v.setAttribute('muted','');
+  var v = document.querySelector('.safe-demo-video');
+  if (!v) return;
+  v.muted = true;
+  v.setAttribute('muted','');
+
+  function tryPlay(){
     var p = v.play();
-    if (p && p.catch) { p.catch(function(){ /* riprova al primo tocco */ }); }
+    if (p && p.catch) p.catch(function(){ /* riprova al prossimo evento utile */ });
   }
+
+  // avvio iniziale
   if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', startSafeVideo);
+    document.addEventListener('DOMContentLoaded', tryPlay);
   } else {
-    startSafeVideo();
+    tryPlay();
   }
-  // fallback: se l'autoplay è bloccato, parte al primo tocco sulla pagina
+
+  // il sistema a volte mette in pausa il video (risparmio energetico): lo si fa ripartire
+  v.addEventListener('pause', function(){
+    if (!document.hidden) tryPlay();
+  });
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) tryPlay();
+  });
+  // fallback: se l'autoplay è bloccato, parte al primo tocco
   document.addEventListener('touchstart', function once(){
-    var v = document.querySelector('.safe-demo-video');
-    if (v && v.paused) { v.play().catch(function(){}); }
+    if (v.paused) tryPlay();
     document.removeEventListener('touchstart', once);
   }, {passive:true});
+  // ritenta periodicamente, costa pochissimo se il video sta già girando
+  setInterval(function(){
+    if (v.paused && !document.hidden) tryPlay();
+  }, 4000);
 })();
 </script>
 </body>
