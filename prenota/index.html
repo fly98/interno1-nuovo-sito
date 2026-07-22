@@ -480,9 +480,12 @@
   <script src="/assets/i18n.js"></script>
 <script>
   (function(){
-    var SUPPORTED = ['it','en','es'];
+    // mappa lingua sito -> prefisso lingua del booking Amenitiz
+    var BOOKING_LANG = {
+      it: 'it', en: 'en', es: 'es', fr: 'fr', de: 'de', pt: 'pt', zh: 'zh-CN'
+    };
     function bookingUrl(lang){
-      var l = SUPPORTED.indexOf(lang) !== -1 ? lang : 'en';
+      var l = BOOKING_LANG[lang] || 'en';
       return 'https://internouno.amenitiz.io/' + l + '/booking/room#DatesGuests-BE';
     }
     function setSrc(){
