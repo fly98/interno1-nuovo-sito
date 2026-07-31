@@ -595,8 +595,22 @@
       return dict[key] || fallback;
     }
 
+    function wbCurrentLang(){
+      // stessa logica di i18n.js: se IU_CURRENT_LANG non è ancora pronto
+      // (primo caricamento) lo ricaviamo da localStorage / browser
+      if (window.IU_CURRENT_LANG) return window.IU_CURRENT_LANG;
+      var LANGS = ['it','en','es','fr','de','pt','zh'];
+      try {
+        var saved = localStorage.getItem('iu_lang');
+        if (saved && LANGS.indexOf(saved) !== -1) return saved;
+      } catch(e){}
+      var nav = (navigator.language || 'en').slice(0,2).toLowerCase();
+      if (LANGS.indexOf(nav) !== -1) return nav;
+      return 'it';
+    }
+
     function loadEventi(){
-      var wbLang = window.IU_CURRENT_LANG || 'it';
+      var wbLang = wbCurrentLang();
       document.getElementById('grid-eventi').innerHTML = '<p class="roma-loading">' + t('rm_loading_eventi','Caricamento eventi…') + '</p>';
       document.getElementById('grid-concerti').innerHTML = '<p class="roma-loading">' + t('rm_loading_eventi','Caricamento eventi…') + '</p>';
       fetch('https://wb-worker.f-castiglioni.workers.dev/wb/campaldino/data?lang=' + wbLang)
@@ -611,7 +625,11 @@
         });
     }
 
-    loadEventi();
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', loadEventi);
+    } else {
+      loadEventi();
+    }
     // ricarica gli eventi nella lingua giusta quando l'utente cambia lingua dallo switcher
     document.addEventListener('iu:langchange', loadEventi);
   })();
