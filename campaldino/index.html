@@ -1218,8 +1218,8 @@ function renderFilterChips(){
 function initFoodMap(){
   if(foodMap) return;
   foodMap = L.map('foodMap', {zoomControl:false, attributionControl:true}).setView([CFG.lat, CFG.lon], 15);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 20
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
   }).addTo(foodMap);
 }
 function renderFoodMarkers(list){
@@ -1329,8 +1329,8 @@ function initMap(){
   if(map) return;
   const home = [CFG.lat, CFG.lon];
   map = L.map('map', {zoomControl:false, attributionControl:true}).setView(home, 16);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 20
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
   }).addTo(map);
 
   const homeIcon = L.divIcon({className:'', html:'<div class="poi-pin cat-casa"><span>🏠</span></div>', iconSize:[28,28], iconAnchor:[14,28]});
