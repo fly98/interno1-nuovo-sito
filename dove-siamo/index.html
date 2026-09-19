@@ -371,7 +371,6 @@
     stroke:#fff;
   }
 </style>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="/assets/chat-widget.css">
 <link rel="stylesheet" href="/assets/reveal.css">
   <link rel="stylesheet" href="/assets/i18n.css">
@@ -543,64 +542,72 @@
     });
   })();
 </script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet" />
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
 <script>
-  var map = L.map('dove-map', { zoomControl: true, attributionControl: true, scrollWheelZoom: false })
-    .setView([41.9110, 12.5260], 15);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
-    maxZoom: 19
-  }).addTo(map);
-
-  var giallaIcon = L.divIcon({
-    className: '',
-    html: '<div class="stop-marker gialla"><span>1</span></div>',
-    iconSize: [34, 34],
-    iconAnchor: [17, 17]
+  var map = new maplibregl.Map({
+    container: 'dove-map',
+    style: 'https://tiles.openfreemap.org/styles/3d',
+    center: [12.5260, 41.9110],
+    zoom: 15.3,
+    pitch: 50,
+    bearing: -12,
+    attributionControl: { compact: true }
   });
-  var deluxeIcon = L.divIcon({
-    className: '',
-    html: '<div class="stop-marker deluxe"><span>2</span></div>',
-    iconSize: [34, 34],
-    iconAnchor: [17, 17]
-  });
+  map.addControl(new maplibregl.NavigationControl({ showCompass: true }), 'top-left');
+  map.scrollZoom.disable();
+  map.touchZoomRotate.enableRotation();
 
-  L.marker([41.9085842, 12.5216869], { icon: giallaIcon }).addTo(map)
-    .bindPopup('<strong>InternoUno</strong><br>Via Campaldino 6');
-  L.marker([41.9108676, 12.5285824], { icon: deluxeIcon }).addTo(map)
-    .bindPopup('<strong>InternoUno Deluxe</strong><br>Via Lorenzo il Magnifico 158');
-
-  // Marker trasporti
-  function transitIcon(emoji){
-    return L.divIcon({
-      className: '',
-      html: '<div class="transit-marker">' + emoji + '</div>',
-      iconSize: [28, 28],
-      iconAnchor: [14, 14]
-    });
+  function markerEl(html){
+    var el = document.createElement('div');
+    el.innerHTML = html;
+    return el.firstElementChild;
   }
+  function addMarker(lng, lat, html, popupHtml){
+    var el = markerEl(html);
+    var m = new maplibregl.Marker({ element: el, anchor: 'center' })
+      .setLngLat([lng, lat])
+      .setPopup(new maplibregl.Popup({ offset: 20 }).setHTML(popupHtml))
+      .addTo(map);
+    return m;
+  }
+
   function tt(key, fallback){
     var lang = window.IU_CURRENT_LANG || 'it';
     var dict = (window.IU_I18N && window.IU_I18N[lang]) || {};
     return dict[key] || fallback;
   }
-  L.marker([41.9111184, 12.5314223], { icon: transitIcon('🚇') }).addTo(map)
-    .bindPopup('<strong>' + tt('ds_map_tiburtina','Stazione Tiburtina') + '</strong><br>' + tt('ds_map_tiburtina_sub','Metro B · Treni AV e regionali'));
-  L.marker([41.9136626, 12.5208135], { icon: transitIcon('🚇') }).addTo(map)
-    .bindPopup('<strong>' + tt('ds_map_bologna','Metro Piazza Bologna') + '</strong><br>' + tt('ds_map_bologna_sub','Linea B'));
-  L.marker([41.9092166, 12.5283612], { icon: transitIcon('🚌') }).addTo(map)
-    .bindPopup('<strong>' + tt('ds_map_tibus','Autostazione TIBUS') + '</strong><br>' + tt('ds_map_tibus_sub','Autobus a lunga percorrenza'));
 
-  // Include anche Stazione Tiburtina e Piazza Bologna nella vista
-  var bounds = L.latLngBounds([
-    [41.9085842, 12.5216869],
-    [41.9108676, 12.5285824],
-    [41.9111184, 12.5314223],
-    [41.9136626, 12.5208135],
-    [41.9092166, 12.5283612]
-  ]);
-  map.fitBounds(bounds, { padding: [40, 40] });
+  var boundsPts = [];
+
+  addMarker(12.5216869, 41.9085842,
+    '<div class="stop-marker gialla"><span>1</span></div>',
+    '<strong>InternoUno</strong><br>Via Campaldino 6');
+  boundsPts.push([12.5216869, 41.9085842]);
+
+  addMarker(12.5285824, 41.9108676,
+    '<div class="stop-marker deluxe"><span>2</span></div>',
+    '<strong>InternoUno Deluxe</strong><br>Via Lorenzo il Magnifico 158');
+  boundsPts.push([12.5285824, 41.9108676]);
+
+  function transitHtml(emoji){
+    return '<div class="transit-marker">' + emoji + '</div>';
+  }
+
+  addMarker(12.5314223, 41.9111184, transitHtml('🚇'),
+    '<strong>' + tt('ds_map_tiburtina','Stazione Tiburtina') + '</strong><br>' + tt('ds_map_tiburtina_sub','Metro B · Treni AV e regionali'));
+  boundsPts.push([12.5314223, 41.9111184]);
+
+  addMarker(12.5208135, 41.9136626, transitHtml('🚇'),
+    '<strong>' + tt('ds_map_bologna','Metro Piazza Bologna') + '</strong><br>' + tt('ds_map_bologna_sub','Linea B'));
+  boundsPts.push([12.5208135, 41.9136626]);
+
+  addMarker(12.5283612, 41.9092166, transitHtml('🚌'),
+    '<strong>' + tt('ds_map_tibus','Autostazione TIBUS') + '</strong><br>' + tt('ds_map_tibus_sub','Autobus a lunga percorrenza'));
+  boundsPts.push([12.5283612, 41.9092166]);
+
+  var bounds = boundsPts.reduce(function(b, p){ return b.extend(p); }, new maplibregl.LngLatBounds(boundsPts[0], boundsPts[0]));
+  map.fitBounds(bounds, { padding: 60, pitch: 50, bearing: -12, duration: 0 });
 </script>
 
 <script src="/assets/chat-widget.js"></script>
