@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="IE">
 <title>InternoUno Experience · Via Campaldino 6</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
 <style>
@@ -206,6 +206,10 @@ details.acc .body p+p{margin-top:8px}
   font-family:inherit !important;font-size:11px !important;font-weight:600;padding:3px 8px !important;
   border-radius:6px !important;box-shadow:none !important}
 .poi-tooltip::before{display:none !important}
+.poi-marker-wrap{position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.poi-marker-wrap .poi-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-6px);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease;z-index:5}
+.poi-marker-wrap:hover .poi-tooltip,.poi-marker-wrap.show-tip .poi-tooltip{opacity:1}
+
 .card.poi{position:relative}
 .card.poi .navbtn{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;
   background:rgba(255,102,40,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -431,7 +435,7 @@ footer b{color:var(--text)}
   </button>
 </nav>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
 <script>
 /* ================= CONFIG STRUTTURA ================= */
 const CFG = {
@@ -1116,7 +1120,7 @@ function render(){
       $$('.screen').forEach(x => x.classList.remove('on'));
       $('#scr-mappa').classList.add('on');
       initMap();
-      setTimeout(() => { map.invalidateSize(); zoomToPoi(s[4], s[5]); }, 60);
+      setTimeout(() => { map.resize(); zoomToPoi(s[4], s[5]); }, 60);
     });
   });
   refreshMapLabels();
@@ -1172,7 +1176,7 @@ function renderFoodFiltered(){
     if(f[6] != null && f[7] != null){
       el.addEventListener('click', () => {
         initFoodMap();
-        setTimeout(() => { foodMap.invalidateSize(); zoomToFoodPoi(f[6], f[7]); }, 60);
+        setTimeout(() => { foodMap.resize(); zoomToFoodPoi(f[6], f[7]); }, 60);
       });
     }
   });
@@ -1217,28 +1221,43 @@ function renderFilterChips(){
 
 function initFoodMap(){
   if(foodMap) return;
-  foodMap = L.map('foodMap', {zoomControl:false, attributionControl:true}).setView([CFG.lat, CFG.lon], 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
-  }).addTo(foodMap);
+  foodMap = new maplibregl.Map({
+    container:'foodMap',
+    style:'https://tiles.openfreemap.org/styles/liberty',
+    center:[CFG.lon, CFG.lat],
+    zoom:15,
+    attributionControl:{compact:true}
+  });
+}
+function makePoiMarker(targetMap, lat, lon, pinHtml, tooltipText, anchor){
+  const wrap = document.createElement('div');
+  wrap.className = 'poi-marker-wrap';
+  wrap.innerHTML = pinHtml + '<div class="poi-tooltip"></div>';
+  wrap.querySelector('.poi-tooltip').textContent = tooltipText;
+  wrap.addEventListener('click', () => wrap.classList.toggle('show-tip'));
+  const marker = new maplibregl.Marker({element:wrap, anchor}).setLngLat([lon, lat]).addTo(targetMap);
+  return {marker, tooltipEl: wrap.querySelector('.poi-tooltip')};
 }
 function renderFoodMarkers(list){
   if(!foodMap) return;
-  foodMarkers.forEach(m => m.remove());
+  foodMarkers.forEach(fm => fm.marker.remove());
   foodMarkers = [];
   const coords = [];
   list.forEach(f => {
     if(f[6] == null || f[7] == null) return;
-    const icon = L.divIcon({className:'', html:`<div class="poi-pin cat-food"><span>${f[0]}</span></div>`, iconSize:[28,28], iconAnchor:[14,28]});
-    const m = L.marker([f[6], f[7]], {icon}).addTo(foodMap).bindTooltip(f[1], {direction:'top', offset:[0,-24], className:'poi-tooltip'});
-    foodMarkers.push(m);
-    coords.push([f[6], f[7]]);
+    const pinHtml = `<div class="poi-pin cat-food"><span>${f[0]}</span></div>`;
+    foodMarkers.push(makePoiMarker(foodMap, f[6], f[7], pinHtml, f[1], 'bottom'));
+    coords.push([f[7], f[6]]);
   });
   if(coords.length) foodMapBounds = coords;
   // Vista fissa su casa (vedi nota in initMap): niente fitBounds automatico sui filtri.
 }
-function zoomToFoodPoi(lat, lon){ if(foodMap) foodMap.flyTo([lat, lon], 18, {duration:0.6}); }
-function zoomFoodOverview(){ if(foodMap && foodMapBounds) foodMap.flyToBounds(foodMapBounds, {padding:[36,36], duration:0.6}); }
+function zoomToFoodPoi(lat, lon){ if(foodMap) foodMap.flyTo({center:[lon, lat], zoom:18, duration:600}); }
+function zoomFoodOverview(){
+  if(!foodMap || !foodMapBounds) return;
+  const b = foodMapBounds.reduce((acc,p) => acc.extend(p), new maplibregl.LngLatBounds(foodMapBounds[0], foodMapBounds[0]));
+  foodMap.fitBounds(b, {padding:36, duration:600});
+}
 
 
 /* dati dinamici dal worker (quando esisterà) */
@@ -1327,38 +1346,40 @@ function distanzaMetri(lat1, lon1, lat2, lon2){
 
 function initMap(){
   if(map) return;
-  const home = [CFG.lat, CFG.lon];
-  map = L.map('map', {zoomControl:false, attributionControl:true}).setView(home, 16);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
-  }).addTo(map);
+  map = new maplibregl.Map({
+    container:'map',
+    style:'https://tiles.openfreemap.org/styles/liberty',
+    center:[CFG.lon, CFG.lat],
+    zoom:16,
+    attributionControl:{compact:true}
+  });
 
-  const homeIcon = L.divIcon({className:'', html:'<div class="poi-pin cat-casa"><span>🏠</span></div>', iconSize:[28,28], iconAnchor:[14,28]});
-  L.marker(home, {icon:homeIcon}).addTo(map).bindTooltip(CFG.nome, {direction:'top', offset:[0,-24], className:'poi-tooltip'});
+  makePoiMarker(map, CFG.lat, CFG.lon, '<div class="poi-pin cat-casa"><span>🏠</span></div>', CFG.nome, 'bottom');
 
-  const coords = [home];
+  const coords = [[CFG.lon, CFG.lat]];
   T().servizi.forEach((s,i) => {
     const lat = s[4], lon = s[5], cat = s[6];
     const isFlatBadge = cat === 'metro' || cat === 'tabacchi';
     const glyph = cat === 'metro' ? 'M' : cat === 'tabacchi' ? 'T' : s[0];
-    const icon = L.divIcon({
-      className: '', html: `<div class="poi-pin cat-${cat}"><span>${glyph}</span></div>`,
-      iconSize: isFlatBadge ? [24,24] : [28,28],
-      iconAnchor: isFlatBadge ? [12,12] : [14,28]
-    });
-    poiMarkers[i] = L.marker([lat, lon], {icon}).addTo(map).bindTooltip(s[1], {direction:'top', offset:[0,isFlatBadge?-16:-24], className:'poi-tooltip'});
-    coords.push([lat, lon]);
+    const pinHtml = `<div class="poi-pin cat-${cat}"><span>${glyph}</span></div>`;
+    poiMarkers[i] = makePoiMarker(map, lat, lon, pinHtml, s[1], isFlatBadge ? 'center' : 'bottom');
+    coords.push([lon, lat]);
   });
   mapBounds = coords;
   // Vista iniziale fissa e centrata su casa (niente fitBounds automatico: con punti lontani come
   // l'ospedale lo zoom calcolato risultava troppo ampio). "Mostra tutti" resta disponibile a parte.
-  map.setView(home, 16);
+  map.setCenter([CFG.lon, CFG.lat]);
+  map.setZoom(16);
 }
-function zoomToPoi(lat, lon){ if(map) map.flyTo([lat, lon], 18, {duration:0.6}); }
-function zoomOverview(){ if(map && mapBounds) map.flyToBounds(mapBounds, {padding:[36,36], duration:0.6}); }
+function zoomToPoi(lat, lon){ if(map) map.flyTo({center:[lon, lat], zoom:18, duration:600}); }
+function zoomOverview(){
+  if(!map || !mapBounds) return;
+  const b = mapBounds.reduce((acc,p) => acc.extend(p), new maplibregl.LngLatBounds(mapBounds[0], mapBounds[0]));
+  map.fitBounds(b, {padding:36, duration:600});
+}
 function refreshMapLabels(){
   if(!map) return;
-  T().servizi.forEach((s,i) => { if(poiMarkers[i]) poiMarkers[i].setTooltipContent(s[1]); });
+  T().servizi.forEach((s,i) => { if(poiMarkers[i]) poiMarkers[i].tooltipEl.textContent = s[1]; });
 }
 $('#mapOverviewBtn').addEventListener('click', zoomOverview);
 $('#foodOverviewBtn').addEventListener('click', zoomFoodOverview);
@@ -1373,12 +1394,12 @@ $$('#tabbar button').forEach(b => b.addEventListener('click', () => {
   trackEvent('tab', b.dataset.scr);
   if(b.dataset.scr === 'mappa'){
     initMap();
-    setTimeout(() => map.invalidateSize(), 60);
+    setTimeout(() => map.resize(), 60);
   }
   if(b.dataset.scr === 'food'){
     initFoodMap();
     renderFoodMarkers(foodBaseList().filter(f => (!foodCuisine || foodCats(f).includes(foodCuisine)) && (!foodPrice || f[9]===foodPrice)));
-    setTimeout(() => foodMap.invalidateSize(), 60);
+    setTimeout(() => foodMap.resize(), 60);
   }
 }));
 
