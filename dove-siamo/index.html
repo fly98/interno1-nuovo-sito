@@ -548,9 +548,9 @@
   var map = L.map('dove-map', { zoomControl: true, attributionControl: true, scrollWheelZoom: false })
     .setView([41.9110, 12.5260], 15);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    maxZoom: 20
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19
   }).addTo(map);
 
   var giallaIcon = L.divIcon({
