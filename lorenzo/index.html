@@ -206,7 +206,7 @@ details.acc .body p+p{margin-top:8px}
   font-family:inherit !important;font-size:11px !important;font-weight:600;padding:3px 8px !important;
   border-radius:6px !important;box-shadow:none !important}
 .poi-tooltip::before{display:none !important}
-.poi-marker-wrap{position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.poi-marker-wrap{display:flex;flex-direction:column;align-items:center;cursor:pointer}
 .poi-marker-wrap .poi-tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-6px);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease;z-index:5}
 .poi-marker-wrap:hover .poi-tooltip,.poi-marker-wrap.show-tip .poi-tooltip{opacity:1}
 
@@ -1235,7 +1235,7 @@ function makePoiMarker(targetMap, lat, lon, pinHtml, tooltipText, anchor){
   wrap.innerHTML = pinHtml + '<div class="poi-tooltip"></div>';
   wrap.querySelector('.poi-tooltip').textContent = tooltipText;
   wrap.addEventListener('click', () => wrap.classList.toggle('show-tip'));
-  const marker = new maplibregl.Marker({element:wrap, anchor}).setLngLat([lon, lat]).addTo(targetMap);
+  const marker = new maplibregl.Marker({element:wrap, anchor, offset: anchor === 'bottom' ? [0, -6] : [0, 0]}).setLngLat([lon, lat]).addTo(targetMap);
   return {marker, tooltipEl: wrap.querySelector('.poi-tooltip')};
 }
 function renderFoodMarkers(list){
