@@ -1320,10 +1320,17 @@ function getOrCreateSid(){
   return sid;
 }
 // esclusione test dalle statistiche: apri con ?notrack=1 una volta per disattivare su questo dispositivo (resta memorizzato); ?notrack=0 per riattivare
+// ?notrack=1 esclude il dispositivo anche dalle statistiche passate (lo segnala al worker); ?notrack=0 lo riammette
 (function(){
   const p = new URLSearchParams(location.search).get('notrack');
   if(p === '1') localStorage.setItem('wb_notrack', '1');
   if(p === '0') localStorage.removeItem('wb_notrack');
+  if(p === '1' || p === '0'){
+    try{
+      fetch(`${CFG.api}/wb/${CFG.slug}/escludimi`, {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({sid: getOrCreateSid(), on: p === '1'}), keepalive:true}).catch(()=>{});
+    }catch(e){}
+  }
 })();
 function trackEvent(event, section){
   if(localStorage.getItem('wb_notrack') === '1') return;
@@ -1331,11 +1338,24 @@ function trackEvent(event, section){
     fetch(`${CFG.api}/wb/${CFG.slug}/track`, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({event, section, lang, sid: getOrCreateSid()}),
+      // h = sito da cui arriva (le copie di prova vengono scartate), wd = browser automatico (test, bot)
+      body: JSON.stringify({event, section, lang, sid: getOrCreateSid(), h: location.hostname, wd: navigator.webdriver === true}),
       keepalive:true
     }).catch(()=>{});
   }catch(e){/* mai bloccare l'esperienza per un ping di analytics */}
 }
+// tocchi su WhatsApp, navigazione, telefono e audioguide: registrati con la sezione in cui avvengono
+document.addEventListener('click', ev => {
+  const a = ev.target.closest && ev.target.closest('a[href]'); if(!a) return;
+  const href = a.getAttribute('href') || '';
+  const scr = (document.querySelector('.screen.on') || {}).id || ''; const sez = scr.replace('scr-','') || 'casa';
+  let evento = null;
+  if(/wa\.me|whatsapp/i.test(href)) evento = 'whatsapp';
+  else if(/google\.[a-z.]+\/maps|maps\.apple|maps\.app\.goo|goo\.gl\/maps/i.test(href)) evento = 'naviga';
+  else if(/^tel:/i.test(href)) evento = 'telefono';
+  else if(/flytour|tour/i.test(href)) evento = 'audioguida';
+  if(evento) trackEvent(evento, sez);
+}, true);
 
 /* ================= MAPPA ================= */
 let map = null;
