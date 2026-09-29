@@ -186,16 +186,11 @@
     margin-bottom:1rem;
     line-height:1.1;
   }
-  /* KEYPAD HINT — schema tastierino per tasti usurati (layout riga: keypad + testo) */
-  .keypad-hint{
-    background:rgba(255,255,255,0.72);
-    -webkit-backdrop-filter:saturate(180%) blur(20px);
-    backdrop-filter:saturate(180%) blur(20px);
-    border:1px solid rgba(0,0,0,0.06);
-    border-radius:20px;
-    padding:0.9rem 1rem;
-    margin:1rem 0 0.6rem;
-    box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 4px 14px rgba(0,0,0,0.04);
+  /* KEYPAD HINT — sezione interna al keycode-box, sotto le istruzioni */
+  .keycode-box .keypad-hint{
+    margin-top:1rem;
+    padding-top:0.95rem;
+    border-top:1px solid rgba(0,0,0,0.08);
   }
   .keypad-hint-row{
     display:flex;
@@ -237,7 +232,7 @@
     box-shadow:0 2px 6px rgba(176,131,85,0.4);
   }
   @media print{
-    .keypad-hint{ background:#f7f7f7 !important; box-shadow:none !important; border:1px solid #ddd !important; padding:0.5rem 0.6rem !important; margin:0.4rem 0 !important; }
+    .keycode-box .keypad-hint{ margin-top:0.5rem !important; padding-top:0.4rem !important; }
     .keypad-hint .note{ font-size:0.7rem !important; flex-basis:170px !important; }
     .keypad-diagram{ grid-template-columns:repeat(3, 28px); grid-auto-rows:28px; gap:3px; }
     .keypad-key{ font-size:0.65rem !important; border-radius:5px !important; }
@@ -245,6 +240,7 @@
   .keycode-box ol{
     list-style:none;
     display:flex; flex-direction:column; gap:0.3rem;
+    margin-bottom:0;
     font-size:0.9rem;
     opacity:0.85;
   }
@@ -551,18 +547,6 @@
       </video>
     </div>
 
-    <div class="keypad-hint">
-      <div class="keypad-hint-row">
-        <div class="keypad-diagram">
-          <div class="keypad-key">1</div><div class="keypad-key">2</div><div class="keypad-key">3</div>
-          <div class="keypad-key">4</div><div class="keypad-key">5</div><div class="keypad-key">6</div>
-          <div class="keypad-key">7</div><div class="keypad-key">8</div><div class="keypad-key">9</div>
-          <div class="keypad-key k-c">C</div><div class="keypad-key">0</div><div class="keypad-key k-e">E</div>
-        </div>
-        <div class="note" data-i18n="ci_keycode_keypad" data-i18n-html>Se per l'usura i tasti sono poco leggibili, seguite questo schema. Il tasto <strong>E</strong> è in basso a destra 👈</div>
-      </div>
-    </div>
-
     <div class="keycode-box">
       <div class="label" data-i18n="ci_keycode_label">Codice cassetta di sicurezza</div>
       <div class="code">3044 + E</div>
@@ -571,6 +555,17 @@
         <li data-i18n="ci_keycode_2">Premete E (in basso a destra)</li>
         <li data-i18n="ci_keycode_3">Girate la manopola in senso orario</li>
       </ol>
+      <div class="keypad-hint">
+        <div class="keypad-hint-row">
+          <div class="keypad-diagram">
+            <div class="keypad-key">1</div><div class="keypad-key">2</div><div class="keypad-key">3</div>
+            <div class="keypad-key">4</div><div class="keypad-key">5</div><div class="keypad-key">6</div>
+            <div class="keypad-key">7</div><div class="keypad-key">8</div><div class="keypad-key">9</div>
+            <div class="keypad-key k-c">C</div><div class="keypad-key">0</div><div class="keypad-key k-e">E</div>
+          </div>
+          <div class="note" data-i18n="ci_keycode_keypad" data-i18n-html>Se per l'usura i tasti sono poco leggibili, seguite questo schema. Il tasto <strong>E</strong> è in basso a destra 👈</div>
+        </div>
+      </div>
     </div>
 
     <h3 style="font-family:'Fraunces',serif; font-size:1rem; margin-bottom:0.7rem;" data-i18n="ci_inbox_title">Cosa trovate nella cassetta</h3>
