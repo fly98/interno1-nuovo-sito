@@ -186,38 +186,47 @@
     margin-bottom:1rem;
     line-height:1.1;
   }
-  /* KEYPAD HINT — schema tastierino per tasti usurati */
+  /* KEYPAD HINT — schema tastierino per tasti usurati (layout riga: keypad + testo) */
   .keypad-hint{
     background:rgba(255,255,255,0.72);
     -webkit-backdrop-filter:saturate(180%) blur(20px);
     backdrop-filter:saturate(180%) blur(20px);
     border:1px solid rgba(0,0,0,0.06);
     border-radius:20px;
-    padding:1rem 1rem 1.1rem;
-    text-align:center;
+    padding:0.9rem 1rem;
     margin:1rem 0 0.6rem;
     box-shadow:0 1px 2px rgba(0,0,0,0.04), 0 4px 14px rgba(0,0,0,0.04);
   }
+  .keypad-hint-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
   .keypad-hint .note{
-    font-size:0.82rem;
+    flex:0 1 200px;
+    font-size:0.78rem;
     color:#555;
-    line-height:1.45;
-    margin-bottom:0.85rem;
+    line-height:1.4;
+    text-align:left;
+    margin:0;
   }
   .keypad-hint .note strong{ color:var(--testo-scuro); }
   .keypad-diagram{
-    display:inline-grid;
-    grid-template-columns:repeat(3, 44px);
-    grid-auto-rows:44px;
-    gap:6px;
+    display:grid;
+    grid-template-columns:repeat(3, 36px);
+    grid-auto-rows:36px;
+    gap:5px;
+    flex-shrink:0;
   }
   .keypad-key{
     display:flex; align-items:center; justify-content:center;
     background:#f2f2f7;
     border:1px solid rgba(0,0,0,0.08);
-    border-radius:10px;
+    border-radius:8px;
     font-family:'Michroma', sans-serif;
-    font-size:0.95rem; font-weight:500;
+    font-size:0.82rem; font-weight:500;
     color:var(--testo-scuro);
   }
   .keypad-key.k-c{ color:#8a8a8f; background:#ececf1; }
@@ -228,10 +237,10 @@
     box-shadow:0 2px 6px rgba(176,131,85,0.4);
   }
   @media print{
-    .keypad-hint{ background:#f7f7f7 !important; box-shadow:none !important; border:1px solid #ddd !important; padding:0.6rem !important; margin:0.4rem 0 !important; }
-    .keypad-hint .note{ font-size:0.75rem !important; margin-bottom:0.4rem !important; }
-    .keypad-diagram{ grid-template-columns:repeat(3, 32px); grid-auto-rows:32px; gap:4px; }
-    .keypad-key{ font-size:0.75rem !important; border-radius:6px !important; }
+    .keypad-hint{ background:#f7f7f7 !important; box-shadow:none !important; border:1px solid #ddd !important; padding:0.5rem 0.6rem !important; margin:0.4rem 0 !important; }
+    .keypad-hint .note{ font-size:0.7rem !important; flex-basis:170px !important; }
+    .keypad-diagram{ grid-template-columns:repeat(3, 28px); grid-auto-rows:28px; gap:3px; }
+    .keypad-key{ font-size:0.65rem !important; border-radius:5px !important; }
   }
   .keycode-box ol{
     list-style:none;
@@ -543,12 +552,14 @@
     </div>
 
     <div class="keypad-hint">
-      <div class="note" data-i18n="ci_keycode_keypad" data-i18n-html>Se per l'usura i tasti sono poco leggibili, seguite questo schema. Il tasto <strong>E</strong> è in basso a destra 👇</div>
-      <div class="keypad-diagram">
-        <div class="keypad-key">1</div><div class="keypad-key">2</div><div class="keypad-key">3</div>
-        <div class="keypad-key">4</div><div class="keypad-key">5</div><div class="keypad-key">6</div>
-        <div class="keypad-key">7</div><div class="keypad-key">8</div><div class="keypad-key">9</div>
-        <div class="keypad-key k-c">C</div><div class="keypad-key">0</div><div class="keypad-key k-e">E</div>
+      <div class="keypad-hint-row">
+        <div class="keypad-diagram">
+          <div class="keypad-key">1</div><div class="keypad-key">2</div><div class="keypad-key">3</div>
+          <div class="keypad-key">4</div><div class="keypad-key">5</div><div class="keypad-key">6</div>
+          <div class="keypad-key">7</div><div class="keypad-key">8</div><div class="keypad-key">9</div>
+          <div class="keypad-key k-c">C</div><div class="keypad-key">0</div><div class="keypad-key k-e">E</div>
+        </div>
+        <div class="note" data-i18n="ci_keycode_keypad" data-i18n-html>Se per l'usura i tasti sono poco leggibili, seguite questo schema. Il tasto <strong>E</strong> è in basso a destra 👈</div>
       </div>
     </div>
 
@@ -630,7 +641,7 @@ window.IU_I18N.it = Object.assign(window.IU_I18N.it || {}, {
   ci_s3_step: 'Terzo passo',
   ci_s3_h: '🔒 La cassetta delle chiavi',
   ci_s3_b: 'Subito a destra trovate la porta con il logo InternoUno 🚪. Accanto c\'è la cassetta di sicurezza con le vostre chiavi.',
-  ci_keycode_keypad: 'Se per l\'usura i tasti sono poco leggibili, seguite questo schema. Il tasto <strong>E</strong> è in basso a destra 👇',
+  ci_keycode_keypad: 'Se per l\'usura i tasti sono poco leggibili, seguite questo schema. Il tasto <strong>E</strong> è in basso a destra 👈',
   ci_keycode_label: 'Codice cassetta di sicurezza',
   ci_keycode_1: 'Digitate 3-0-4-4',
   ci_keycode_2: 'Premete E (in basso a destra)',
@@ -675,7 +686,7 @@ window.IU_I18N.en = Object.assign(window.IU_I18N.en || {}, {
   ci_s3_step: 'Step Three',
   ci_s3_h: '🔒 The key box',
   ci_s3_b: 'Immediately on the right you will find our door with the InternoUno logo 🚪. Next to it is the security key box with your keys.',
-  ci_keycode_keypad: 'If the keys are hard to read due to wear, follow this layout. The <strong>E</strong> key is at the bottom right 👇',
+  ci_keycode_keypad: 'If the keys are hard to read due to wear, follow this layout. The <strong>E</strong> key is at the bottom right 👈',
   ci_keycode_label: 'Key box code',
   ci_keycode_1: 'Enter 3-0-4-4',
   ci_keycode_2: 'Press E (bottom right)',
@@ -720,7 +731,7 @@ window.IU_I18N.es = Object.assign(window.IU_I18N.es || {}, {
   ci_s3_step: 'Tercer paso',
   ci_s3_h: '🔒 La caja de llaves',
   ci_s3_b: 'Justo a la derecha encontraréis nuestra puerta con el logo InternoUno 🚪. Al lado está la caja de seguridad con vuestras llaves.',
-  ci_keycode_keypad: 'Si por el uso las teclas son poco legibles, seguid este esquema. La tecla <strong>E</strong> está abajo a la derecha 👇',
+  ci_keycode_keypad: 'Si por el uso las teclas son poco legibles, seguid este esquema. La tecla <strong>E</strong> está abajo a la derecha 👈',
   ci_keycode_label: 'Código de la caja de seguridad',
   ci_keycode_1: 'Introducid 3-0-4-4',
   ci_keycode_2: 'Pulsad E (abajo derecha)',
@@ -765,7 +776,7 @@ window.IU_I18N.fr = Object.assign(window.IU_I18N.fr || {}, {
   ci_s3_step: 'Troisième étape',
   ci_s3_h: '🔒 La boîte à clés',
   ci_s3_b: 'Immédiatement à droite, vous trouverez notre porte avec le logo InternoUno 🚪. À côté se trouve le coffre de sécurité avec vos clés.',
-  ci_keycode_keypad: 'Si les touches sont peu lisibles à cause de l\'usure, suivez ce schéma. La touche <strong>E</strong> est en bas à droite 👇',
+  ci_keycode_keypad: 'Si les touches sont peu lisibles à cause de l\'usure, suivez ce schéma. La touche <strong>E</strong> est en bas à droite 👈',
   ci_keycode_label: 'Code du coffre à clés',
   ci_keycode_1: 'Composez 3-0-4-4',
   ci_keycode_2: 'Appuyez sur E (en bas à droite)',
@@ -810,7 +821,7 @@ window.IU_I18N.de = Object.assign(window.IU_I18N.de || {}, {
   ci_s3_step: 'Dritter Schritt',
   ci_s3_h: '🔒 Der Schlüsselkasten',
   ci_s3_b: 'Gleich rechts finden Sie unsere Tür mit dem InternoUno-Logo 🚪. Daneben befindet sich der Safe mit Ihren Schlüsseln.',
-  ci_keycode_keypad: 'Wenn die Tasten durch Abnutzung schwer lesbar sind, folgen Sie diesem Schema. Die <strong>E</strong>-Taste ist unten rechts 👇',
+  ci_keycode_keypad: 'Wenn die Tasten durch Abnutzung schwer lesbar sind, folgen Sie diesem Schema. Die <strong>E</strong>-Taste ist unten rechts 👈',
   ci_keycode_label: 'Code des Schlüsselkastens',
   ci_keycode_1: 'Geben Sie 3-0-4-4 ein',
   ci_keycode_2: 'Drücken Sie E (unten rechts)',
@@ -855,7 +866,7 @@ window.IU_I18N.pt = Object.assign(window.IU_I18N.pt || {}, {
   ci_s3_step: 'Terceiro passo',
   ci_s3_h: '🔒 A caixa de chaves',
   ci_s3_b: 'Logo à direita encontrará a nossa porta com o logótipo InternoUno 🚪. Ao lado está o cofre de segurança com as suas chaves.',
-  ci_keycode_keypad: 'Se as teclas estiverem pouco legíveis pelo uso, sigam este esquema. A tecla <strong>E</strong> está no canto inferior direito 👇',
+  ci_keycode_keypad: 'Se as teclas estiverem pouco legíveis pelo uso, sigam este esquema. A tecla <strong>E</strong> está no canto inferior direito 👈',
   ci_keycode_label: 'Código da caixa de chaves',
   ci_keycode_1: 'Digite 3-0-4-4',
   ci_keycode_2: 'Prima E (canto inferior direito)',
@@ -900,7 +911,7 @@ window.IU_I18N.zh = Object.assign(window.IU_I18N.zh || {}, {
   ci_s3_step: '第三步',
   ci_s3_h: '🔒 取钥匙箱',
   ci_s3_b: '进入后立即向右，您会看到带有 InternoUno 标志的门 🚪。旁边是密码安全箱，里面存放着您的钥匙。',
-  ci_keycode_keypad: '如果按键因磨损难以辨认，请参考此布局。<strong>E</strong> 键位于右下角 👇',
+  ci_keycode_keypad: '如果按键因磨损难以辨认，请参考此布局。<strong>E</strong> 键位于右下角 👈',
   ci_keycode_label: '安全箱密码',
   ci_keycode_1: '输入 3-0-4-4',
   ci_keycode_2: '按 E 键（右下角）',
